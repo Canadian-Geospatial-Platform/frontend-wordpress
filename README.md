@@ -18,7 +18,7 @@ In a terminal from the root of the project start docker:
 docker-compose up
 ```
 
-Then, visit the following urls to acces the project
+Then, visit the following urls to access the project
 
 * website: <http://localhost:8080/>
 * website admin page: <http://localhost:8080/wp-admin>
