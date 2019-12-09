@@ -73,7 +73,11 @@ class Cgp_Shortcodes_Public {
 		 * class.
 		 */
 
+		wp_enqueue_style( 'bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), '4.3.1', 'all');
+		
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cgp-shortcodes-public.css', array(), $this->version, 'all' );
+		
+
 
 	}
 
@@ -96,12 +100,30 @@ class Cgp_Shortcodes_Public {
 		 * class.
 		 */
 
+		wp_enqueue_script('bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.bundle.min.js', array('jquery'), '4.3.1', true );
+
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cgp-shortcodes-public.js', array( 'jquery' ), $this->version, false );
 	
 	}
 
 	public function hello_world_shortcode() {
-		return 'Hello world!';
+		return <<<HTML
+		<html>
+		<div class="card">
+		    <div class="card-body">
+		        <h5 class="card-title">Hello world!</h5>
+		        <h6 class="card-subtitle mb-2 text-muted">Up and running</h6>
+				<p class="card-text">This is a confirmation that the cgp-shortcodes plugin is properly working</p>
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+		            <strong>Success!</strong> Dismiss this to test the javascript!
+		            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		                <span aria-hidden="true">&times;</span>
+		            </button>
+		        </div>
+		    </div>
+		</div>
+		<html>
+HTML;
 	}	
 
 }

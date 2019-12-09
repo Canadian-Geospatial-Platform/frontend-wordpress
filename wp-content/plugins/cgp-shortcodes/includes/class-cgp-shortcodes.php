@@ -173,8 +173,8 @@ class Cgp_Shortcodes {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		// Declare new shortcodes here
-		$this->loader->add_shortcode( 'helloworld', $plugin_public, 'hello_world_shortcode' );
+		// Declare new shortcodes under here
+		$this->loader->add_shortcode( $this->plugin_name . '-hello-world', $plugin_public, 'hello_world_shortcode' );
 
 	}
 
