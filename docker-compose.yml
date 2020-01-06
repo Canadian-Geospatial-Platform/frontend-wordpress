@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   wordpress:
     image: wordpress:latest
@@ -14,7 +14,7 @@ services:
     ports:
       - 8080:80
       - 443:443
-    
+
   db:
     image: mariadb:latest
     container_name: mysql
@@ -27,7 +27,7 @@ services:
       MYSQL_DATABASE: wpdb
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-  
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     restart: always
@@ -36,6 +36,8 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
+      PMA_USER: root
+      PMA_PASSWORD: password
 
 volumes:
   mysql-data:

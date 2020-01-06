@@ -15,7 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 In a terminal from the root of the project start docker: 
 
 ```
-docker-compose up
+sudo docker-compose up
 ```
 
 Then, visit the following urls to access the project
