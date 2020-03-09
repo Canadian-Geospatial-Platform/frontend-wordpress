@@ -175,7 +175,8 @@ class Cgp_Shortcodes {
 
 		// Declare new shortcodes under here
 		$this->loader->add_shortcode( $this->plugin_name . '-hello-world', $plugin_public, 'hello_world_shortcode' );
-
+		$this->loader->add_shortcode( $this->plugin_name . '-full-search', $plugin_public, 'full_search_shortcode' );
+		$this->loader->add_shortcode( $this->plugin_name . '-full-search-results', $plugin_public, 'full_search_results_shortcode' );
 	}
 
 	/**
