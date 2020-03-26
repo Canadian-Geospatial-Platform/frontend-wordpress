@@ -164,7 +164,7 @@ HTML;
 					<div class="col">
 					<div class="input-group mb-3">
   					<div class="input-group-prepend">
-    					<span class="input-group-text" >Keyword</span>
+    					<span class="input-group-text" >Keywords</span>
   					</div>
   					<input id="cgp-filter-keyword" type="text" class="form-control" placeholder="Keyword" aria-label="Keyword" aria-describedby="cgp-filter-keyword">
 					</div>
@@ -180,88 +180,20 @@ HTML;
 					</div>
 					</div>
 				</div>
-  				<button id="btn">Search</button>
+				<div class="row">
+					<div class="col">
+					<div class="input-group mb-3">
+  					<div class="input-group-prepend">
+    					<span class="input-group-text" >Tags</span>
+  					</div>
+  					<input id="cgp-filter-tag" type="text" class="form-control" placeholder="Tags" aria-label="Tags" aria-describedby="cgp-filter-tag">
+					</div>
+					</div>
+				</div>
+  				<button id="cgp-search-btn">Search</button>
 		    </div>
 		</div>
 		<html>
-		<script type="text/javascript">
-  var btn = document.getElementById("btn");
-
-  btn.addEventListener("click", function() {
-    const url =
-      "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        properties: {
-          title: {
-            en: '(?i).*('+ document.getElementById("cgp-filter-title").value +').*',
-		  },
-		  description: {
-            en: '(?i).*('+ document.getElementById("cgp-filter-description").value +').*',
-		  },
-		  keyword: {
-            en: '(?i).*('+ document.getElementById("cgp-filter-keyword").value +').*',
-		  },
-		  topicCategory: '(?i).*('+ document.getElementById("cgp-filter-topic-category").value +').*',
-
-        }
-      })
-    };
-    fetch(url, options)
-      .then(response => {
-        response.json().then(data => {
-          renderResults(data.Items);
-        });
-      })
-      .catch(function(error) {
-        console.log("error fetching data from the api.");
-      });
-  });
-
-  async function renderResults(Items) {
-	document
-	  .getElementById("metadata-search-result")
-	  .innerHTML = '';
-	Items.forEach(e => {
-		renderResult(e.fileName)
-	})
-  }
-
-  async function renderResult(fileName) {
-	const url =
-      " https://cgp-metadata-search-dev.s3.ca-central-1.amazonaws.com/" + fileName;
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8",
-        Accept: "application/json"
-      },
-	}
-	fetch(url, options).then(response => {
-        response.json().then(data => {
-          return resultCard(data);
-        });
-      })
-  .catch(error => console.log(`Failed because: ${error}`));
-  }
-
-  function resultCard(data) {
-	  	htmlString = '<div class="card">'+
-		    '<div class="card-body">'+
-		        '<h5 class="card-title">' + data.properties.title.en + '</h5>'+
-				'<p class="card-text">' + data.properties.description.en + '</p>'+
-		    '</div>'
-			document
-      .getElementById("metadata-search-result")
-      .insertAdjacentHTML("beforeend", htmlString);
-  }
-
-</script>
 HTML;
     }
 
