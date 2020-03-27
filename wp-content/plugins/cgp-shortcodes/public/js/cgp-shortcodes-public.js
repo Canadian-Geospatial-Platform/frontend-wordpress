@@ -31,55 +31,60 @@
 
   $(window).load(function() {
     $("#cgp-search-btn").on("click", function() {
-      console.log("called");
       const url =
         "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo";
-      const options = {
+
+      let queryBody = {
+        regex: [
+          {
+            path: "properties.title.en",
+            regex:
+              "(?i).*(" +
+              document.getElementById("cgp-filter-title").value +
+              ").*"
+          },
+          {
+            path: "properties.description.en",
+            regex:
+              "(?i).*(" +
+              document.getElementById("cgp-filter-description").value +
+              ").*"
+          },
+          {
+            path: "properties.keyword.en",
+            regex:
+              "(?i).*(" +
+              document.getElementById("cgp-filter-keyword").value +
+              ").*"
+          },
+          {
+            path: "properties.topiccategory",
+            regex:
+              "(?i).*(" +
+              document.getElementById("cgp-filter-topic-category").value +
+              ").*"
+          }
+        ],
+        select: [
+          "properties.title",
+          "tags",
+          "properties.description",
+          "popularityindex"
+        ]
+      };
+
+      let tags = document.getElementById("cgp-filter-tag").value;
+      if (tags) queryBody.tags = tags.split("|");
+
+      let options = {
         method: "POST",
         headers: {
           "Content-Type": "text/plain;charset=UTF-8",
           Accept: "application/json"
         },
-        body: JSON.stringify({
-          regex: [
-            {
-              path: "properties.title.en",
-              regex:
-                "(?i).*(" +
-                document.getElementById("cgp-filter-title").value +
-                ").*"
-            },
-            {
-              path: "properties.description.en",
-              regex:
-                "(?i).*(" +
-                document.getElementById("cgp-filter-description").value +
-                ").*"
-            },
-            {
-              path: "properties.keyword.en",
-              regex:
-                "(?i).*(" +
-                document.getElementById("cgp-filter-keyword").value +
-                ").*"
-            },
-            {
-              path: "properties.topiccategory",
-              regex:
-                "(?i).*(" +
-                document.getElementById("cgp-filter-topic-category").value +
-                ").*"
-            }
-          ],
-          tags: document.getElementById("cgp-filter-tag").value.split("|"),
-          select: [
-            "properties.title",
-            "tags",
-            "properties.description",
-            "popularityindex"
-          ]
-        })
+        body: JSON.stringify(queryBody)
       };
+
       fetch(url, options)
         .then(response => {
           response.json().then(data => {
