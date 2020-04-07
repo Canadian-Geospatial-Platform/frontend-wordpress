@@ -234,4 +234,13 @@ HTML;
 HTML;
     }
 
+    public function redirect_search_shortcode()
+    {
+        return <<<HTML
+		<html>
+		<div><h3>serachbar</h3></div>
+		<html>
+HTML;
+    }
+
 }

@@ -4,6 +4,7 @@
  */
 #cgp-shortcodes-simple-search a {
   text-decoration: none;
+  user-select: none;
 }
 
 #cgp-shortcodes-simple-search button {
