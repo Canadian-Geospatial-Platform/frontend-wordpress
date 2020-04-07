@@ -129,6 +129,34 @@ class Cgp_Shortcodes_Public
 HTML;
     }
 
+    public function simple_search_shortcode()
+    {
+        return <<<HTML
+		<html>
+		<div class="card" id="cgp-shortcodes-simple-search">
+		    <div class="card-body">
+		        <h5 class="card-title">Search</h5>
+                <div class="row">
+					<div class="col">
+					<div class="input-group mb-3">
+  					<div class="input-group-prepend">
+    					<span class="input-group-text" >Search Term</span>
+  					</div>
+  					<input id="cgp-filter-search-term" type="text" class="form-control" aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
+                        <div class="input-group-append" id="button-addon4">
+                        <button class="btn btn-secondary search-button" type="button">+</button>
+                        </div>
+					</div>
+					</div>
+				</div>
+                <div class="cgp-shortcodes-search-pills">
+                </div>
+		    </div>
+		</div>
+		<html>
+HTML;
+    }
+
     public function full_search_shortcode()
     {
         return <<<HTML

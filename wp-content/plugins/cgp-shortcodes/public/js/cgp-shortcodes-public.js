@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   "use strict";
 
   /**
@@ -29,83 +29,88 @@
    * practising this, we should strive to set a better example in our own work.
    */
 
-  $(window).load(function() {
-    $("#cgp-search-btn").on("click", function() {
-      const url =
-        "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo";
+  $(window).load(function () {
+    const apiUrl =
+      "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo";
 
-      let queryBody = {
-        regex: [
-          {
-            path: "properties.title.en",
-            regex:
-              "(?i).*(" +
-              document.getElementById("cgp-filter-title").value +
-              ").*"
-          },
-          {
-            path: "properties.description.en",
-            regex:
-              "(?i).*(" +
-              document.getElementById("cgp-filter-description").value +
-              ").*"
-          },
-          {
-            path: "properties.keyword.en",
-            regex:
-              "(?i).*(" +
-              document.getElementById("cgp-filter-keyword").value +
-              ").*"
-          },
-          {
-            path: "properties.topiccategory",
-            regex:
-              "(?i).*(" +
-              document.getElementById("cgp-filter-topic-category").value +
-              ").*"
-          }
-        ],
+    let searchParams = {
+      searchTerms: [],
+      bbox: null,
+    };
+
+    async function addSearchTerm(searchTerm) {
+      if (!searchTerm || searchParams.searchTerms.indexOf(searchTerm) !== -1)
+        return;
+      searchParams.searchTerms.push(searchTerm);
+      renderPill(searchTerm);
+      updateResults();
+    }
+
+    async function renderPill(searchTerm) {
+      document
+        .getElementById("cgp-shortcodes-simple-search")
+        .getElementsByClassName("cgp-shortcodes-search-pills")[0].innerHTML +=
+        '<a href="#" class="badge badge-pill badge-primary">' +
+        searchTerm +
+        "</a>";
+      document.getElementById("cgp-filter-search-term").value = "";
+    }
+
+    $(".cgp-shortcodes-search-pills").click(function (event) {
+      if (event.target.nodeName != "A") return;
+      searchParams.searchTerms = searchParams.searchTerms.filter(function (
+        value
+      ) {
+        return value != event.target.innerHTML;
+      });
+      event.target.remove();
+      updateResults();
+    });
+
+    $("#cgp-shortcodes-simple-search .search-button").on("click", function () {
+      addSearchTerm(document.getElementById("cgp-filter-search-term").value);
+    });
+
+    async function updateResults() {
+      let url = new URL(apiUrl);
+
+      let params = {
+        regex: [],
         select: [
           "properties.title",
-          "tags",
+          "properties.organisationname",
           "properties.description",
-          "popularityindex"
-        ]
+          "properties.topiccategory",
+        ],
+        tags: [],
       };
 
-      let tags = document.getElementById("cgp-filter-tag").value;
-      if (tags) queryBody.tags = tags.split("|");
+      searchParams.searchTerms.forEach((e) => {
+        params.regex.push("(?i)\\b(" + e + ")\\b");
+      });
 
-      let options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=UTF-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(queryBody)
-      };
+      Object.keys(params).forEach((key) =>
+        url.searchParams.append(key, JSON.stringify(params[key]))
+      );
 
-      fetch(url, options)
-        .then(response => {
-          response.json().then(data => {
+      fetch(url)
+        .then((response) => {
+          response.json().then((data) => {
             renderResults(data.Items);
           });
         })
-        .catch(error => console.log(`Failed because of: ${error}`));
-    });
+        .catch((error) => console.log(`Failed because of: ${error}`));
+    }
 
-    async function renderResults(Items) {
+    function renderResults(Items) {
       let result = [];
       let i = 1;
       document.getElementById("metadata-search-result").innerHTML = "";
-      Items.forEach(e => {
+      Items.forEach((e) => {
         i++;
-        result.push(resultCard(e));
-      });
-      Promise.all(result).then(function(html) {
-        html.forEach(e => {
-          document.getElementById("metadata-search-result").innerHTML += e;
-        });
+        document.getElementById(
+          "metadata-search-result"
+        ).innerHTML += resultCard(e);
       });
     }
 
@@ -119,8 +124,11 @@
         '<p class="card-text">' +
         data.properties.description.en +
         "</p>" +
-        '<p class="card-text"> tags: ' +
-        data.tags +
+        '<h6>Organisation: </h6><p class="card-text">  ' +
+        data.properties.organisationname.en +
+        "</p>" +
+        '<h6>Theme: </h6><p class="card-text">  ' +
+        data.properties.topiccategory +
         "</p>" +
         "</div>";
       return htmlString;

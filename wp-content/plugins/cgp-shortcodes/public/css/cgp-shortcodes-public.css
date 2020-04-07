@@ -2,3 +2,10 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+#cgp-shortcodes-simple-search a {
+  text-decoration: none;
+}
+
+#cgp-shortcodes-simple-search button {
+  text-decoration: none;
+}
