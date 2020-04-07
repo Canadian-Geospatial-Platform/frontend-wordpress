@@ -238,7 +238,16 @@ HTML;
     {
         return <<<HTML
 		<html>
-		<div><h3>serachbar</h3></div>
+		<div class="row">
+					<div class="col">
+					<div class="input-group mb-3">
+					  <input id="cgp-shortcodes-redirect-search" type="text" class="form-control" placeholder="Search datasets" aria-label="Search datasets" aria-describedby="cgp-shortcodes-redirect-search">
+					  <div class="input-group-append">
+						<button id="cgp-shortcodes-redirect-search-btn" class="btn-sm">Search</button>
+  					</div>
+					</div>
+					</div>
+				</div>
 		<html>
 HTML;
     }

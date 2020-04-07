@@ -29,7 +29,7 @@
    * practising this, we should strive to set a better example in our own work.
    */
 
-  $(window).load(function () {
+  $(window).ready(function () {
     const apiUrl =
       "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo";
 
@@ -37,6 +37,9 @@
       searchTerms: [],
       bbox: null,
     };
+
+    addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
+    console.log(sessionStorage.getItem("cgpShortcodesSearchTerms"));
 
     async function addSearchTerm(searchTerm) {
       if (!searchTerm || searchParams.searchTerms.indexOf(searchTerm) !== -1)
@@ -133,5 +136,16 @@
         "</div>";
       return htmlString;
     }
+
+    $("#cgp-shortcodes-redirect-search-btn").click(function (event) {
+      console.log(
+        document.getElementById("cgp-shortcodes-redirect-search").value
+      );
+      sessionStorage.setItem(
+        "cgpShortcodesSearchTerms",
+        document.getElementById("cgp-shortcodes-redirect-search").value
+      );
+      window.location.href = "/acceuil/";
+    });
   });
 })(jQuery);
