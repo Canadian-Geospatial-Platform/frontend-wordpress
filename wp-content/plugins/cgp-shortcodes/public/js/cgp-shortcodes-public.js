@@ -38,7 +38,9 @@
       bbox: null,
     };
 
-    addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
+    // If we are on a search result page, trigger stored search terms
+    if (document.getElementById("cgp-shortcodes-simple-search"))
+      addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
 
     async function addSearchTerm(searchTerm) {
       if (!searchTerm || searchParams.searchTerms.indexOf(searchTerm) !== -1)
