@@ -138,15 +138,12 @@
       return htmlString;
     }
 
-    $("#cgp-shortcodes-redirect-search-btn").click(function (event) {
-      console.log(
-        document.getElementById("cgp-shortcodes-redirect-search").value
-      );
+    $("#cgp-shortcodes-redirect-search button").click(function (event) {
       sessionStorage.setItem(
         "cgpShortcodesSearchTerms",
-        document.getElementById("cgp-shortcodes-redirect-search").value
+        document.querySelector("#cgp-shortcodes-redirect-search input").value
       );
-      window.location.href = "/themes-3/";
+      window.location.href = "/use/content/data/";
     });
   });
 })(jQuery);

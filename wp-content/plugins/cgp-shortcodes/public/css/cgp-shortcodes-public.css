@@ -8,8 +8,10 @@
 }
 
 #cgp-shortcodes-simple-search button {
+  background-color: #6ec1e4;
   text-decoration: none;
-  max-width: 100%;
+  height: 3rem;
+  font-weight: 700;
 }
 
 #cgp-shortcodes-redirect-search .form-control {
