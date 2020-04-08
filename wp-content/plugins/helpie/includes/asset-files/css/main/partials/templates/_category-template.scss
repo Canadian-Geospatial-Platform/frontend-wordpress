@@ -1,0 +1,43 @@
+body.tax-helpdesk_category .helpie-primary-view {
+    background: white;
+}
+
+// body.tax-helpdesk_category .helpie-primary-view .pauple-helpie-single-sidebar {
+//     & ul {
+//         display: block;
+//         float: left;
+//         width: 100%;
+//         padding: 0 20px;
+//         box-sizing: border-box;
+//     }
+// }
+
+@media screen and (max-width: 768px) {
+    // body.tax-helpdesk_category .helpie-primary-view #primary {
+    //     margin: 0;
+    //     width: 100%;
+    //     padding-left: 0;
+    // }
+}
+
+body.tax-helpdesk_category .helpiekb-cat-page-subheader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.6em;
+
+    & i {
+        font-size: 17px;
+        padding-right: 8px;
+        color: #523f7f;
+    }
+}
+
+body.tax-helpdesk_category .helpie-faq {
+    & .search {
+        width: 100%;
+    }
+
+    & .collection-title {
+        text-align: center;
+    }
+}

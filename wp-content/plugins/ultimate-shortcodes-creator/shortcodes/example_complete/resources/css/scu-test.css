@@ -1,0 +1,11 @@
+/** *
+ * The file that defines the css for the shortcodeclass
+ *
+ * @author   cmorillas1@gmail.com
+ * @category CSS
+ */
+
+#scu-img-test {
+	width: 48px !important;
+	height: 48px !important;
+}

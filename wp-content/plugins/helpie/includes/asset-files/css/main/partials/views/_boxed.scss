@@ -1,0 +1,153 @@
+$icon_color : #888;
+
+.helpie-categories-section-boxed {
+    margin-top: 35px;
+
+    & * {
+        box-sizing: border-box;
+    }
+}
+
+.helpie-categories-section-boxed .helpie-category-listing,
+.helpie-categories-section-boxed .category-list {
+    float: left;
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.helpie-categories-section-boxed .category-list .column {
+    float: left;
+    min-height: 220px;
+    margin-bottom: 40px;
+    padding: 25px;
+    text-align: center;
+    list-style: none;
+    margin-left: 0;
+}
+
+.helpie-categories-section-boxed .category-list .column a {
+    border: solid 1px #eee;
+    display: block;
+
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 35px 10px 10px;
+    color: $primary-text-color;
+
+    &:hover {
+        color: $link-text-color1;
+    }
+
+    &:visited{
+      border: solid 1px #eee;
+    }
+}
+
+.helpie-categories-section-boxed .category-list .column a .sicon {
+    float: none;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    min-height: 70px;
+    max-height: 70px;
+    height: 70px;
+
+    & img {
+        height: 100%;
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+.helpie-categories-section-boxed .category-list .column a i.fa {
+    font-size: 38px;
+    padding-right: 10px;
+    color: $icon_color;
+}
+
+.helpie-categories-section-boxed .category-list .column a .title {
+    padding-top: 15px;
+    width: 100%;
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    // min-height prevents a single category box from changing its height
+    // when the title comes to second line ( longer than one line )
+    // that causes the grid to break
+    min-height: 70px;
+    text-align: center;
+}
+
+.helpie-categories-section-boxed .category-list .column a .description {
+    font-size: 16px;
+    line-height: 1.3;
+    // margin-top: 15px;
+    // margin-bottom: 10px;
+    color: #888;
+    min-height: 60px;
+    width: 100%;
+
+
+    & p {
+        margin-bottom: 0;
+    }
+}
+
+.helpie-categories-section-boxed .category-list .column a button {
+    margin-top: 15px;
+    background: #5DB6F0;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+}
+
+
+
+/* Overwrites specifcs for .one-columned */
+.helpie-categories-section-boxed {
+
+
+    & .three-columned {
+        @extend .three-columned-boxed-root;
+    }
+
+}
+@media screen and (max-width: 1024px) {
+    .helpie-categories-section-boxed .category-list .title {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .helpie-categories-section-boxed {
+        & .category-list .column button{
+            font-size: 14px;
+        }
+        .helpie-categories-section-boxed .category-list .column button{
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (max-width: 599px) {
+
+    /* Overwrites specifcs for .*-columned */
+    .helpie-categories-section-boxed {
+        & .four-columned,
+        & .one-columned,
+        & .three-columned,
+        & .two-columned {
+            & .category-list .title {
+                font-size: 14px;
+            }
+        }
+    }
+}

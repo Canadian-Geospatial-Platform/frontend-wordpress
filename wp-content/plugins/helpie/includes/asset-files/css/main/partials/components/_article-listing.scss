@@ -1,0 +1,134 @@
+@import '../variables.scss';
+@import '../mixins/mixins.scss'; // categories-section
+
+
+// Article Listing in Main Page
+.helpie-primary-view .helpie-main-section .helpie-articles-listing{
+    margin-bottom: 40px;
+
+    & h3.collection-title{
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 21px;
+        font-weight: bold;
+    }
+}
+
+.item.helpie-element .item-content{
+    padding: 10px;
+}
+
+.card.helpie-element .item-content{
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid rgba(34,36,38,.1);
+    background: 0 0;
+    margin: 0;
+    padding: 1em 1em;
+    box-shadow: none;
+    font-size: 1em;
+    border-radius: 0;
+
+    & > a.header{
+        color: rgba(0,0,0,.85);
+    }
+    & > .header:not(.ui){
+        font-weight: 700;
+        font-size: 1.28571429em;
+        margin-top: -.21425em;
+        line-height: 1.28571429em;
+    }
+
+
+}
+
+
+.helpie-articles-listing{
+    & .content{
+        font-weight: 500;
+        color: $primary-text-color;
+
+        & a{
+            color: $primary-text-color;
+        }
+    }
+}
+
+.helpie-articles-listing.card-collection{
+    margin-top: 80px;
+    clear: both;
+
+    & h2{
+        color: black;
+        font-size: 21px;
+        display: inline-block;
+        font-weight: 500;
+        padding-bottom: 10px;
+        margin: 20px 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    & hr{
+        margin-top: -1px;
+        margin-bottom: 80px;
+    }
+
+}
+
+.helpie-articles-listing.list-collection{
+    margin-bottom: 40px;
+
+    & .item{
+        & a.header{
+            font-weight: normal;
+            font-family: inherit;
+        }
+    }
+}
+
+
+/* List-Collection */
+
+
+
+/* Card-Collection */
+
+.helpie-articles-listing.card-collection{
+
+    & .card{
+        box-shadow: 0 1px 1px 0 #eee, 0 0 0 1px #eee;
+        & .image{
+            max-height: 200px;
+            overflow: hidden;
+        }
+        & .content{
+            min-height: 120px;
+        }
+    }
+}
+
+// Reset Bridge Theme's JS code for .content
+
+
+.helpie-element{
+
+    & .card{
+        & .content{
+            min-height: 120px !important;
+        }
+    }
+
+    & .list{
+        & .content{
+            min-height: auto !important;
+        }
+    }
+}
+
+// Other Fixes
+.helpie-articles-listing .column{
+    margin: 0; // Override for beTheme theme
+    margin-left: 0; // Override for Enfold theme
+}

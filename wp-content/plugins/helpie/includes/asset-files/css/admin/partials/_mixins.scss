@@ -1,0 +1,26 @@
+@mixin admin-settings-page() {
+  background: white;
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.4px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #B2B2B2;
+}
+
+@mixin helpie_admin_text_field(){
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+    width: 240px;
+    border: solid 1px #efefef;
+    /*box-shadow: 1px 1px 1px;*/
+    // -webkit-box-shadow: 1px 1px 0.5px 0 rgba(189,189,189,1);
+    // -moz-box-shadow: 1px 1px 0.5px 0 rgba(189,189,189,1);
+    // box-shadow: 1px 1px 0.5px 0 rgba(189,189,189,1);
+
+        padding: .78571429em 2.1em .78571429em 1em;
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: none;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    border-radius: .28571429rem;
+}

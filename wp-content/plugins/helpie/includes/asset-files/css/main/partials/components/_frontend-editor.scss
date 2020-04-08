@@ -1,0 +1,317 @@
+.helpie-single-page-module {
+    & .helpie-frontened-module {
+        & button.helpie-buttons {
+            background: #2d95f1;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-right: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: white;
+
+            &.cancel {
+                background: #333;
+            }
+        }
+    }
+}
+
+.helpie-editor-fields {
+    float: right;
+    width: 300px;
+    text-align: right; // This entire Dropdown is duplicated from tickets-list page,
+    // try to refactor into common class
+
+    & .add-new-article {
+        background: transparent;
+        border: 0;
+        color: #19cc95;
+        padding: 12px;
+        border-radius: 3px;
+        border: solid 2px #19cc95;
+        font-size: 14px;
+        margin-bottom: 20px;
+
+        &:hover {
+            background: #19cc95;
+            color: white;
+            cursor: pointer;
+        }
+
+        & i {
+            padding-right: 5px;
+        }
+    }
+    & .option-icon {
+        position: relative;
+        border: solid 1px #484848;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: inline-block;
+        padding: 4px 8px;
+
+        &:before {
+            font-family: FontAwesome;
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            text-decoration: inherit;
+            content: "\f141";
+        }
+
+        $option-width: 100px;
+
+        & .single-ticket-options {
+            position: absolute;
+            top: 0;
+            left: -($option-width + 50px);
+            box-shadow: 0 2px 4px #e8e8e8;
+            border: solid 1px #e8e8e8;
+            border-radius: 5px;
+            background: white;
+            text-align: left;
+            font-size: 13px;
+            z-index: 100;
+            & ul {
+                list-style-type: none;
+                padding: 15px;
+                margin-bottom: 0;
+
+                & li {
+                    padding: 12px 8px;
+                    width: 100px;
+                    border-bottom: solid 1px #e8e8e8;
+
+                    &:last-child {
+                        border: none;
+                    }
+
+                    & a {
+                        text-decoration: none;
+                        border-bottom: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} // End .helpie-editor-fields
+
+.pauple_helpie.add-article,
+.pauple_helpie.delete-article {
+    // width: 70% !important;
+    & .header {
+        font-size: 1em !important;
+        text-align: center;
+        color: #777;
+        font-weight: 300 !important;
+        background: #f9fafb;
+        border-bottom: 0;
+
+        & i {
+            padding-right: 5px;
+            font-size: 29px;
+            color: #2d95f1;
+        }
+    }
+
+    & .actions {
+        border: 0;
+        border-top: solid 1px #eee;
+        background: white;
+        font-size: 13px;
+
+        & .buttons {
+            margin-left: 0.75em;
+            font-weight: 500;
+            font-size: 14px;
+            margin-top: 0.25em;
+        }
+
+        & .helpie-notice {
+            padding-right: 50px;
+
+            & .loading {
+                display: inline-block;
+                position: relative;
+                padding-left: 10px;
+                width: 100px;
+
+                & img {
+                    display: inline-block;
+                    position: absolute;
+                    left: 10px;
+                    top: -9px;
+                }
+            }
+        }
+    }
+
+    & .content {
+        // padding: 3rem 0;
+
+        & .wrapper {
+            float: none;
+            margin: 0 auto;
+            max-width: 700px;
+            width: 100%;
+            padding: 0 3rem;
+            background-color: #ffffff;
+        }
+    }
+
+    & .helpie-wp-editor-container,
+    & .article-categories-field {
+        margin-top: 40px;
+    }
+
+    & input[type="text"] {
+        border: none;
+        background: none;
+        background-color: white !important;
+        border-bottom: solid 1px #ccc;
+        // -webkit-text-fill-color: #999 !important;
+        // color: #999 !important;
+        padding: 0;
+        padding-bottom: 2px;
+        padding-left: 4px;
+        text-transform: capitalize;
+    }
+    & input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    }
+
+    & #add-article-title {
+        font-size: 1.875rem;
+        font-weight: 300;
+        color: #343434 !important;
+        // -webkit-text-fill-color: #343434 !important;
+        font-family: "Open Sans", sans-serif;
+        line-height: 1;
+        text-transform: none;
+        padding-bottom: 10px;
+        height: 40px;
+
+        &::placeholder,
+        &::-webkit-input-placeholder {
+            color: #bbb !important;
+        }
+    }
+
+    #wp-add-article-editor-wrap {
+        border-top: none;
+        box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+    }
+    #insert-media-button {
+        position: absolute;
+        right: 12px;
+        border: none;
+        box-shadow: none;
+        border: solid 1px #ddd;
+        top: 14px;
+    }
+
+    .helpie-wp-editor-container .tmce-active .mce-tinymce .mce-toolbar-grp {
+        background: #f7f7f8;
+        border-bottom: none;
+        padding: 10px 0;
+    }
+
+    .article-categories-field .single-field,
+    .article-tags-field .single-field {
+        width: 350px;
+    }
+
+    .article-categories-field {
+        & .dropdown {
+            font-size: 14px;
+
+            & .item {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .article-tags-field {
+        & input[type="text"] {
+            font-size: 14px;
+
+            &::placeholder,
+            &::-webkit-input-placeholder {
+                color: #bbb !important;
+            }
+        }
+
+        & .single-field,
+        & .tags-container {
+            float: left;
+        }
+
+        & .tags-container {
+            margin-top: 20px;
+            margin-left: 20px;
+            font-size: 13px;
+
+            & span.single-tag-cont .label {
+                color: white;
+                border-radius: 5px;
+                background: #2d95f1;
+                padding: 4px;
+                margin-left: 5px;
+
+                &:hover {
+                    background: red;
+                    cursor: pointer;
+                }
+            }
+        }
+        &:after {
+            clear: both;
+        }
+    }
+}
+
+.pauple_helpie.delete-article {
+    & .header {
+        & i {
+            color: #dd282b;
+        }
+    }
+
+    & .actions {
+        & .positive {
+            background: #dd282b;
+        }
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .pauple_helpie.add-article {
+        & .actions {
+            & .helpie-notice {
+                width: 100%;
+                max-width: 100%;
+                display: inline-block;
+                text-align: center;
+                padding: 20px 0;
+            }
+        }
+    }
+}
+
+#wp-content-tinymce-editor-container.wp-editor-container {
+    border: 2px solid #e5e5e5;
+}
+
+
+/* Fix for Elementor Based Eletheme */
+
+/* Fix for video's iframe being every small in width, no matter the width given for the video */
+
+.helpie-article-editor .mce-object-iframe{
+    display: block;
+}

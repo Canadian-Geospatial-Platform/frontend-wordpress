@@ -1,0 +1,27 @@
+/* The7 theme fix for helpdesk-category page where page content goes into footer because .wf-wrap doesn't take children height. */
+.tax-helpdesk_category {
+    & .wf-wrap {
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+}
+
+
+/* Fix Issue #48 :
+In some themes, Content going into footer in single, archive, search pages */
+
+.helpie-single-page-module{
+  float: none;
+}
+//
+// .helpie-single-page-module .wrapper:after {
+//   visibility: hidden;
+//   display: block;
+//   font-size: 0;
+//   content: " ";
+//   clear: both;
+//   height: 0;
+// }

@@ -1,0 +1,64 @@
+@import "../variables.scss";
+@import "../mixins/mixins.scss";
+
+.pauple_helpie.ui.modal {
+  max-width: none;
+  z-index: 1500; // Fix for Avada's Modal
+  bottom: auto;
+  // height: 725px;
+  & .header{
+    font-weight: 500;
+    // The 7 UI Fix
+    & .circular{
+        box-sizing: border-box;
+    }
+  }
+  & .actions > .button {
+    height: auto;
+    width: auto;
+  }
+
+  & .item-content {
+    box-sizing: border-box;
+    margin-top: 0;
+    padding: 25px;
+  }
+
+  & .wrapper {
+    background: none;
+  }
+
+  & label {
+    margin-bottom: 15px;
+    font-weight: 400;
+    display: inline-block;
+  }
+  & .password-status {
+    display: inline-block;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 300;
+    &.correct {
+      color: rgba(41, 162, 91, 0.79);
+    }
+    &.wrong {
+      color: #fe6c61;
+    }
+    & .redirect-gif {
+      width: 100px;
+    }
+  }
+  & input[type="password"] {
+    @include modal-input();
+    box-sizing: border-box;
+    &:focus {
+      outline-color :  #7dc246 !important;
+    }
+  }
+}
+.ui.dimmer {
+  z-index: 100000;
+}
+

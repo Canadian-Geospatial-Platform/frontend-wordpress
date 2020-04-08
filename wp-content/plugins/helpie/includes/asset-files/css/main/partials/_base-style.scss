@@ -1,0 +1,75 @@
+.pauple-helpie-components {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+// VIEWS BASE
+.helpie-element {
+    & .item-content {
+        padding: 10px;
+        border: none;
+        margin: 0;
+    }
+
+    & .meta {
+        display: block; // Fix for Bridge Theme
+    }
+}
+
+// Fix issue with Bridge theme
+.ui.grid .column {
+    box-sizing: border-box;
+}
+
+/* Wrapper */
+
+// Wrapper Width
+#helpiekb-main-wrapper {
+    width: 980px;
+}
+
+/* Main Page - Full-width */
+.post-type-archive-pauple_helpie
+    .helpie-single-page-module
+    .helpie-primary-view.full-width
+    #helpiekb-main-wrapper {
+    width: 100%;
+}
+
+.pauple-helpie-components.wrapper {
+    overflow: visible;
+    margin: 0 auto;
+    float: none;
+    max-width: 100%;
+    height: 100%;
+}
+.helpie-primary-view .wrapper {
+    overflow: visible;
+}
+.helpie-main-section .wrapper,
+.single-pauple_helpie .wrapper,
+.tax-helpdesk_category .wrapper {
+    max-width: 100%;
+    float: none;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: none;
+}
+
+.helpie-main-section .wrapper {
+    overflow: auto;
+}
+
+.single-pauple_helpie .wrapper {
+    overflow: visible;
+}
+
+/* The container for every module. Use More */
+.helpiekb-container {
+    width: 100%;
+    margin: 20px 0 40px 0;
+    float: left;
+    padding-bottom: 40px;
+    border-bottom: solid 1px #eee;
+}

@@ -1,0 +1,15 @@
+.helpie-settings-page-wrap{
+  & #helpie_ua_settings_page{
+    & h2{
+      display: inline-block;
+      padding-top: 40px;
+    }
+
+    & .sub-title1{
+      position: relative;
+      top: -5px;
+      margin-left: 10px;
+      float: none;
+    }
+  }
+}

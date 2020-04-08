@@ -1,0 +1,299 @@
+body.helpie-editor-page {
+    & header,
+    & footer,
+    & #footer {
+        display: none;
+    }
+
+    & .content {
+        margin-top: 0; // Bridge theme fix
+    }
+
+    & .td-container-wrap {
+        display: none; // Newspaper theme fix
+    }
+}
+
+.helpie-edit-page-container {
+    width: 100%;
+    padding: 0 100px;
+    max-width: 100%;
+    margin-top: 100px;
+}
+
+.helpie-edit-page-container,
+.helpie-edit-page-container * {
+    box-sizing: border-box;
+}
+
+.helpie-article-editor {
+    position: relative;
+
+    width: 980px;
+    max-width: 100%;
+    margin: 0 auto;
+    & .ui.right.dividing.rail {
+        width: 250px;
+    }
+    & .editor-content {
+        border: none;
+        margin-top: auto; // Bridge Theme Fix
+    }
+}
+
+// !important added to override twenty16 theme issue
+.helpie-article-editor .content-area {
+    position: relative;
+    width: calc(100% - 250px) !important;
+    float: left !important;
+    padding: 0 20px;
+}
+.helpie-edit-page-container .helpie-sidebar {
+    position: relative;
+    min-width: 250px;
+    width: 250px;
+    float: right;
+    margin-left: 0; // override for twenty16 issue
+}
+
+.controls-section {
+    & .icon {
+        height: auto;
+        width: auto;
+    }
+}
+
+.mce-tinymce-inline.mce-panel {
+    background: #333 !important;
+    border-radius: 5px;
+    padding: 5px;
+
+    &.mce-arrow.mce-arrow-up:before,
+    &.mce-arrow.mce-arrow-up:after {
+        border-bottom-color: #333 !important;
+    }
+
+    &.mce-arrow.mce-arrow-down:before,
+    &.mce-arrow.mce-arrow-down:after {
+        border-top-color: #333 !important;
+    }
+
+    & .mce-btn-group .mce-btn {
+        background: none !important;
+        border: none !important;
+
+        &:hover {
+            border: none !important;
+            color: #888 !important;
+        }
+    }
+
+    & .mce-btn button {
+        background: #333 !important;
+        border: none;
+    }
+
+    & .mce-ico,
+    & .mce-btn .mce-txt {
+        color: white !important;
+    }
+}
+
+.helpie-article-editor .content-area {
+    & .title:focus,
+    & .editor-content:focus {
+        outline: none;
+    }
+}
+
+.revision-diff-area {
+    display: none;
+}
+
+.helpie-article-editor.diff-mode {
+    & .basic-content-area {
+        display: none;
+    }
+
+    & .revision-diff-area {
+        display: block;
+
+        & h3 {
+            margin: 20px 0;
+        }
+        & table {
+            table-layout: fixed;
+            width: 100%;
+
+            & td {
+                width: 50%;
+                border: solid 1px #ccc; // Bridge theme fix
+            }
+
+            & tr td:nth-child(2) {
+                display: none;
+            }
+        }
+
+        & .content-area {
+            width: 48%;
+            float: left;
+            position: relative;
+            display: block;
+        }
+    }
+}
+
+.helpie-edit-page-container button.mobile-controls {
+    display: none;
+}
+
+// @media screen and (min-width: 1024px){
+//     .helpie-edit-page-container {
+//         margin-top: 60px;
+//     }
+//
+// }
+@media screen and (max-width: 1024px) {
+    .helpie-edit-page-container {
+        width: 100%;
+        padding: 0 40px;
+        margin-top: 40px;
+    }
+
+    .helpie-edit-page-container button.mobile-controls {
+        display: inherit;
+        float: right;
+    }
+    .helpie-edit-page-container .helpie-article-editor .helpie-sidebar {
+        display: block !important; // Some themes hide sidebar in mobile
+        padding: 0; // Enfold fix
+    }
+    .helpie-article-editor {
+        width: 100%;
+
+        & .content-area {
+            width: 100% !important;
+        }
+        & .positive.buttons {
+            float: right;
+            margin-right: 20px;
+        }
+
+        & .controls-section {
+            position: relative;
+            width: 100%;
+            float: left;
+            left: auto;
+            right: 0;
+            z-index: 100;
+            border: none;
+
+            & .sticky {
+                position: relative;
+
+                margin-top: 45px;
+                display: none;
+            }
+        }
+
+        & .article-publish.buttons {
+            position: relative;
+            width: auto;
+        }
+
+        // & .content-area {
+        //     margin-top: 100px;
+        // }
+    }
+}
+
+/* Typography */
+
+.helpie-article-editor #title-tinymce {
+    position: relative;
+    margin-bottom: 25px;
+    --x-height-multiplier: 0.342;
+    --baseline-multiplier: 0.22;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva,
+        Arial, sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+    font-size: 42px;
+    margin-left: -2.63px;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    padding-top: 5px !important;
+    height: auto;
+
+    &:empty:before {
+        position: relative;
+        // content: "Title here ...";
+    }
+
+    &:focus:before {
+        display: none;
+    }
+
+    &:hover {
+        cursor: text;
+    }
+
+    &:before {
+        background: none;
+        // content: "\020";
+        display: block;
+        height: auto;
+        margin: auto;
+        width: auto;
+    }
+}
+
+.helpie-article-editor #content-tinymce {
+    // line-height          : 1.4;
+    // font-size            : 18px;
+    --x-height-multiplier: 0.375;
+    --baseline-multiplier: 0.17;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: 0.01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.58;
+    letter-spacing: -0.003em;
+    min-height: 400px;
+    padding: 0; // Enfold theme fix
+
+    & p {
+        margin-bottom: 25px;
+    }
+
+    &:empty:before {
+        position: relative;
+        // content: "Content here...";
+    }
+
+    &:focus:before {
+        display: none;
+    }
+
+    &:hover {
+        cursor: text;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .helpie-article-editor #title-tinymce {
+        font-size: 24px;
+    }
+
+    .helpie-article-editor #content-tinymce {
+        font-size: 18px;
+    }
+}
+
+.ui.medium.image.helpie_kb_featured_image {
+    margin-top: 14px;
+}

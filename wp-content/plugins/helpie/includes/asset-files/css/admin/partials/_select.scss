@@ -1,0 +1,34 @@
+@import 'mixins.scss';
+
+.helpie-styled-select1 {
+    background: url("../../assets/down-arrow.png") no-repeat 96% 55%;
+    @include helpie_admin_text_field();
+    padding: 0 !important;
+
+    & select {
+        background: transparent;
+        font-family: 'helvetica', Arial, sans-serif;
+        border: none;
+        font-size: 14px;
+        height: auto;
+        padding: 7px 15px;
+        /* If you add too much padding here, the options won't show in IE */
+        width: 268px;
+        -webkit-appearance: none;
+        box-shadow: none;
+    }
+
+    & select[multiple] {
+      padding: 10px 0;
+
+      & option{
+        padding: 3px 10px;
+        color: #9a9a9a;
+      }
+
+    }
+
+}
+.helpie-settings-page-wrap .slider.round{
+    margin: 0;
+}

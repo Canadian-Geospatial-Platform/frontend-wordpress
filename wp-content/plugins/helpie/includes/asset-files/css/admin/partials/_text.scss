@@ -1,0 +1,38 @@
+@import 'mixins.scss';
+.helpie-settings-page-wrap {
+
+    & input[type=text],
+    & input[type=number],
+    & input[type=password]{
+        @include helpie_admin_text_field();
+        font-family: 'helvetica', Arial, sans-serif;
+        font-size: 14px;
+        height: auto;
+        padding: 7px 15px;
+        line-height: 28px;
+    }
+
+    & input[type=password]{
+      padding: 4px 15px;
+      border-radius: 5px;
+      box-shadow: none;
+      width: 400px;
+      max-width: 100%;
+    }
+
+    & .pass-strength-visible{
+       & .pass-wrapper{
+        margin-top: 5px;
+        width: 97%;
+        margin-left: 1.5%;
+       }
+    }
+
+}
+.helpie_settings_note
+{
+    color: #555;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    font-size: 12px;
+}

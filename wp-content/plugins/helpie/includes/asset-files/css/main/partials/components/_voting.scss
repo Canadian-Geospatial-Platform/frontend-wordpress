@@ -1,0 +1,170 @@
+.pauple-helpie-module.article-voting {
+    @include round-corner(5px);
+    float: left;
+    padding: 30px;
+    border: solid 1px #ebebeb;
+    clear: both;
+
+    &.light .icon-tray .voting-icon:hover {
+        cursor: default;
+    }
+
+    & .icon-tray,
+    & .label {
+        float: left;
+        display: inline-block;
+    }
+
+    & .label {
+        padding-top: 4px;
+    }
+
+    & count {
+        position: absolute;
+        bottom: -30px;
+        left: 40%;
+        font-size: 11px;
+        color: $primary-text-color;
+    }
+
+    & .icon-tray {
+        margin-left: 50px;
+        // background-color: #fff;
+        width: 140px;
+
+        & .voting-icon {
+            @include round-corner(4px);
+            position: relative;
+            padding: 5px;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 5px;
+            // opacity: 0.5;
+            box-sizing: border-box;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.frown {
+                // background: $icon-light-red;
+
+                &:before {
+                    @include voting-icon-hint("frown");
+                }
+
+                &:hover:before {
+                    display: inline-block;
+                }
+
+                & i.icon {
+                    color: $icon-light-red;
+                }
+            }
+
+            &.meh {
+                // background: $icon-orange;
+
+                &:before {
+                    @include voting-icon-hint("meh!");
+                }
+
+                &:hover:before {
+                    display: inline-block;
+                }
+
+                & i.icon {
+                    color: $icon-orange;
+                }
+            }
+
+            &.smile {
+                // background: $icon-green;
+
+                &:before {
+                    @include voting-icon-hint("smile");
+                }
+
+                &:hover:before {
+                    display: inline-block;
+                }
+
+                & i.icon {
+                    color: $icon-green;
+                }
+            }
+
+            &.heart {
+                // background: $icon-pink;
+
+                &:before {
+                    @include voting-icon-hint("love");
+                }
+
+                &:hover:before {
+                    display: inline-block;
+                }
+
+                & i.icon {
+                    color: $icon-pink;
+                }
+            }
+
+            &.selected {
+                // opacity: 1;
+                color: black;
+                // border: solid 2px #555;
+                // border-radius: 40px;
+
+                & i.icon {
+                    color: black;
+                }
+            }
+
+            & i {
+                color: white;
+                font-size: 24px;
+                height: 20px;
+                line-height: 20px;
+                float: left;
+                width: 20px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .pauple-helpie-module.article-voting {
+        & .label {
+            width: 100%;
+            text-align: center;
+        }
+
+        & .icon-tray {
+            margin: 0 auto;
+            margin-top: 35px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.pauple-helpie-module.article-voting .voting-icon {
+    &.thumbs.up.outline {
+        & i,
+        & count {
+            color: #157dec;
+        }
+    }
+
+    &.thumbs.down.outline {
+        & i,
+        & count {
+            color: #e64e4e;
+        }
+    }
+}

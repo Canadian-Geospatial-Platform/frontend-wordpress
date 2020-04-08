@@ -1,0 +1,89 @@
+.helpie-ul {
+  @include basic-font-props();
+  @include common-ul-props();
+
+  & li {
+    @include common-li-props();
+  }
+
+  & li a {
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  & .helpie-article-link {
+    padding-right: 10px;
+    font-size: 13px;
+  }
+
+  & li,
+  & li a {
+    color: $primary-link-color;
+    font-size: 13px;
+    line-height: 1.4;
+    padding-bottom: 8px;
+    text-transform: capitalize;
+
+    &:hover {
+      color: $link-hover-color;
+
+      & i {
+        color: $link-hover-color;
+      }
+    }
+  }
+
+  & li.active,
+  & li.active a {
+    font-weight: 600;
+    color: $link-text-color1;
+  }
+}
+
+.helpie-main-section {
+  & ul {
+    list-style: none;
+
+    & li {
+      float: left;
+      display: inline-block;
+      padding: 10px 15px;
+
+      &.active {
+        border-bottom: solid 2px rgba(132, 206, 255, 0.61);
+      }
+
+      & a {
+        cursor: pointer;
+        border: 0;
+        box-shadow: none;
+        &:visited {
+          border: none;
+        }
+        & img {
+          outline: none;
+          border: 0;
+        }
+      }
+    }
+
+    & li,
+    & li a {
+      color: $primary-text-color;
+
+      &:hover {
+        color: $link-hover-color;
+
+        & i {
+          color: $link-hover-color;
+        }
+      }
+    }
+
+    & li.active,
+    & li.active a {
+      font-weight: 600;
+      color: $link-text-color1;
+    }
+  }
+}

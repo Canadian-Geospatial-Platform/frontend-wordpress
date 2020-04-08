@@ -1,0 +1,77 @@
+.parent {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 400px;
+}
+
+.parent .wrapper {
+  display: table;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+.container {
+  display: table-cell;
+  // position: relative;
+  // float: left;
+  background-color: initial;
+  border: solid 1px #f4f4f4;
+  width: 70%;
+}
+
+.container > div,
+.gu-mirror {
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #767676;
+  border: solid 1px #ccc;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.container > div {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.gu-mirror {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.container.ex-over {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container:nth-child(odd) {
+  background: white;
+}
+.container:nth-child(even) {
+  width: 30%;
+  // border-left: solid 25px white;
+
+
+  & > div{
+    margin: 5px 10px;
+    padding: 5px;
+    font-size: 11px;
+  }
+
+  & > .remove-label{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+
+  }
+}
+
+.gu-transit,
+.gu-mirror{
+  margin: 5px 10px;
+  padding: 5px;
+  font-size: 11px;
+}

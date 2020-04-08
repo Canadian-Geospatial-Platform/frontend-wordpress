@@ -1,0 +1,23 @@
+.pauple_helpie_breadcrumbs {
+    @include basic-font-props();
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    // float: left;
+    width: 100%;
+    // padding: 40px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: $link-text-color2;
+    // text-align: center;
+
+    a {
+        color: $link-text-color2;
+        font-weight: 500;
+    }
+}
+
+// Helpie Template Breadcrumbs
+.helpie-single-page-module .pauple_helpie_breadcrumbs {
+    text-align: center;
+    padding: 40px 0;
+}

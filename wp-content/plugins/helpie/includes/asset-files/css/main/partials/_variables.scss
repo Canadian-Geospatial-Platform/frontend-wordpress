@@ -1,0 +1,45 @@
+/* Color Ideas */
+$bluish-gray: #8b97a0;
+$gray: #F4F3F3;
+$white: #ffffff;
+
+/* MAin Colors */
+$black3: #333;
+$deep-pink: #DD8FD4;
+$pale-violet-red: #DB7093;
+$blue2D: #2D95F1;
+$blend11: rgb(237, 22, 121);
+$blend12: rgb(227, 124, 190);
+$blend21: #FEE7CB;
+$blend22: #FDA58D;
+$blend31: #FF796F;
+$blend32: #A5234F;
+$blend1: $blend31;
+$blend2: $blend32;
+$hero-bg-color: $gray;
+
+/* Text */
+$blend-link-color: #555;
+$hero-color: #03363d;
+$primary-text-color: #9a9a9a;
+$header-text-color: darken($primary-text-color, 40%);
+$link-text-color1: darken($primary-text-color, 30%);
+$link-text-color2: darken($primary-text-color, 7%);
+$lighter-text-color: lighten($primary-text-color, 20%);
+$lighter-text-color2: lighten($primary-text-color, 10%);
+$primary-link-color: $blue2D;
+$icon-color1: #3abdff;
+$active-border-color: rgba(132, 206, 255, 0.61);
+$link-hover-color: #777;
+$icon-light-red: #F87C7C;
+$icon-orange: #FFB258;
+$icon-green: #44D084;
+$icon-pink: #FF5F90;
+$pagination-color: #338EDB;
+
+$hover-color: #ffa1a1;
+
+.blend-gradient {
+    background: linear-gradient(90deg, rgb(237, 22, 121), rgb(227, 124, 190));
+    background: -webkit-linear-gradient(90deg, rgb(237, 22, 121), rgb(227, 124, 190));
+}

@@ -1,0 +1,159 @@
+.helpie-single-page-module .helpie-primary-view {
+    & .content-area,
+    & #primary.content-area {
+        @include basic-font-props();
+        float: left;
+        margin-right: 0;
+        width: 70%;
+        margin-top: 0;
+
+        color: $link-text-color1;
+
+        &.right-sidebar {
+            margin-right: 7%;
+        }
+
+        &.left-sidebar {
+            margin-left: 7%;
+        }
+
+        &.both-side-sidebars {
+            width: 47% !important;
+            margin-right: 3.5%;
+            margin-left: 3.5%;
+        }
+
+        &.full-width {
+            width: 100% !important;
+            margin-left: 0;
+        }
+        &.boxed-width {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        & h1,
+        & h3 {
+            color: $header-text-color;
+        }
+
+        & h1 {
+            margin-bottom: 25px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+        & .article-title {
+            & h1 {
+                display: inline-block;
+            }
+        }
+
+        & .added_tag {
+            position: relative;
+            padding: 2px 4px;
+            margin-left: 5px;
+            color: white;
+            font-size: 13px;
+            border-radius: 5px;
+            background: #2cd2a8;
+            display: inline-block;
+
+            &:after {
+                content: "added";
+                position: absolute;
+                font-size: 11px;
+                top: 0px;
+                right: -40px;
+                color: #aaa;
+                visibility: hidden;
+            }
+
+            &:hover {
+                cursor: pointer;
+                &:after {
+                    visibility: visible;
+                }
+            }
+        }
+
+        & .updated_tag {
+            position: relative;
+            padding: 2px 4px;
+            margin-left: 5px;
+            color: white;
+            font-size: 13px;
+            border-radius: 5px;
+            background: #00b9eb;
+            display: inline-block;
+
+            &:after {
+                content: "updated";
+                position: absolute;
+                font-size: 11px;
+                top: 0px;
+                right: -50px;
+                color: #aaa;
+                visibility: hidden;
+            }
+
+            &:hover {
+                cursor: pointer;
+                &:after {
+                    visibility: visible;
+                }
+            }
+        }
+
+        // & h3 {
+        //     font-size: 15px;
+        // }
+
+        & p {
+            // color: $primary-text-color;
+            color: #6f6f6f;
+            // font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        & p strong {
+            color: #555;
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .helpie-single-page-module .helpie-primary-view {
+        & #primary.content-area {
+            width: 100% !important;
+            margin: 0;
+
+            &.left-sidebar {
+                margin-left: 0;
+                // padding-left: 0;
+            }
+
+            &.right-sidebar {
+                margin-right: 0;
+                padding-right: 0;
+            }
+
+            &.both-side-sidebars {
+                width: 100% !important;
+            }
+            &.full-width {
+                width: 100% !important;
+            }
+            & h1 {
+                font-size: 28px;
+            }
+        }
+        & .content-area,
+        & .content-area.both-side-sidebars {
+            width: 100% !important;
+            margin-left: 0 !important;
+            right: 0 !important;
+            // &.both-side-sidebars
+            // {
+            //     width: 94% !important;
+            // }
+        }
+    }
+}

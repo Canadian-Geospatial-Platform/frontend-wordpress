@@ -1,0 +1,123 @@
+<?php
+
+namespace Helpie\Includes\Widgets;
+
+if (!defined('ABSPATH')) {
+    exit;
+} // Exit if accessed directly
+
+if (!class_exists('\Helpie\Includes\Widgets\Register_Elementor_Widgets')) {
+    class Register_Elementor_Widgets
+    {
+        public function load()
+        {
+            add_action('elementor/widgets/widgets_registered', [$this, 'register']);
+        }
+
+        public function register()
+        {
+            $article_widget_args = array(
+                'name' => 'helpie-kb-article-listing',
+                'title' => 'Helpie Article Listing',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Articles\Article_Listing_Model(),
+                'view' => new \Helpie\Features\Components\Articles\Article_Listing(),
+            );
+
+            $category_widget_args = array(
+                'name' => 'helpie-kb-category-listing',
+                'title' => 'Helpie Category Listing',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Category_Listing\Category_Listing_Model(),
+                'view' => new \Helpie\Features\Components\Category_Listing\Category_Listing(),
+            );
+
+            $hero_widget_args = array(
+                'name' => 'helpie-kb-hero',
+                'title' => 'Helpie Hero Section',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Hero\Hero_Area_Model(),
+                'view' => new \Helpie\Features\Components\Hero\Hero_Area(),
+            );
+
+            $stats_widget_args = array(
+                'name' => 'helpie-kb-frontend-stats',
+                'title' => 'Helpie Stats Section',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Stats\Stats_Model(),
+                'view' => new \Helpie\Features\Components\Stats\Frontend_Stats(),
+            );
+
+            $toc_widget_args = array(
+                'name' => 'helpie-kb-toc',
+                'title' => 'Helpie Table of Contents',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Toc\Model\Toc_Model(),
+                'view' => new \Helpie\Features\Components\Toc\Toc_Controller(),
+            );
+
+
+            $voting_widget_args = array(
+                'name' => 'helpie-kb-voting',
+                'title' => 'Helpie Voting',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Voting\Voting_Model(),
+                'view' => new \Helpie\Features\Components\Voting\Voting_Controller(),
+            );
+
+
+            $breadcrumbs_widget_args = array(
+                'name' => 'helpie-kb-breadcrumbs',
+                'title' => 'Helpie Breadcrumbs',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Breadcrumbs\Breadcrumbs_Model(),
+                'view' => new \Helpie\Features\Components\Breadcrumbs\Breadcrumbs(),
+            );
+
+            $search_results_widget_args = array(
+                'name' => 'helpie-kb-search-results',
+                'title' => 'Helpie Search Results',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Search\Models\Search_Model(),
+                'view' => new \Helpie\Features\Components\Search\Search_Controller(),
+            );
+
+            $page_controls_widget_args = array(
+                'name' => 'helpie-kb-page-controls',
+                'title' => 'Helpie Page Controls',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Page_Controls\Model(),
+                'view' => new \Helpie\Features\Components\Page_Controls\Controller(),
+            );
+
+            $search_box_widget_args = array(
+                'name' => 'helpie-kb-search-box',
+                'title' => 'Helpie Search Box',
+                'icon' => 'fa fa-th-list',
+                'categories' => ['general-elements'],
+                'model' => new \Helpie\Features\Components\Search\Search_Box\Model(),
+                'view' => new  \Helpie\Features\Components\Search\Search_Box\Controller(),
+            );
+
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $article_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $category_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $hero_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $stats_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $toc_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $voting_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $breadcrumbs_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $search_results_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $page_controls_widget_args));
+            \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Helpie\Includes\Widgets\Elementor_Widget_Factory([], $search_box_widget_args));
+        }
+    }
+}

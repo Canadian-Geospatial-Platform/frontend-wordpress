@@ -1,0 +1,15 @@
+{
+    "name": "erayalakese/envato-market-api",
+    "description": "Envato Market API to verify and download Envato purchases",
+    "authors": [
+        {
+            "name": "Eray Alakese",
+            "email": "erayalakese@gmail.com"
+        }
+    ],
+    "require": {},
+    "license": "GPL v2",
+    "autoload": {
+        "classmap": ["Envato_Market_API.php"]
+    }
+}

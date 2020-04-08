@@ -1,0 +1,42 @@
+
+/* Overwrites */
+
+.helpie-category-listing{
+
+    & .title{
+        height: auto; // Overwrite for Bridge Theme
+    }
+}
+
+.helpie-element ul.article-preview-list{
+    padding: 0; // Overwrite for Bridge Theme
+    margin: 0; // Fix for Astra Theme
+}
+
+
+.helpie-category-listing .column{
+    margin: 0; // Override for beTheme theme
+    margin-left: 0; // Override for Enfold theme
+}
+
+/* Component Base Styles */
+
+.helpie-category-listing{
+
+    & .collection-title{
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    & .description{
+        padding: 20px 0;
+        display: inline-block;
+    }
+}
+
+
+@media screen and (max-width: 699px) {
+    .helpie-category-listing .category-list{
+        width: 100% !important;
+    }
+}

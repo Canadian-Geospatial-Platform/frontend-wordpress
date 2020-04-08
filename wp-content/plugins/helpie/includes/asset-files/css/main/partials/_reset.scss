@@ -1,0 +1,189 @@
+// @import "variables.scss";
+
+/* Resets */
+.ui.fluid.dropdown {
+    box-sizing: border-box;
+}
+
+table.xdebug-error th {
+    color: black;
+}
+
+body .helpie-primary,
+body .helpie-primary#primary {
+    width: 100%;
+}
+body .helpie-single-page-module {
+    margin-bottom: 2em;
+    background-color: #fff;
+}
+body .helpie-single-page-module * {
+    box-sizing: border-box;
+}
+
+/* Google Tag Manager conflict with Salient theme and Helpie KB */
+// body .helpie-single-page-module {
+//     z-index: 999;
+// }
+
+/* Salient Theme conflict: Fix Footer for Helpie KB post_type */
+
+body.post-type-archive-pauple_helpie #footer-outer,
+body.tax-helpdesk_category #footer-outer,
+body.single-pauple_helpie #footer-outer {
+    position: relative;
+}
+
+// For twentyseventeen Theme
+
+@media screen and (min-width: 48em) {
+    body .helpie-primary,
+    body .helpie-primary#primary {
+        width: 100% !important;
+    }
+}
+
+// End  For twentyseventeen Theme
+
+.pauple-helpie-search-row-type2 {
+    z-index: 99;
+    position: relative;
+    // float: left;
+    width: 100%;
+    padding: 0;
+    // margin-bottom: 20px;
+    @include hero-bg();
+    padding: 1px 0; // Set to 1px so it can get margin from children
+    & .search-container {
+        margin: 0 auto;
+        float: none;
+    }
+}
+
+.helpie-anchor-props {
+    text-decoration: none;
+    box-shadow: none;
+
+    &:hover {
+        cursor: pointer;
+        color: $link-hover-color;
+    }
+}
+
+.post-type-archive-pauple_helpie {
+    font-family: "Open Sans", sans-serif;
+    color: $primary-text-color;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+
+    & #page {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    & .site-inner {
+        max-width: none;
+    }
+
+    & #content,
+    & #content #primary {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.helpie-primary-view .full-width .helpie-main-content-area .content-section {
+    padding: 0 20px;
+}
+
+@media screen and (max-width: 1024px) {
+    .helpie-primary-view
+        .full-width
+        .helpie-main-content-area
+        .content-section {
+        padding: 0;
+    }
+
+    .helpie-main-section .wrapper,
+    .single-pauple_helpie .wrapper,
+    .tax-helpdesk_category .wrapper {
+        padding: 0 20px;
+    }
+}
+
+.tax-helpdesk_category {
+    & h2 {
+        clear: both;
+        font-weight: bold;
+        letter-spacing: -0.5px;
+        font-size: 20px;
+        text-transform: capitalize;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-top: 25px;
+    }
+
+    // & ul.child-category-list {
+    //     float: left;
+    //     float: left;
+    //     width: 100%;
+    //     padding-left: 0;
+
+    //     & li {
+    //         & .helpie-article-link {
+    //             padding-right: 10px;
+    //         }
+    //     }
+    // }
+}
+
+.helpie-main-content-area {
+    float: left;
+    width: 100%;
+
+    & a {
+        @extend .anchor-reset;
+    }
+    & .content-section {
+        float: left;
+        width: 100%;
+        margin: 50px 0;
+
+        & ul {
+            @include common-ul-props();
+            width: 100%;
+            padding-left: 0;
+            & li {
+                @include common-li-props();
+            }
+        }
+
+        & .helpie-article-link {
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        &#helpie-categories-section {
+            display: none;
+        }
+    }
+
+    & #helpie-popular-section.content-section {
+        & ul {
+            width: 100%;
+            text-align: left;
+        }
+    }
+}
+
+.helpie-search-listing h3 {
+    font-family: "Open sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: $primary-text-color;
+}
+
+body.post-type-archive-pauple_helpie .site-content {
+    padding: 0;
+    margin: 0;
+}

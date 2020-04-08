@@ -1,0 +1,70 @@
+.helpie-settings-page-wrap {
+
+    & button.password-protect {
+        position: relative;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 11px;
+        padding: 10px 15px;
+        font-weight: 400;
+        background: #36B5F8;
+        color: white;
+        border-radius: 4px;
+        border: 0;
+        padding-left: 35px;
+
+        & i {
+            position: absolute;
+            left: 14px;
+            font-size: 14px;
+            padding-right: 5px;
+        }
+
+        &.password-repeater {
+            font-size: 13px;
+            & i {
+                top: 13px;
+                font-size: 16px;
+            }
+        }
+
+        &.delete-password {
+            background: #F26363;
+            padding: 1px 8px;
+            padding-left: 25px;
+            font-size: 10px;
+            & i {
+                top: 7px;
+                left: 10px;
+                font-size: 11px;
+            }
+        }
+    }
+
+    & .popup-button {
+        background: none;
+
+        & i {
+            font-size: 21px;
+            color: #157dec;
+        }
+
+        &:hover{
+            background: none;
+        }
+
+        
+    }
+
+    & .ui.popup{
+
+        & .content{
+            border-bottom: solid 1px #d1d1d1;
+            margin-bottom: 20px;
+        }
+
+        & .description{
+            font-size: 14px;
+            color: #9a9a9a;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+/* Avada's modal can't click issue */
+body.helpie-kb-search-page .modal-backdrop.in,
+body.post-type-archive-pauple_helpie .modal-backdrop.in,
+body.single-pauple_helpie .modal-backdrop.in,
+body.tax-helpdesk_category .modal-backdrop.in {
+    z-index: 100;
+}
+
+/* Airtifact Theme */
+
+.helpie-categories-section-boxed .category-list .column a .sicon figure {
+    height: 100%;
+}
+
+.helpie-category-listing a:not([href]) {
+    pointer-events: auto !important;
+}
+
+/* BuddyBoss Theme Fix and below fix Works like charm in all KB Supported Themes */
+#helpie-page-controls, .helpie-article-editor {
+    & i.icon{
+        &.dropdown{
+            background-color: inherit;
+        }
+        &.window.close{
+            margin: 0 0.8em 0 0;
+        }
+    }
+    & .edit-article.button,.publish.button,.floating.dropdown,#helpdesk_category{
+        overflow: visible;
+        right: 0px;width: auto;
+        position: relative;
+        z-index: 10;
+        top: -15px !important;
+        margin: auto;
+        background-color: #e0e1e2;
+        &.active{
+            background-color: #c0c1c2;
+        }
+    }
+    & #helpdesk_category, #helpdesk_category.active{
+        background-color: #fff;
+        z-index: 99;
+    }
+    & .single-field{
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+}
+
+
+/* Twentytwenty Theme Fixes */
+
+body[class*="pauple-theme-twentytwenty"], body[class*="pauple-theme-hello-elementor"] {
+   .pauple-helpie-search-row-type2, .helpie_helpdesk{
+       z-index: 0;
+   }
+}
+
+/* Astra Theme Fixes */
+body[class*="pauple-theme-astra"]{
+    .pauple-helpie-search-row-type2, .helpie_helpdesk{
+        z-index: 10;
+    }
+}
+
+/**
+ * Helpie KB Custom CSS fix for Editor page publish button
+ **/
+ body.helpie-editor-page [data-elementor-type*="header"]{
+	display: none;
+}

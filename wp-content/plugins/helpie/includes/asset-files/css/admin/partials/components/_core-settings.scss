@@ -1,0 +1,11 @@
+// All multi_dropdown in core_settings
+
+#helpie_setttings_page1 .multi_dropdown {
+    & .label[data-value="administrator"] {
+        background: #157dec;
+        color: white;
+        & i.delete.icon {
+            display: none;
+        }
+    }
+}

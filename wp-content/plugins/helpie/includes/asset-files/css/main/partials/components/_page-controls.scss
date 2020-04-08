@@ -1,0 +1,10 @@
+#helpie-page-controls {
+    width: 100%;
+    display: block;
+
+    & .button {
+        flex: initial;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.6);
+    }
+}

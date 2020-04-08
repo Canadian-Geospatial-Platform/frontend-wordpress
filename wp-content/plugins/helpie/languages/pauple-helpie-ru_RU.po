@@ -1,0 +1,199 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Project-Id-Version: Helpie 1.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: ncux <ncuxy@pisem.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"Language: ru_RU\n"
+
+# Blah blah blah
+#. Settings Strings
+msgid "Core Settings"
+msgstr "Основные параметры"
+
+msgid "Knowledge Base Main Title"
+msgstr "Заголовок главной страницы"
+
+msgid "User Access Settings"
+msgstr "Настройки уровней доступа"
+
+msgid "Who can access Help Desk?"
+msgstr "Кто имеет доступ к страницам поддержки?"
+
+msgid "Components Settings"
+msgstr "Настройки компонентов"
+
+msgid "Breadcrumbs"
+msgstr "Показать Хлебные крошки"
+
+msgid "Main KB Page"
+msgstr "Основная страница"
+
+msgid "Main Page Template"
+msgstr "Шаблон основной страницы"
+
+msgid "Search Display"
+msgstr "Отображение строки поиска"
+
+msgid "Main Page - Categories"
+msgstr "Главная страница - Категории"
+
+msgid "Main Page - Popular"
+msgstr "Главная страница - Популярное"
+
+msgid "Category Page"
+msgstr "Страница категории"
+
+msgid "Sidebar Display"
+msgstr "Боковая панель"
+
+msgid "User Access"
+msgstr "Доступ пользователей"
+
+msgid "Components"
+msgstr "Компоненты"
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Main Page"
+msgstr "Главная страница"
+
+msgid "Single Page"
+msgstr "Отдельная страница"
+
+msgid "Category Page Settings"
+msgstr "Настройки страницы категорий"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Sidebar1"
+msgstr "Боковая панель 1"
+
+msgid "Sidebar2"
+msgstr "Боковая панель 2"
+
+#. Single Page Settings
+msgid "Show edit button"
+msgstr "Показать кнопку \"Редактировать\""
+
+msgid "Voting"
+msgstr "Голосование"
+
+msgid "Voting Settings"
+msgstr "Настройки голосования"
+
+msgid "Voting system"
+msgstr "Система голосования"
+
+msgid "Comments"
+msgstr "Комментарии"
+
+msgid "Comment Settings"
+msgstr "Настройки комментариев"
+
+msgid "Show comments"
+msgstr "Показать комментарии"
+
+#. Main Page Settings
+msgid "Main Page Settings"
+msgstr "Настройки главной страницы"
+
+msgid "Main Page Slug"
+msgstr "URL главной страницы"
+
+msgid "Number of columns"
+msgstr "Количество колонок"
+
+msgid "Number of articles under each category"
+msgstr "Количество статей по каждой категории"
+
+msgid "Article sorting method"
+msgstr "Метод сортировки статей"
+
+msgid "Main Page Categories"
+msgstr "Категории на главной странице"
+
+#. Main Page Settings
+msgid "Style Settings"
+msgstr "Настройки стиля"
+
+msgid "Primary Brand Color"
+msgstr "Основной цвет"
+
+msgid "Welcome Area Title Color"
+msgstr "Цвет заголовка приветствия"
+
+msgid "Welcome Area text color"
+msgstr "Цвет текста приветствия"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Show border"
+msgstr "Показать рамку"
+
+msgid "Search border color"
+msgstr "Цвет рамки поля поиска"
+
+msgid "Search border style"
+msgstr "Стиль рамки поля поиска"
+
+# Blah blah blah
+#. Insights Strings
+msgid "User Happiness Index"
+msgstr "Индекс реакций пользователей"
+
+msgid "Highest Rating"
+msgstr "Самый высокий рейтинг"
+
+msgid "Lowest Rating"
+msgstr "Самый низкий рейтинг"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Most Happy"
+msgstr "Самые радостные"
+
+msgid "Most Unhappy"
+msgstr "Самые недвольные"
+
+msgid "Most Searched Keywords"
+msgstr "Самые используемые ключевые слова"
+
+msgid "Keyword"
+msgstr "Ключевое слово"
+
+msgid "Searches"
+msgstr "Поиски"
+
+msgid "Helpie Insights"
+msgstr "Статистика Helpie"
+
+msgid "Insights to a better Knowledge base."
+msgstr "Статистика для улучшения базы знаний."
+
+# Blah blah blah
+#. Frontend Strings
+msgid "We’re here to help."
+msgstr "Найдётся всё!"
+
+msgid "Table of Contents"
+msgstr "Содержание"
+
+msgid "What can I help you with?"
+msgstr "Чем могу вам помочь?"
+
+msgid "More"
+msgstr "Далее"
+
+msgid "Last updated by"
+msgstr "Обновлено"

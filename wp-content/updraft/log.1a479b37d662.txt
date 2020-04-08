@@ -1,0 +1,61 @@
+0000.010 () Opened log file at time: Wed, 08 Apr 2020 18:16:20 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.6 MB
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:16:20 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.6 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore
+0000.003 () Opened log file at time: Wed, 08 Apr 2020 18:17:30 +0000 on http://localhost:8080
+0000.003 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.003 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:17:31 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.4 MB
+0000.012 () Ensuring WP_Filesystem is setup for a restore
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:17:38 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.012 () Ensuring WP_Filesystem is setup for a restore
+0000.010 () Opened log file at time: Wed, 08 Apr 2020 18:17:40 +0000 on http://localhost:8080
+0000.010 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.010 () Free space on disk containing Updraft's temporary directory: 34987.6 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore
+0000.003 () Opened log file at time: Wed, 08 Apr 2020 18:17:48 +0000 on http://localhost:8080
+0000.004 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.004 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:17:48 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore
+0000.004 () Opened log file at time: Wed, 08 Apr 2020 18:17:55 +0000 on http://localhost:8080
+0000.005 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.005 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:17:55 +0000 on http://localhost:8080
+0000.012 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.012 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.012 () Ensuring WP_Filesystem is setup for a restore
+0000.003 () Opened log file at time: Wed, 08 Apr 2020 18:18:00 +0000 on http://localhost:8080
+0000.003 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.003 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.005 () Opened log file at time: Wed, 08 Apr 2020 18:18:01 +0000 on http://localhost:8080
+0000.005 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.005 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.005 () Ensuring WP_Filesystem is setup for a restore
+0000.010 () Opened log file at time: Wed, 08 Apr 2020 18:18:14 +0000 on http://localhost:8080
+0000.010 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.010 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:18:14 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore
+0000.009 () Opened log file at time: Wed, 08 Apr 2020 18:18:14 +0000 on http://localhost:8080
+0000.009 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.6M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.010 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.010 () Opened log file at time: Wed, 08 Apr 2020 18:18:15 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore
+0000.011 () Opened log file at time: Wed, 08 Apr 2020 18:18:15 +0000 on http://localhost:8080
+0000.011 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.011 () Free space on disk containing Updraft's temporary directory: 34987.5 MB
+0000.011 () Ensuring WP_Filesystem is setup for a restore

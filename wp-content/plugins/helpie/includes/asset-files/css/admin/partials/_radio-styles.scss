@@ -1,0 +1,116 @@
+.helpie-settings-page-wrap {
+    & label.radio-image {
+
+        &>input {
+            /* HIDE RADIO */
+            visibility: hidden;
+            /* Makes input not-clickable */
+            position: absolute;
+            /* Remove input from document flow */
+        }
+
+        &>input+img {
+            /* IMAGE STYLES */
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.5;
+        }
+        &>input:checked+img {
+            /* (RADIO CHECKED) IMAGE STYLES */
+            // border:2px solid #f00;
+            opacity: 1;
+        }
+    }
+
+    & #helpie_wa_illustration label.radio-image {
+
+        & > input + img{
+            border: solid 1px #e1e1e1;
+            margin-right: 5px;
+        }
+
+        & > input:checked+img{
+            border: solid 2px #6ac7f5;
+            margin-right: 5px;
+        }
+
+    }
+
+    label.helpie-radio-style2 {
+        &>input {
+            /* HIDE RADIO */
+            visibility: hidden;
+            /* Makes input not-clickable */
+            position: absolute;
+            /* Remove input from document flow */
+        }
+
+        &>input+div.radio-button {
+            /* IMAGE STYLES */
+            cursor: pointer;
+            opacity: 0.5;
+            color: #95989A;
+            border: solid 2px #95989A;
+            position: relative;
+            float: left;
+            padding: 25px;
+            margin-right: 20px;
+            font-size: 16px;
+            @include round-corner(4px);
+        }
+        &>input:checked+div.radio-button {
+            /* (RADIO CHECKED) IMAGE STYLES */
+            position: relative;
+            border: 2px solid #333;
+            color: #333;
+            opacity: 1; // font-weight: bold;
+            &:after {
+                font-family: FontAwesome;
+                content: "\f058";
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: #3ABE68;
+            }
+        }
+    }
+
+    label.helpie-radio-style3 {
+        &>input {
+            /* HIDE RADIO */
+            visibility: hidden;
+            /* Makes input not-clickable */
+            position: absolute;
+            /* Remove input from document flow */
+        }
+
+        &>input+div.radio-button {
+            /* IMAGE STYLES */
+            cursor: pointer;
+            opacity: 0.5;
+            color: #95989A;
+            border: solid 2px #95989A;
+            position: relative;
+            float: left;
+            padding: 15px 25px;
+            margin-right: 20px;
+            font-size: 16px;
+            @include round-corner(4px);
+        }
+        &>input:checked+div.radio-button {
+            /* (RADIO CHECKED) IMAGE STYLES */
+            position: relative;
+            border: 2px solid #333;
+            color: #333;
+            opacity: 1; // font-weight: bold;
+            &:after {
+                font-family: FontAwesome;
+                content: "\f058";
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: #3ABE68;
+            }
+        }
+    }
+}

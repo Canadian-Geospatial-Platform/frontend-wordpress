@@ -1,0 +1,146 @@
+.helpie-element.onboarding.container {
+    display: block;
+    margin: 10px 10px 0 0;
+
+    & .ui.dimmer{
+        box-sizing: border-box;
+    }
+
+    & .finish_page{
+        background-color: #eee;
+        padding: 1em 2em;
+        overflow: auto;
+        max-height: 18em;
+    }
+
+    & .mainpage-link{
+        margin-top: 1em;
+    }
+
+	& .sections .section {
+		display: none;
+		&.active {
+			display: block;
+        }
+        & i.circular.icon{
+            height: 1.1em !important;
+        }
+        & .dropdown{
+            min-height: auto;
+            & .menu{
+                box-sizing: border-box;
+            }
+        }
+	}
+
+	& .form .field {
+		margin: 2em 0 0;
+
+		& label {
+			font-weight: 600;
+			cursor: default;
+		}
+
+		& .dropdown{
+			width: auto;
+        }
+
+        & input[type="text"]{
+            width: 17em;
+        }
+		& .radio {
+			img {
+				cursor: pointer;
+			}
+			:checked + img {
+				outline: 2px solid #8ac685;
+			}
+
+			label {
+				&::before,
+				&::after {
+					display: none;
+				}
+				padding: 0;
+				text-align: center;
+				font-size: 0.9em;
+				margin-top: 0.5em;
+				text-transform: capitalize;
+			}
+		}
+	}
+
+	& .form {
+		&.error,
+		.field.error {
+			border: 0px;
+			box-shadow: none;
+			padding: 0px;
+			margin: 2em 0 0;
+		}
+	}
+
+	& .demo.form .fields .field {
+		margin: 0;
+	}
+
+	& .grid {
+		margin-top: 5em;
+		border: 0;
+	}
+}
+
+.attached.segment.pauple-import{
+    width: auto;
+    padding: 0px;
+    & .check_all_checkbox{
+        padding: 0 .9em;
+        font-weight: 600;
+    }
+    & .wrapper-list.list{
+        max-height: 500px;
+        overflow: auto;
+        padding: 1em;
+
+        & .item{
+            padding: .25em 1em 0 1.25em;;
+        }
+    }
+
+}
+
+.basic.delete-demo-button{
+    margin-top: 1em;
+}
+.import-demo-response{
+    font-weight: 500;
+    color: #666;
+    padding-left: 0.5em;
+    margin-top: 0.5em;
+}
+
+.helpiekb-notice .message-inner{
+    display: flex;
+    & .message-icon{
+        align-self: center;
+        & img{
+            height: 4em;
+        }
+    }
+    & .message-content{
+        padding: .5em 2em;
+        p{
+            padding: 0px;
+        }
+    }
+}
+@media (max-width: 600px){
+    .helpiekb-notice {
+        padding: 1em;
+        .message-inner{
+            display: block;
+            text-align: center;
+        }
+    }
+}
+

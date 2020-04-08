@@ -1,0 +1,55 @@
+@mixin added_tag(){
+    position: relative;
+    padding: 2px 4px;
+    margin-left: 5px;
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+    background: #2cd2a8;
+    display: inline-block;
+
+    &:after{
+        content: 'added';
+        position: absolute;
+        font-size: 11px;
+        top: 0px;
+        right: -40px;
+        color: #aaa;
+        visibility: hidden;
+    }
+
+    &:hover{
+        cursor:pointer;
+        &:after{
+            visibility: visible;
+        }
+    }
+}
+
+@mixin updated_tag(){
+    position: relative;
+    padding: 2px 4px;
+    margin-left: 5px;
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+    background: #00b9eb;
+    display: inline-block;
+
+    &:after{
+        content: 'updated';
+        position: absolute;
+        font-size: 11px;
+        top: 0px;
+        right: -50px;
+        color: #aaa;
+        visibility: hidden;
+    }
+
+    &:hover{
+        cursor:pointer;
+        &:after{
+            visibility: visible;
+        }
+    }
+}

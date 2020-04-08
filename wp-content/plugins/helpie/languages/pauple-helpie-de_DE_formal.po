@@ -1,0 +1,863 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Helpie - WordPress KB Wiki Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-19 05:33+0000\n"
+"PO-Revision-Date: 2019-01-19 05:36+0000\n"
+"Last-Translator: stephen <manuel@jeffsfinest.com>\n"
+"Language-Team: German (Formal)\n"
+"Language: de-DE-formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.3"
+
+#. Dashboard Article Menu and CPT Articles Section
+msgid "Helpie KB Wiki"
+msgstr "Helpie KB Wiki"
+
+msgid "Article"
+msgstr "Article"
+
+msgid "Add New Article"
+msgstr "Neuen Artikel hinzufügen"
+
+msgid "Wiki Category"
+msgstr "Wiki Category"
+
+msgid "Tag"
+msgstr "Tag"
+
+msgid "Edit Tag"
+msgstr "Edit Tag"
+
+msgid "Add New Tag"
+msgstr "Add New Tag"
+
+msgid "Added Tag"
+msgstr "Added Tag"
+
+msgid "Added Tags"
+msgstr "Added Tags"
+
+msgid "Add New Added Tag"
+msgstr "Add New Added Tag"
+
+msgid "Parent Added Tag"
+msgstr "Parent Added Tag"
+
+msgid "All Added Tags"
+msgstr "All Added Tags"
+
+msgid "Updated Tag"
+msgstr "Updated Tag"
+
+msgid "Updated Tags"
+msgstr "Updated Tags"
+
+msgid "Add New Updated Tag"
+msgstr "Add New Updated Tag"
+
+msgid "All Updated Tags"
+msgstr "All Updated Tags"
+
+msgid "Parent Updated Tag"
+msgstr "Parent Updated Tag"
+
+msgid "Updates"
+msgstr "Updates"
+
+msgid "Insights"
+msgstr "Insights"
+
+msgid "Helpie Settings"
+msgstr "Helpie Settings"
+
+msgid "Wiki Categories"
+msgstr "Wiki Categories"
+
+msgid "Add New Wiki Category"
+msgstr "Add New Wiki Category"
+
+msgid "Parent Wiki Category"
+msgstr "Parent Wiki Category"
+
+msgid "All Wiki Categories"
+msgstr "All Wiki Categories"
+
+msgid "Changes Awaiting Approval"
+msgstr "Changes Awaiting Approval"
+
+# General Tags Or Elements Name
+msgid "Icon"
+msgstr "Icon"
+
+msgid "Select an Icon"
+msgstr "Select an Icon"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Add Image"
+msgstr "Add Image"
+
+msgid "Remove Image"
+msgstr "Remove Image"
+
+#. Core Settings
+msgid "Core"
+msgstr "Core"
+
+msgid "Core Settings"
+msgstr "Core Settings"
+
+msgid "Visit Main Page"
+msgstr "Visit Main Page"
+
+msgid "Knowledge Base Main Title"
+msgstr "Knowledge Base Main Title"
+
+msgid "Knowledge Base Subtitle"
+msgstr "Knowledge Base Subtitle"
+
+msgid "Publishing"
+msgstr "Publishing"
+
+msgid "Enable Frontend Editing"
+msgstr "Enable Frontend Editing"
+
+msgid "Number of Revisions"
+msgstr "Number of Revisions"
+
+msgid "Editor Type"
+msgstr "Editor Type"
+
+msgid "Inline Editor"
+msgstr "Inline Editor"
+
+msgid "WordPress Tinymce Editor"
+msgstr "WordPress Tinymce Editor"
+
+msgid "Who can edit articles"
+msgstr "Who can edit articles"
+
+msgid "Anyone"
+msgstr "Anyone"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Author"
+msgstr "Author"
+
+msgid "Subscriber"
+msgstr "Subscriber"
+
+msgid "Contributor"
+msgstr "Contributor"
+
+msgid "Translator"
+msgstr "Translator"
+
+msgid ""
+"Edit Capability: The edit capability allows the user roles with this "
+"capability to edit an article which will be saved as a revision."
+msgstr ""
+"Edit Capability: The edit capability allows the user roles with this "
+"capability to edit an article which will be saved as a revision."
+
+msgid "Read More"
+msgstr "Read More"
+
+msgid "Who can publish articles"
+msgstr "Who can publish articles"
+
+msgid ""
+"Publish Capability: Users with this capability can directly publish changes "
+"but can only see the last revision of an article."
+msgstr ""
+"Publish Capability: Users with this capability can directly publish changes "
+"but can only see the last revision of an article."
+
+msgid "Who can approve article edits"
+msgstr "Who can approve article edits"
+
+msgid ""
+"Approve Capability: Users with this capability can see all revisions, "
+"publish any previous revision or publish their own changes."
+msgstr ""
+"Approve Capability: Users with this capability can see all revisions, "
+"publish any previous revision or publish their own changes."
+
+#. Style Settings
+msgid "Styles"
+msgstr "Styles"
+
+msgid "Style Settings"
+msgstr "Style Settings"
+
+msgid "Primary Brand Color"
+msgstr "Primary Brand Color"
+
+msgid "Welcome Area Title Color"
+msgstr "Welcome Area Title Color"
+
+msgid "Welcome Area text color"
+msgstr "Welcome Area text color"
+
+msgid "Welcome Area background style"
+msgstr "Welcome Area background style"
+
+msgid "Welcome Area Image"
+msgstr "Welcome Area Image"
+
+msgid "Welcome Area Illustration"
+msgstr "Welcome Area Illustration"
+
+msgid "Use Primary Color"
+msgstr "Use Primary Color"
+
+msgid "Color Gradient"
+msgstr "Color Gradient"
+
+msgid "Background Image"
+msgstr "Background Image"
+
+msgid "Gradient + Illustration"
+msgstr "Gradient + Illustration"
+
+msgid "Welcome Area Gradient Color 1"
+msgstr "Welcome Area Gradient Color 1"
+
+msgid "Welcome Area Gradient Color 2"
+msgstr "Welcome Area Gradient Color 2"
+
+msgid "Overall margin-top - Desktop"
+msgstr "Overall margin-top - Desktop"
+
+msgid "Overall margin-top - Tablet"
+msgstr "Overall margin-top - Tablet"
+
+msgid "Overall margin-top - Mobile"
+msgstr "Overall margin-top - Mobile"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Show border"
+msgstr "Show border"
+
+msgid "Search border color"
+msgstr "Search border color"
+
+msgid "Search border style"
+msgstr "Search border style"
+
+msgid "Search placeholder text"
+msgstr "Search placeholder text"
+
+msgid "Rounded"
+msgstr "Rounded"
+
+msgid "Semi Rounded"
+msgstr "Semi Rounded"
+
+msgid "Squared"
+msgstr "Squared"
+
+#. User Access Settings
+msgid "User Access"
+msgstr "User Access"
+
+msgid "User Access Settings"
+msgstr "User Access Settings"
+
+msgid "Who can access Help Desk?"
+msgstr "Who can access Help Desk?"
+
+msgid "Logged in users"
+msgstr "Logged in users"
+
+msgid "Anonymous"
+msgstr "Anonymous"
+
+msgid "All"
+msgstr "All"
+
+msgid "Password Protect Settings"
+msgstr "Password Protect Settings"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Add New Password"
+msgstr "Add New Password"
+
+msgid "KB Password"
+msgstr "KB Password"
+
+msgid "Select Content"
+msgstr "Select Content"
+
+msgid "Enter Password"
+msgstr "Enter Password"
+
+msgid "The password is too short"
+msgstr "The password is too short"
+
+msgid "Weak: try combining letters & numbers"
+msgstr "Weak: try combining letters & numbers"
+
+msgid "Medium: try using special characters"
+msgstr "Medium: try using special characters"
+
+msgid "Strong password"
+msgstr "Strong password"
+
+msgid "Type your password"
+msgstr "Type your password"
+
+#. Components Settings
+msgid "Components"
+msgstr "Components"
+
+msgid "Components Settings"
+msgstr "Components Settings"
+
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+msgid "Article Order"
+msgstr "Article Order"
+
+msgid "Menu Order"
+msgstr "Menu Order"
+
+msgid "Asc Post Date"
+msgstr "Asc Post Date"
+
+msgid "Desc Post Date"
+msgstr "Desc Post Date"
+
+msgid "Tag Settings"
+msgstr "Tag Settings"
+
+msgid "Show these added-tags"
+msgstr "Show these added-tags"
+
+msgid "Show these updated-tags"
+msgstr "Show these updated-tags"
+
+msgid "Sidebar Settings"
+msgstr "Sidebar Settings"
+
+msgid "Table of Contents Title"
+msgstr "Table of Contents Title"
+
+msgid "Fixed Sidebar Position"
+msgstr "Fixed Sidebar Position"
+
+msgid "Sidebar Type"
+msgstr "Sidebar Type"
+
+msgid "Full Navigation"
+msgstr "Full Navigation"
+
+msgid "In-Page Navigation only"
+msgstr "In-Page Navigation only"
+
+msgid "NOTE"
+msgstr "NOTE"
+
+msgid ""
+"If you Select In-Page-Only other than single page default to Full Navigation."
+msgstr ""
+"If you Select In-Page-Only other than single page default to Full Navigation."
+
+msgid "Toggle Category children"
+msgstr "Toggle Category children"
+
+msgid "Category anchor link"
+msgstr "Category anchor link"
+
+msgid "Number of child category to show"
+msgstr "Number of child category to show"
+
+msgid "Number of articles to show under each category"
+msgstr "Number of articles to show under each category"
+
+msgid "Show In-Page Navigation in Table Of Contents"
+msgstr "Show In-Page Navigation in Table Of Contents"
+
+msgid "Showing In-Page-Nav Within a Current Post in Single Page Only."
+msgstr "Showing In-Page-Nav Within a Current Post in Single Page Only."
+
+msgid "In-Page Navigation Settings"
+msgstr "In-Page Navigation Settings"
+
+msgid "In-Page Navigation is built from h1-h6 tags found in article."
+msgstr "In-Page Navigation is built from h1-h6 tags found in article."
+
+msgid "Exclude Headings"
+msgstr "Exclude Headings"
+
+msgid "lower level headings without parents will be treated as root entries."
+msgstr "lower level headings without parents will be treated as root entries."
+
+msgid "In-Page Navigation Title"
+msgstr "In-Page Navigation Title"
+
+msgid "Numeric Bullet"
+msgstr "Numeric Bullet"
+
+msgid "Section Page URL"
+msgstr "Section Page URL"
+
+msgid "Section Page URL Text"
+msgstr "Section Page URL Text"
+
+msgid "Back to top link"
+msgstr "Back to top link"
+
+msgid "Back to top Text"
+msgstr "Back to top Text"
+
+msgid "Scroll Back to Site Top"
+msgstr "Scroll Back to Site Top"
+
+msgid "by default, back to top scrolls to article text top."
+msgstr "by default, back to top scrolls to article text top."
+
+msgid "Smooth Scroll"
+msgstr "Smooth Scroll"
+
+#. Main Page Settings
+msgid "Main Page"
+msgstr "Main Page"
+
+msgid "Main Page Settings"
+msgstr "Main Page Settings"
+
+msgid "Template"
+msgstr "Template"
+
+msgid "Select a Sidebar"
+msgstr "Select a Sidebar"
+
+msgid "Sidebar 1"
+msgstr "Sidebar 1"
+
+msgid "Sidebar 2"
+msgstr "Sidebar 2"
+
+msgid "Helpie Sidebar"
+msgstr "Helpie Sidebar"
+
+msgid "Where do you want your main page?"
+msgstr "Where do you want your main page?"
+
+msgid "CPT Archive"
+msgstr "CPT Archive"
+
+msgid "Select a Page"
+msgstr "Select a Page"
+
+msgid "Select Page to be KB Main Page"
+msgstr "Select Page to be KB Main Page"
+
+msgid "Add the above shortcode to the selected page"
+msgstr "Add the above shortcode to the selected page"
+
+msgid "Keep your meta title between 60 and 64 characters"
+msgstr "Keep your meta title between 60 and 64 characters"
+
+msgid "Keep your meta descriptions between 150 and 154 characters"
+msgstr "Keep your meta descriptions between 150 and 154 characters"
+
+msgid "Main Page Slug"
+msgstr "Main Page Slug"
+
+msgid "Show Stats"
+msgstr "Show Stats"
+
+msgid "Main Page Components"
+msgstr "Main Page Components"
+
+msgid "Search Display"
+msgstr "Search Display"
+
+msgid "Show Article Listing"
+msgstr "Show Article Listing"
+
+msgid "Main Page - Categories"
+msgstr "Main Page - Categories"
+
+msgid "Categories Listing"
+msgstr "Categories Listing"
+
+msgid "Main Page Categories Listing Style"
+msgstr "Main Page Categories Listing Style"
+
+msgid "Boxed"
+msgstr "Boxed"
+
+msgid "Boxed1"
+msgstr "Boxed1"
+
+msgid "Modern"
+msgstr "Modern"
+
+msgid "Show Description"
+msgstr "Show Description"
+
+msgid "Image or Icon"
+msgstr "Image or Icon"
+
+msgid "Default icon color is set from Styles -> Primary Brand Color"
+msgstr "Default icon color is set from Styles -> Primary Brand Color"
+
+msgid "Num Of Columns"
+msgstr "Num Of Columns"
+
+msgid "Number of articles under each category"
+msgstr "Number of articles under each category"
+
+msgid "Main Page Categories"
+msgstr "Main Page Categories"
+
+msgid "Article Listing"
+msgstr "Article Listing"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Sort By"
+msgstr "Sort By"
+
+msgid "Alphabetical"
+msgstr "Alphabetical"
+
+msgid "Recent"
+msgstr "Recent"
+
+msgid "Recently Updated"
+msgstr "Recently Updated"
+
+msgid "Popular"
+msgstr "Popular"
+
+msgid "Topics"
+msgstr "Topics"
+
+msgid "Style"
+msgstr "Style"
+
+msgid "List"
+msgstr "List"
+
+msgid "Card"
+msgstr "Card"
+
+msgid "Limit"
+msgstr "Limit"
+
+msgid "Show Image"
+msgstr "Show Image"
+
+msgid "True"
+msgstr "True"
+
+msgid "False"
+msgstr "False"
+
+msgid "Show Extra Info"
+msgstr "Show Extra Info"
+
+#. Single Page Settings
+msgid "Single Page"
+msgstr "Single Page"
+
+msgid "Single Page Settings"
+msgstr "Single Page Settings"
+
+msgid "Show Author Name"
+msgstr "Show Author Name"
+
+msgid "Show Number of Reads"
+msgstr "Show Number of Reads"
+
+msgid "Voting Settings"
+msgstr "Voting Settings"
+
+msgid "Voting system"
+msgstr "Voting system"
+
+msgid "Allow non-logged in users to vote"
+msgstr "Allow non-logged in users to vote"
+
+msgid "Emotion"
+msgstr "Emotion"
+
+msgid "Classic"
+msgstr "Classic"
+
+msgid "None"
+msgstr "None"
+
+msgid "Comment Settings"
+msgstr "Comment Settings"
+
+msgid "Show comments"
+msgstr "Show comments"
+
+#. Category Page Settings
+msgid "Category Page"
+msgstr "Category Page"
+
+msgid "Category Page Settings"
+msgstr "Category Page Settings"
+
+msgid "Category Page Slug"
+msgstr "Category Page Slug"
+
+#. Insights Strings
+msgid "User Happiness Index"
+msgstr "User Happiness Index"
+
+msgid "Highest Rating"
+msgstr "Highest Rating"
+
+msgid "Lowest Rating"
+msgstr "Lowest Rating"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Most Happy"
+msgstr "Most Happy"
+
+msgid "Most Unhappy"
+msgstr "Most Unhappy"
+
+msgid "Most Searched Keywords"
+msgstr "Most Searched Keywords"
+
+msgid "Keyword"
+msgstr "Keyword"
+
+msgid "words"
+msgstr "words"
+
+msgid "count"
+msgstr "count"
+
+msgid "Most Viewed Pages"
+msgstr "Most Viewed Pages"
+
+msgid "Key Users"
+msgstr "Key Users"
+
+msgid "Key Articles"
+msgstr "Key Articles"
+
+msgid "Frequently Repeated Keywords"
+msgstr "Frequently Repeated Keywords"
+
+msgid "Searches"
+msgstr "Searches"
+
+msgid "Helpie Insights"
+msgstr "Helpie Insights"
+
+msgid "Insights to a better Knowledge base."
+msgstr "Insights to a better Knowledge base."
+
+#. Home Page or Landing Page
+msgid "We’re here to help."
+msgstr "We’re here to help."
+
+msgid "What can I help you with?"
+msgstr "What can I help you with?"
+
+msgid "More"
+msgstr "More"
+
+msgid "KB Article Listing"
+msgstr "KB Article Listing"
+
+msgid "Browse All"
+msgstr "Zu den Artikeln"
+
+msgid "articles in this topic"
+msgstr "articles in this topic"
+
+#. Search page or Search results page
+msgid "in"
+msgstr "in"
+
+msgid "results found for"
+msgstr "results found for"
+
+msgid "Please search something !"
+msgstr "Please search something !"
+
+msgid "Did not match any articles !"
+msgstr "Did not match any articles !"
+
+#. Single Page or Single Article Page
+msgid "No headers found ..."
+msgstr "No headers found ..."
+
+msgid "Last updated by"
+msgstr "Last updated by"
+
+msgid "How did you like this article?"
+msgstr "Hat dieser Artikel geholfen?"
+
+#. Updates or Welcome under Dashboard Helpie KB Menu
+msgid "Plugin Activation"
+msgstr "Plugin Activation"
+
+msgid "Purchase Code"
+msgstr "Purchase Code"
+
+msgid "Enter your Envato API Personal Token"
+msgstr "Enter your Envato API Personal Token"
+
+msgid "Enter your Personal Token to get automatic Updates"
+msgstr "Enter your Personal Token to get automatic Updates"
+
+msgid ""
+"OAuth is a protocol that lets external apps request authorization to private "
+"details in a user's Envato Market account without entering their password."
+msgstr ""
+"OAuth is a protocol that lets external apps request authorization to private "
+"details in a user's Envato Market account without entering their password."
+
+msgid "Create your Personal Token"
+msgstr "Create your Personal Token"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Premium Ticket Support"
+msgstr "Premium Ticket Support"
+
+msgid "Direct help from our qualified support team"
+msgstr "Direct help from our qualified support team"
+
+msgid "Get Support"
+msgstr "Get Support"
+
+msgid "Premium Ticket Support (Expired)"
+msgstr "Premium Ticket Support (Expired)"
+
+msgid "Extend support"
+msgstr "Extend support"
+
+msgid "Installed Version"
+msgstr "Installed Version"
+
+msgid "Last Available Version"
+msgstr "Last Available Version"
+
+msgid "Register to Access Update"
+msgstr "Register to Access Update"
+
+msgid "Check for updates"
+msgstr "Check for updates"
+
+#. Frontend or publishing Controls
+msgid "New"
+msgstr "Neuer"
+
+#. Frontend or publishing Controls
+msgid "Edit"
+msgstr "Artikel bearbeiten"
+
+msgid "Trash"
+msgstr "Trash"
+
+msgid "Title here..."
+msgstr "Title here..."
+
+msgid "Content here..."
+msgstr "Content here..."
+
+msgid "New Article"
+msgstr "Neuer Artikel"
+
+msgid "Delete Article"
+msgstr "Artikel löschen"
+
+msgid "Publish"
+msgstr "Bearbeitung abschließen"
+
+msgid "Show Diff"
+msgstr "Unterschied anzeigen"
+
+msgid "Edit Post"
+msgstr "Artikel bearbeiten"
+
+msgid "View"
+msgstr "View"
+
+msgid "Submit For Review"
+msgstr "Submit For Review"
+
+msgid "Revision"
+msgstr "Version"
+
+msgid "Revisions"
+msgstr "Versionsgeschichte"
+
+msgid "Remove Revision"
+msgstr "Version entfernen"
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "Tags"
+msgstr "Schlagwörter"
+
+msgid "Press Enter"
+msgstr "Auf Enter klicken"
+
+msgid "Add Category"
+msgstr "Kategorie hinzufügen"
+
+msgid "Select a Category"
+msgstr "Kategorie auswählen"
+
+msgid "Your New Category"
+msgstr "Your New Category"
+
+msgid "Article Published"
+msgstr ""
+"Artikel überarbeitet - Wir werden ihn ehestmöglich zur Freigabe überprüfen"
+
+msgid "Article Submitted"
+msgstr "Article Submitted"
+
+msgid "Article Trashed"
+msgstr "Article Trashed"
+
+msgid "Article Deleted"
+msgstr "Article Deleted"
+
+msgid "Viewed Revision Removed"
+msgstr "Viewed Revision Removed"
+
+msgid "Featured Image"
+msgstr "Featured Image"
+
+msgid "Choose Featured Image"
+msgstr "Choose Featured Image"
+
+msgid "Set Featured Image"
+msgstr "Set Featured Image"

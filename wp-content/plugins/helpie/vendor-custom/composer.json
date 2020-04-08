@@ -1,0 +1,14 @@
+{
+    "name": "wilkins/composer-file-loader",
+    "type": "function",
+    "description": "Load composer file",
+    "autoload": {
+        "psr-0": {
+        "PHPHtmlParser\\": "php-html-parser/src/",
+        "stringEncode\\": "string-encode/src/",
+        "UniqueGlobalClass": "",
+            "": "psr0-src/" 
+        
+        }
+    }
+}

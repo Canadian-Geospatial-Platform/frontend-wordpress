@@ -1,0 +1,28 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+/* Vendors */
+@import "../../vendors/animate.scss";
+
+/* Base */
+@import "partials/variables.scss";
+@import "partials/mixins/mixins.scss";
+@import "partials/reset.scss";
+@import "partials/elements/lists.scss";
+
+/* Custom CSS */
+@import "partials/mixins/tags.scss";
+@import "partials/root-classes.scss";
+@import "partials/base-style.scss";
+@import "partials/templates.scss";
+
+// Views
+@import "partials/views.scss";
+
+// Components
+@import "partials/components.scss";
+@import "partials/theme-layout-fixes.scss";
+@import "partials/ticket-access-control.scss";
+@import "partials/fixes.scss";

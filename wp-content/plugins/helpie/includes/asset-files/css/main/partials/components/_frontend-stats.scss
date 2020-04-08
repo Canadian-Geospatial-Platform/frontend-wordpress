@@ -1,0 +1,120 @@
+.helpie-frontend-stats-section {
+
+    margin-top: 60px;
+
+    & .collection-title{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    & .stats-wrapper {
+        width: 100%;
+        margin: 0 auto;
+        float: none;
+    }
+
+    & .single-stat {
+        position: relative;
+
+        padding: 25px 15px 25px 0px;
+        border: solid 1px #e1e1e1;
+        border-radius: 10px;
+        height: 130px;
+        padding: 0;
+        box-sizing: border-box;
+        white-space: nowrap;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+            /* Adjusts for spacing */
+        }
+
+        & .stat-col {
+            position: relative; // float: left;
+            width: 50%;
+            text-align: center;
+
+            display: inline-block;
+            vertical-align: middle;
+
+
+            & span {
+                position: relative;
+                display: inline-block;
+                float: left;
+                width: 100%;
+                font-size: 16px;
+                color: #BABABA;
+
+                &.count {
+                    font-size: 38px;
+                    color: #3E3E3E;
+                    font-weight: 600;
+                    line-height: 1.2;
+                }
+            }
+
+            & i {
+                font-size: 58px;
+                color: #95989A;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .helpie-frontend-stats-section {
+        padding: 0 20px;
+
+        & .single-stat {
+            min-width: 150px;
+
+            & .stat-col {
+                width: 60%;
+                &:first-child{
+                    width: 40%;
+                }
+                & span {
+                    font-size: 14px;
+
+                    &.count {
+                        font-size: 34px;
+                    }
+                }
+
+                & i {
+                    font-size: 32px;
+                    color: #95989A;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 599px) {
+    .helpie-frontend-stats-section {
+
+        & .single-stat {
+            width: 100%;
+            margin-bottom: 20px;
+
+            & .stat-col {
+                &.count {
+                    font-size: 28px;
+                }
+                & i {
+                    font-size: 38px;
+                    color: #95989A;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,127 @@
+.helpie-toc {
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    margin-top: 2px;
+    & a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    & .collection-title {
+        background: #f5f5f5;
+    }
+
+    & .ui.selection.list.item-content.active {
+        padding: 0;
+        margin: 0;
+    }
+    & .helpieBullet {
+        font-size: 0.9em;
+    }
+
+    & .helpie-element {
+        margin: 0;
+        // padding: 5px;
+
+        & .item-title {
+            padding: 4px 0;
+            line-height: 1.4;
+            cursor: pointer;
+
+            & i {
+                float: right;
+            }
+            & a {
+                color: #555;
+                font-size: 1em;
+
+                &:hover {
+                    color: #333;
+                }
+            }
+            & .cat {
+                // color: #333;
+                font-weight: 600;
+            }
+        }
+        & .item-title.active {
+            color: #333;
+            & a {
+                color: #333;
+            }
+        }
+
+        & .item-content {
+            font-size: 13px;
+            margin: 0px;
+            padding: 6px 12px;
+        }
+
+        & .ui.selection.list.item-content {
+            padding: 0 13px;
+            &.active {
+                padding: 0 13px;
+            }
+        }
+    }
+
+    & .no-heads {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    // First level of helpie-element only
+    & > .helpie-element {
+        padding: 6px 12px;
+    }
+}
+.headings-wrapper {
+    display: grid;
+    grid-template-columns: auto 100px;
+
+    & .helpieBackToTop {
+        font-size: 0.9em;
+        line-height: 2.3em;
+        margin-left: 1rem;
+        align-self: center;
+        outline: none !important;
+
+        & a.anchor-text {
+            color: #007acc;
+            font-size: 0.8em;
+
+            &:hover {
+                text-decoration: underline;
+                color: #007acc;
+                cursor: pointer;
+            }
+
+            & i.icon.long.arrow.alternate.up {
+                height: 100%;
+            }
+        }
+    }
+}
+
+//  Semantic ui overites
+.ui.selection.list .item {
+    color: #555;
+    border-radius: 0;
+
+    &:hover {
+        color: #333;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.ui.top.attached.label {
+    position: relative;
+    border-radius: 0;
+    &:first-child + :not(.attached) {
+        margin-top: 0 !important;
+    }
+}

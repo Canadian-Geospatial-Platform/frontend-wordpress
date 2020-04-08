@@ -1,0 +1,215 @@
+@import "../mixins/mixins.scss";
+
+.helpie-single-page-module {
+    position: relative;
+    float: left;
+    width: 100%;
+
+    & .helpie-primary-view {
+        position: relative;
+        background: white;
+        width: 100%;
+        height: auto;
+
+        & .wrapper {
+            margin: 0 auto;
+            float: none;
+
+            max-width: 100%;
+            overflow: visible;
+            // height: 100%;
+        }
+    }
+
+    & .helpie-primary-view #primary {
+        position: relative;
+        padding: 0 1em;
+        border-right: 0;
+
+        &.right-sidebar {
+            padding-left: 0;
+            padding-right: 25px;
+        }
+    }
+
+    & .article-title-outer {
+        position: relative;
+
+        & small.helpie-edit-button {
+            position: absolute;
+            top: 5px;
+            left: -20px;
+        }
+    }
+
+    & .article-content-outer {
+        position: relative;
+
+        & small.helpie-edit-button {
+            position: absolute;
+            top: 5px;
+            left: -20px;
+        }
+    }
+
+    & .helpie-edit-content {
+        display: none;
+    }
+
+    & .helpie-wp-editor-container {
+        display: none;
+    }
+}
+
+.helpie-single-page-module {
+    & #main {
+        position: relative;
+        padding: 0px;
+        width: 100%;
+    }
+}
+
+.helpie-single-page-module.page-scroll-module {
+    #primary {
+        & #main {
+            position: relative;
+            width: 100%;
+            padding: 0px;
+        }
+    }
+}
+
+.helpie-row {
+    position: relative;
+    margin: 20px 0;
+
+    &.options-row {
+        position: relative;
+        // float: left;
+        width: 100%;
+        text-align: right;
+        & .wrapper{
+            // The 7 Theme Fix
+            display: inline-block;
+        }
+        & a.button{
+            overflow: inherit;
+        }
+
+        & .buttons .dropdown.icon.button {
+            height: auto;
+            top: 0;
+        }
+    }
+}
+
+.helpie-syntax-highlight {
+    position: relative;
+    margin: 30px 0;
+    overflow: visible;
+
+    & code {
+        @include round-corner(5px);
+        padding: 20px;
+        border: solid 1px transparent;
+    }
+
+    & .helpie-copy-icon {
+        position: absolute;
+        top: -20px;
+        right: 15px;
+
+        & i {
+            font-size: 15px;
+            color: $icon-color1;
+        }
+
+        & span.label {
+            position: absolute;
+            top: -22px;
+            left: -42px;
+            font-size: 10px;
+            color: $primary-text-color;
+            width: auto;
+            width: 103px;
+            text-align: center;
+            letter-spacing: 0.3px;
+            text-align: center;
+            font-weight: 500;
+            font-family: Arial;
+            display: none;
+            background: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            & span.label {
+                display: inline;
+            }
+
+            & i {
+                color: $primary-link-color;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.helpie-single-page-module .article-tags-container {
+    width: 100%;
+    text-align: left;
+
+    & .tag-title {
+        padding-bottom: 10px;
+        color: #888;
+    }
+
+    & .single-tag {
+        background: #2d95f1;
+        padding: 3px 10px;
+        color: white;
+        border-radius: 15px;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+}
+
+.helpie-single-page-info {
+    & .info-span {
+        display: inline-block;
+        width: 100%;
+    }
+}
+.pauple-helpie-pageviews {
+    float: left;
+    border: solid 1px #e4e4e4;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+
+    & .icon.circle {
+        border: solid 1px #ccc;
+        border-radius: 40px;
+        width: 40px;
+        height: 40px;
+        position: relative;
+
+        & i.fa {
+            position: absolute;
+            top: 10px;
+            left: 11px;
+        }
+    }
+
+    & .value {
+        font-size: 17px;
+        font-weight: bold;
+        color: #333;
+    }
+}
+
+button.helpie-sp-edit-button {
+    @include helpie-button-primary();
+}
