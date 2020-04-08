@@ -39,7 +39,6 @@
     };
 
     addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
-    console.log(sessionStorage.getItem("cgpShortcodesSearchTerms"));
 
     async function addSearchTerm(searchTerm) {
       if (!searchTerm || searchParams.searchTerms.indexOf(searchTerm) !== -1)
@@ -145,7 +144,7 @@
         "cgpShortcodesSearchTerms",
         document.getElementById("cgp-shortcodes-redirect-search").value
       );
-      window.location.href = "/acceuil/";
+      window.location.href = "/themes-3/";
     });
   });
 })(jQuery);
