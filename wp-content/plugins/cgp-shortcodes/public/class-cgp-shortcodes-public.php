@@ -139,10 +139,7 @@ HTML;
                 <div class="row">
 					<div class="col">
 					<div class="input-group mb-3">
-  					<div class="input-group-prepend">
-    					<span class="input-group-text" >Search Term</span>
-  					</div>
-  					<input id="cgp-filter-search-term" type="text" class="form-control" aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
+  					<input id="cgp-filter-search-term" type="text" class="form-control" placeholder="Search datasets" aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
                         <div class="input-group-append" id="button-addon4">
                         <button class="btn btn-secondary search-button" type="button">+</button>
                         </div>
