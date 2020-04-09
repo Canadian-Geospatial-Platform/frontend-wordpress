@@ -40,9 +40,8 @@
 
     // If we are on a search result page, trigger stored search terms
     if (document.getElementById("cgp-shortcodes-simple-search")) {
-      addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms")).then(
-        sessionStorage.removeItem("cgpShortcodesSearchTerms")
-      );
+      addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
+      sessionStorage.removeItem("cgpShortcodesSearchTerms");
     }
 
     function addSearchTerm(searchTerm) {
@@ -74,9 +73,12 @@
       updateResults();
     });
 
-    $("#cgp-shortcodes-simple-search .search-button").on("click", function () {
-      addSearchTerm(document.getElementById("cgp-filter-search-term").value);
-    });
+    $("#cgp-shortcodes-simple-search .cgp-shortcodes-search-btn").on(
+      "click",
+      function () {
+        addSearchTerm(document.getElementById("cgp-filter-search-term").value);
+      }
+    );
 
     function updateResults() {
       let url = new URL(apiUrl);
