@@ -113,17 +113,17 @@ class Cgp_Shortcodes_Public
         return <<<HTML
 		<html>
 		<div class="card">
-		    <div class="card-body">
-		        <h5 class="card-title">Hello world!</h5>
-		        <h6 class="card-subtitle mb-2 text-muted">Up and running</h6>
+			<div class="card-body">
+				<h5 class="card-title">Hello world!</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Up and running</h6>
 				<p class="card-text">This is a confirmation that the cgp-shortcodes plugin is properly working</p>
 				<div class="alert alert-success alert-dismissible fade show" role="alert">
-		            <strong>Success!</strong> Dismiss this to test the javascript!
-		            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		                <span aria-hidden="true">&times;</span>
-		            </button>
-		        </div>
-		    </div>
+					<strong>Success!</strong> Dismiss this to test the javascript!
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
 		</div>
 		<html>
 HTML;
@@ -134,21 +134,52 @@ HTML;
         return <<<HTML
 		<html>
 		<div class="card" id="cgp-shortcodes-simple-search">
-		    <div class="card-body">
-		        <h5 class="card-title">Search</h5>
-                <div class="row">
+			<div class="card-body">
+				<h5 class="card-title">Search</h5>
+				<div class="row">
 					<div class="col">
-					<div class="input-group mb-3">
-  					<input id="cgp-filter-search-term" type="text" class="form-control" placeholder="Search datasets" aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
-                        <div class="input-group-append" id="button-addon4">
-                        <button class="btn btn-secondary search-button" type="button">+</button>
-                        </div>
-					</div>
+						<div class="input-group mb-3">
+							<input id="cgp-filter-search-term" type="text" class="form-control cgp-shortcodes-form-control" placeholder="Search datasets"
+								aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
+							<div class="input-group-append" id="button-addon4">
+								<button class="btn btn-secondary search-button cgp-shortcodes-search-btn" type="button">+</button>
+							</div>
+						</div>
 					</div>
 				</div>
-                <div class="cgp-shortcodes-search-pills">
-                </div>
-		    </div>
+				<div class="cgp-shortcodes-search-pills">
+				</div>
+			</div>
+		</div>
+		<html>
+HTML;
+    }
+
+    public function redirect_search_shortcode()
+    {
+        return <<<HTML
+		<html>
+		<div class="row">
+			<div class="col">
+				<div id="cgp-shortcodes-redirect-search" class="input-group">
+					<input type="text" class="cgp-shortcodes-form-control form-control " placeholder="Search datasets" aria-label="Search datasets"
+						aria-describedby="cgp-shortcodes-redirect-search">
+					<div class="input-group-append">
+						<button class="btn btn-primary cgp-shortcodes-search-btn">Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<html>
+HTML;
+    }
+
+    public function full_search_results_shortcode()
+    {
+        return <<<HTML
+		<html>
+		<div id="metadata-search-result">
+			<h3>Your results will be displayed here.</h3>
 		</div>
 		<html>
 HTML;
@@ -159,94 +190,72 @@ HTML;
         return <<<HTML
 		<html>
 		<div class="card">
-		    <div class="card-body">
+			<div class="card-body">
 				<div class="row">
 					<div class="col">
-					<h3>Metadata search - Query button</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-					<div class="input-group mb-3">
-  				<div class="input-group-prepend">
-    				<span class="input-group-text" >Title</span>
-  				</div>
-  				<input id="cgp-filter-title" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="cgp-filter-title">
-				</div>
+						<h3>Metadata search - Query button</h3>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
-					<div class="input-group mb-3">
-					<div class="input-group-prepend">
-					    <span class="input-group-text" >Description</span>
-					</div>
-					<input id="cgp-filter-description" type="text" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="cgp-filter-description">
-					</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-					<div class="input-group mb-3">
-  					<div class="input-group-prepend">
-    					<span class="input-group-text" >Keywords</span>
-  					</div>
-  					<input id="cgp-filter-keyword" type="text" class="form-control" placeholder="Keyword" aria-label="Keyword" aria-describedby="cgp-filter-keyword">
-					</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Title</span>
+							</div>
+							<input id="cgp-filter-title" type="text" class="form-control" placeholder="Title"
+								aria-label="Title" aria-describedby="cgp-filter-title">
+						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
-					<div class="input-group mb-3">
-  					<div class="input-group-prepend">
-    					<span class="input-group-text" >Topic Category</span>
-  					</div>
-  					<input id="cgp-filter-topic-category" type="text" class="form-control" placeholder="Topic Category" aria-label="Topic Category" aria-describedby="cgp-filter-topic-category">
-					</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Description</span>
+							</div>
+							<input id="cgp-filter-description" type="text" class="form-control" placeholder="Description"
+								aria-label="Description" aria-describedby="cgp-filter-description">
+						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
-					<div class="input-group mb-3">
-  					<div class="input-group-prepend">
-    					<span class="input-group-text" >Tags</span>
-  					</div>
-  					<input id="cgp-filter-tag" type="text" class="form-control" placeholder="Tags" aria-label="Tags" aria-describedby="cgp-filter-tag">
-					</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Keywords</span>
+							</div>
+							<input id="cgp-filter-keyword" type="text" class="form-control" placeholder="Keyword"
+								aria-label="Keyword" aria-describedby="cgp-filter-keyword">
+						</div>
 					</div>
 				</div>
-  				<button id="cgp-search-btn">Search</button>
-		    </div>
+				<div class="row">
+					<div class="col">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Topic Category</span>
+							</div>
+							<input id="cgp-filter-topic-category" type="text" class="form-control"
+								placeholder="Topic Category" aria-label="Topic Category"
+								aria-describedby="cgp-filter-topic-category">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Tags</span>
+							</div>
+							<input id="cgp-filter-tag" type="text" class="form-control" placeholder="Tags" aria-label="Tags"
+								aria-describedby="cgp-filter-tag">
+						</div>
+					</div>
+				</div>
+				<button id="cgp-search-btn">Search</button>
+			</div>
 		</div>
 		<html>
 HTML;
     }
-
-    public function full_search_results_shortcode()
-    {
-        return <<<HTML
-		<html>
-		<div id="metadata-search-result"><h3>Your results will be displayed here.</h3></div>
-		<html>
-HTML;
-    }
-
-    public function redirect_search_shortcode()
-    {
-        return <<<HTML
-		<html>
-		<div class="row">
-					<div class="col">
-					<div id="cgp-shortcodes-redirect-search" class="input-group">
-					  <input type="text" class="form-control" placeholder="Search datasets" aria-label="Search datasets" aria-describedby="cgp-shortcodes-redirect-search">
-					  <div class="input-group-append">
-						<button id="cgp-shortcodes-redirect-search-btn" class="btn btn-primary">Search</button>
-					  </div>
-					</div>
-					</div>
-				</div>
-		<html>
-HTML;
-    }
-
 }

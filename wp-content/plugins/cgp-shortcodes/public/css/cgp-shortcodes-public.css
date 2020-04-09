@@ -7,14 +7,7 @@
   user-select: none;
 }
 
-#cgp-shortcodes-simple-search button {
-  background-color: #6ec1e4;
-  text-decoration: none;
-  height: 3rem;
-  font-weight: 700;
-}
-
-#cgp-shortcodes-redirect-search .form-control {
+.form-control.cgp-shortcodes-form-control {
   text-decoration: none;
   max-width: 100%;
   background-color: white;
@@ -22,18 +15,9 @@
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
 }
 
-#cgp-shortcodes-redirect-search-btn {
+.cgp-shortcodes-search-btn {
   background-color: #6ec1e4;
+  text-decoration: none;
   height: 3rem;
-  font-weight: 700;
-}
-
-#cgp-filter-search-term {
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
-  height: 3rem;
-  max-width: 100%;
-}
-
-#cgp-filter-search-term .btn {
   font-weight: 700;
 }
