@@ -244,7 +244,7 @@ HTML;
 					  <input type="text" class="form-control" placeholder="Search datasets" aria-label="Search datasets" aria-describedby="cgp-shortcodes-redirect-search">
 					  <div class="input-group-append">
 						<button id="cgp-shortcodes-redirect-search-btn" class="btn btn-primary">Search</button>
-  					</div>
+					  </div>
 					</div>
 					</div>
 				</div>

@@ -22,9 +22,8 @@
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
 }
 
-#cgp-shortcodes-redirect-search .btn {
+#cgp-shortcodes-redirect-search-btn {
   background-color: #6ec1e4;
   height: 3rem;
   font-weight: 700;
-  box-shadow: 5px 5px 100px rgba(0, 0, 0, 0.3);
 }

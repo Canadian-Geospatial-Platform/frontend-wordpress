@@ -39,10 +39,13 @@
     };
 
     // If we are on a search result page, trigger stored search terms
-    if (document.getElementById("cgp-shortcodes-simple-search"))
-      addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms"));
+    if (document.getElementById("cgp-shortcodes-simple-search")) {
+      addSearchTerm(sessionStorage.getItem("cgpShortcodesSearchTerms")).then(
+        sessionStorage.removeItem("cgpShortcodesSearchTerms")
+      );
+    }
 
-    async function addSearchTerm(searchTerm) {
+    function addSearchTerm(searchTerm) {
       if (!searchTerm || searchParams.searchTerms.indexOf(searchTerm) !== -1)
         return;
       searchParams.searchTerms.push(searchTerm);
@@ -50,7 +53,7 @@
       updateResults();
     }
 
-    async function renderPill(searchTerm) {
+    function renderPill(searchTerm) {
       document
         .getElementById("cgp-shortcodes-simple-search")
         .getElementsByClassName("cgp-shortcodes-search-pills")[0].innerHTML +=
@@ -75,7 +78,7 @@
       addSearchTerm(document.getElementById("cgp-filter-search-term").value);
     });
 
-    async function updateResults() {
+    function updateResults() {
       let url = new URL(apiUrl);
 
       let params = {
@@ -107,11 +110,8 @@
     }
 
     function renderResults(Items) {
-      let result = [];
-      let i = 1;
       document.getElementById("metadata-search-result").innerHTML = "";
       Items.forEach((e) => {
-        i++;
         document.getElementById(
           "metadata-search-result"
         ).innerHTML += resultCard(e);
