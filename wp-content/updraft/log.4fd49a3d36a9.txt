@@ -1,0 +1,13 @@
+0000.005 () Opened log file at time: Fri, 10 Apr 2020 20:07:24 +0000 on http://localhost:8080
+0000.005 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 23.6M | 4M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.005 () Free space on disk containing Updraft's temporary directory: 32077.9 MB
+0000.002 () Opened log file at time: Fri, 10 Apr 2020 20:07:24 +0000 on http://localhost:8080
+0000.002 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 22.1M | 10M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.002 () Free space on disk containing Updraft's temporary directory: 32077.9 MB
+0000.003 () Ensuring WP_Filesystem is setup for a restore
+0000.003 () WP_Filesystem is setup and ready for a restore
+0000.008 () Restore job started. Entities to restore: plugins, themes, uploads, others, db. Restore options: {"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.010 () Error message: Existing unremoved folders from a previous restore exist (please use the "Delete Old Directories" button to delete them before trying again): /var/www/html/wp-content/updraft/plugins-old
+0000.013 () Restore failed...
+0000.013 () Error message: Existing unremoved folders from a previous restore exist (please use the "Delete Old Directories" button to delete them before trying again): /var/www/html/wp-content/updraft/plugins-old
+0000.013 () Restore failed

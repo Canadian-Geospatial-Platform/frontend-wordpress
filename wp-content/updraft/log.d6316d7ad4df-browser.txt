@@ -1,0 +1,79 @@
+0000.016 (R) [notice] Looking for db archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-db.gz
+0000.016 (R) [notice] Archive is expected to be size: 4468.2 KB: OK
+0000.017 (R) [notice] Looking for plugins archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-plugins.zip
+0000.017 (R) [notice] Archive is expected to be size: 43739.7 KB: OK
+0000.017 (R) [notice] Looking for themes archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-themes.zip
+0000.017 (R) [notice] Archive is expected to be size: 7824.1 KB: OK
+0000.017 (R) [notice] Looking for uploads archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads.zip
+0000.017 (R) [notice] Archive is expected to be size: 416456.1 KB: OK
+0000.017 (R) [notice] Looking for uploads archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads2.zip
+0000.018 (R) [notice] Archive is expected to be size: 148104.7 KB: OK
+0000.018 (R) [notice] Looking for others archive: file name: backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-others.zip
+0000.018 (R) [notice] Archive is expected to be size: 3148.1 KB: OK
+0000.018 (R) [notice] Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.025 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-db.gz, 4.4 Mb)
+0000.038 (R) [notice] Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...
+0000.100 (R) [notice] Enabling Maintenance mode&#8230;
+0000.100 (R) [notice] Backup of: http://localhost:8080
+0000.100 (R) [notice] Content URL: http://localhost:8080/wp-content
+0000.100 (R) [notice] Uploads URL: http://localhost:8080/wp-content/uploads
+0000.100 (R) [notice] Old table prefix: wp_
+0000.100 (R) [notice] Site information: multisite = 0
+0000.101 (R) [notice] New table prefix: wp_
+0000.125 (R) [notice] Processing table (InnoDB):  wp_options
+0000.356 (R) [notice] Processing table (InnoDB):  wp_users
+0000.413 (R) [notice] Processing table (InnoDB):  wp_usermeta
+0000.468 (R) [notice] Processing table (InnoDB):  wp_commentmeta
+0000.524 (R) [notice] Processing table (InnoDB):  wp_comments
+0000.595 (R) [notice] Processing table (InnoDB):  wp_links
+0000.670 (R) [notice] Processing table (InnoDB):  wp_postmeta
+0001.566 (R) [notice] Database queries processed: 50 in 1.52 seconds
+0002.291 (R) [notice] Processing table (InnoDB):  wp_posts
+0003.034 (R) [notice] Database queries processed: 100 in 2.99 seconds
+0003.170 (R) [notice] Processing table (InnoDB):  wp_term_relationships
+0003.289 (R) [notice] Processing table (InnoDB):  wp_term_taxonomy
+0003.331 (R) [notice] Processing table (InnoDB):  wp_termmeta
+0003.404 (R) [notice] Processing table (InnoDB):  wp_terms
+0003.456 (R) [notice] Processing table (InnoDB):  wp_ulike
+0003.487 (R) [notice] Processing table (InnoDB):  wp_ulike_activities
+0003.522 (R) [notice] Processing table (InnoDB):  wp_ulike_comments
+0003.549 (R) [notice] Processing table (InnoDB):  wp_ulike_forums
+0003.587 (R) [notice] Processing table (InnoDB):  wp_xyz_ips_short_code
+0003.729 (R) [notice] Disabling Maintenance mode&#8230;
+0003.729 (R) [notice] Finished: lines processed: 130 in 3.68 seconds
+0003.730 (R) [notice] Cleaning up rubbish...
+0003.747 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-plugins.zip, 42.7 MB)
+0004.030 (R) [notice] Unzip progress: 1002 out of 7962 files (14.4 MB, plugins/content-aware-sidebars/lib/freemius/languages/freemius-cs_CZ.mo)
+0004.194 (R) [notice] Unzip progress: 2004 out of 7962 files (35.1 MB, plugins/elementor/core/common/modules/finder/categories-manager.php)
+0004.332 (R) [notice] Unzip progress: 3005 out of 7962 files (46.1 MB, plugins/helpie/includes/asset-files/css/main/partials/components/_hero.scss)
+0004.537 (R) [notice] Unzip progress: 4006 out of 7962 files (61.3 MB, plugins/helpie/includes/lib/codestar-framework/fields/sorter/sorter.php)
+0004.654 (R) [notice] Unzip progress: 5007 out of 7962 files (71.3 MB, plugins/pdf-embedder/js/pdfjs/LICENSE)
+0004.857 (R) [notice] Unzip progress: 6008 out of 7962 files (91.6 MB, plugins/ultimate-shortcodes-creator/admin/class-manage.php)
+0005.101 (R) [notice] Unzip progress: 7009 out of 7962 files (112.2 MB, plugins/updraftplus/vendor/guzzle/guzzle/src/Guzzle/Parser/Message/AbstractMessageParser.php)
+0005.232 (R) [notice] Unzip progress: 7962 out of 7962 files (121.1 MB, plugins/wp-ulike/wp-ulike.php)
+0005.235 (R) [notice] Moving old data out of the way...
+0005.478 (R) [notice] Moving unpacked backup into place...
+0005.721 (R) [notice] Cleaning up rubbish...
+0005.728 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-themes.zip, 7.6 MB)
+0005.898 (R) [notice] Unzip progress: 763 out of 763 files (18.1 MB, themes/phlox/auxin/css/images/pattern/bg0.png)
+0005.899 (R) [notice] Moving old data out of the way...
+0005.920 (R) [notice] Moving unpacked backup into place...
+0005.942 (R) [notice] Cleaning up rubbish...
+0006.012 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads.zip, 406.7 MB)
+0007.105 (R) [notice] Unzip progress: 539 out of 1534 files (100.1 MB, uploads/2017/05/FL-32-permafrost-1200x675.jpg)
+0008.206 (R) [notice] Unzip progress: 726 out of 1534 files (204.7 MB, uploads/2020/02/BannerFinal.jpg)
+0009.817 (R) [notice] Unzip progress: 1414 out of 1534 files (319.4 MB, uploads/2020/02/BannerFinal-1.jpg)
+0010.726 (R) [notice] Unzip progress: 1534 out of 1534 files (408.9 MB, uploads/2020/03/Banner3-1-scaled-1-1024x1024.jpg)
+0010.728 (R) [notice] Moving old data out of the way...
+0010.790 (R) [notice] Moving unpacked backup into place...
+0010.832 (R) [notice] Cleaning up rubbish...
+0010.865 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads2.zip, 144.6 MB)
+0011.782 (R) [notice] Unzip progress: 331 out of 515 files (110.5 MB, uploads/2020/03/Emergency.tif)
+0012.496 (R) [notice] Unzip progress: 515 out of 515 files (154.6 MB, uploads/essential-addons-elementor/eael-post-2659.min.js)
+0012.502 (R) [notice] Moving unpacked backup into place...
+0012.523 (R) [notice] Cleaning up rubbish...
+0012.633 (R) [notice] Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-others.zip, 3.1 MB)
+0012.777 (R) [notice] Unzip progress: 198 out of 198 files (11.9 MB, languages/en_CA-2c5d274ea625dd91556554ad82901529.json)
+0012.787 (R) [warning] Move /var/www/html/wp-content/elm-error-logs -> /var/www/html/wp-content/elm-error-logs-old: Failed. Destination Directory UID=33, GID=33. Effective/real user IDs of the current process: 33/33. Effective/real group IDs of the current process: 33/33. 
+0012.787 (R) [notice] Error message: Could not move old files out of the way. You should check the file ownerships and permissions in your WordPress installation (/var/www/html/wp-content/elm-error-logs)
+0012.788 (R) [notice] Restore failed...

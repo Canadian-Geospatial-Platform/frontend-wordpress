@@ -1,0 +1,111 @@
+0000.004 () Opened log file at time: Fri, 10 Apr 2020 20:04:48 +0000 on http://localhost:8080
+0000.004 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 20.4M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.004 () Free space on disk containing Updraft's temporary directory: 32819.9 MB
+0000.002 () Opened log file at time: Fri, 10 Apr 2020 20:04:49 +0000 on http://localhost:8080
+0000.002 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.22 WP: 5.3.2 PHP: 7.3.13 (apache2handler, Linux f46b6d07474b 5.3.0-7642-generic #34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC  x86_64) MySQL: 10.4.11-MariaDB-1:10.4.11+maria~bionic WPLANG: en_CA Server: Apache/2.4.38 (Debian) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 19.4M | 2M) multisite: N openssl: OpenSSL 1.1.1d  10 Sep 2019 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.002 () Free space on disk containing Updraft's temporary directory: 32822.7 MB
+0000.003 () Ensuring WP_Filesystem is setup for a restore
+0000.003 () WP_Filesystem is setup and ready for a restore
+0000.008 () Restore job started. Entities to restore: plugins, themes, uploads, others, db. Restore options: {"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.012 () Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.014 () Entity: db
+0000.014 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-db.gz, type=db, info=a:0:{}, last_one=)
+0000.014 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-db.gz, 4.4 Mb)
+0000.018 () Database successfully unpacked
+0000.018 () Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...
+0000.018 () Using direct MySQL access; value of use_mysqli is: 1
+0000.019 () SQL compatibility mode is: ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+0000.040 () Max packet size: 32 MB
+0000.040 () Entering maintenance mode
+0000.040 () Enabling Maintenance mode&#8230;
+0000.040 () Backup of: http://localhost:8080
+0000.041 () Content URL: http://localhost:8080/wp-content
+0000.041 () Uploads URL: http://localhost:8080/wp-content/uploads
+0000.041 () Old table prefix: wp_
+0000.041 () Site information: multisite=0
+0000.041 () New table prefix: wp_
+0000.050 () Processing table (InnoDB): wp_options
+0000.303 () Restoring prior UD configuration (table: wp_options; keys: 4)
+0000.317 () Processing table (InnoDB): wp_users
+0000.342 () Processing table (InnoDB): wp_usermeta
+0000.371 () Processing table (InnoDB): wp_commentmeta
+0000.391 () Processing table (InnoDB): wp_comments
+0000.424 () Processing table (InnoDB): wp_links
+0000.448 () Processing table (InnoDB): wp_postmeta
+0001.152 () Database queries processed: 50 in 1.13 seconds
+0001.768 () Processing table (InnoDB): wp_posts
+0002.390 () Database queries processed: 100 in 2.37 seconds
+0002.478 () Processing table (InnoDB): wp_term_relationships
+0002.516 () Processing table (InnoDB): wp_term_taxonomy
+0002.540 () Processing table (InnoDB): wp_termmeta
+0002.560 () Processing table (InnoDB): wp_terms
+0002.582 () Processing table (InnoDB): wp_ulike
+0002.598 () Processing table (InnoDB): wp_ulike_activities
+0002.614 () Processing table (InnoDB): wp_ulike_comments
+0002.633 () Processing table (InnoDB): wp_ulike_forums
+0002.650 () Processing table (InnoDB): wp_xyz_ips_short_code
+0002.772 () Unlocking database and leaving maintenance mode
+0002.772 () Disabling Maintenance mode&#8230;
+0002.772 () Finished: lines processed: 130 in 2.75 seconds
+0002.773 () Cleaning up rubbish...
+0002.779 () Entity: plugins
+0002.779 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-plugins.zip, type=plugins, info=a:2:{s:4:"path";s:32:"/var/www/html/wp-content/plugins";s:11:"description";s:7:"Plugins";}, last_one=)
+0002.779 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-plugins.zip, 42.7 MB)
+0002.781 () Unzipping backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-plugins.zip to /var/www/html/wp-content/upgrade/e98ec6d3/ using UpdraftPlus_ZipArchive, starting index 0
+0003.263 () Unzip progress: 1002 out of 7962 files (14.4 MB, plugins/content-aware-sidebars/lib/freemius/languages/freemius-cs_CZ.mo)
+0003.404 () Unzip progress: 2004 out of 7962 files (35.1 MB, plugins/elementor/core/common/modules/finder/categories-manager.php)
+0003.497 () Unzip progress: 3005 out of 7962 files (46.1 MB, plugins/helpie/includes/asset-files/css/main/partials/components/_hero.scss)
+0003.619 () Unzip progress: 4006 out of 7962 files (61.3 MB, plugins/helpie/includes/lib/codestar-framework/fields/sorter/sorter.php)
+0003.717 () Unzip progress: 5007 out of 7962 files (71.3 MB, plugins/pdf-embedder/js/pdfjs/LICENSE)
+0003.860 () Unzip progress: 6008 out of 7962 files (91.6 MB, plugins/ultimate-shortcodes-creator/admin/class-manage.php)
+0004.005 () Unzip progress: 7009 out of 7962 files (112.2 MB, plugins/updraftplus/vendor/guzzle/guzzle/src/Guzzle/Parser/Message/AbstractMessageParser.php)
+0004.110 () Unzip progress: 7962 out of 7962 files (121.1 MB, plugins/wp-ulike/wp-ulike.php)
+0004.113 () Moving old data: filesystem method / updraft_dir is potentially possible
+0004.113 () Moving old data: can potentially use wp_filesystem method / -old
+0004.113 () Moving old data out of the way...
+0004.362 () Top-level entities being moved: essential-addons-for-elementor-lite, contact-form-7, css, cgp-shortcodes.zip, index.php, content-aware-sidebars, wordpress-importer, duplicate-post, miniorange-login-with-eve-online-google-facebook, updraftplus, auxin-elements, cgp-shortcodes, insert-php-code-snippet, show-page-url-pages-all-pages, vendor, polylang, miniorange-oauth-oidc-single-sign-on, elementor-pro, advanced-database-cleaner, pdf-embedder, velvet-blues-update-urls, search-replace, elementor, helpie, ultimate-shortcodes-creator, connect-polylang-elementor, shortcodes-ultimate, image-hover-effects-addon-for-elementor, auxin-portfolio, wp-ulike, shortcodes-ultimate-maker
+0004.364 () Moving unpacked backup into place...
+0004.599 () Top-level entities being moved: essential-addons-for-elementor-lite, contact-form-7, css, index.php, content-aware-sidebars, wordpress-importer, duplicate-post, miniorange-login-with-eve-online-google-facebook, updraftplus, auxin-elements, insert-php-code-snippet, show-page-url-pages-all-pages, vendor, polylang, miniorange-oauth-oidc-single-sign-on, elementor-pro, advanced-database-cleaner, pdf-embedder, velvet-blues-update-urls, search-replace, elementor, helpie, ultimate-shortcodes-creator, connect-polylang-elementor, shortcodes-ultimate, image-hover-effects-addon-for-elementor, auxin-portfolio, wp-ulike, shortcodes-ultimate-maker
+0004.601 () Cleaning up rubbish...
+0004.636 () Entity: themes
+0004.636 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-themes.zip, type=themes, info=a:2:{s:4:"path";s:31:"/var/www/html/wp-content/themes";s:11:"description";s:6:"Themes";}, last_one=)
+0004.636 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-themes.zip, 7.6 MB)
+0004.636 () Unzipping backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-themes.zip to /var/www/html/wp-content/upgrade/cbc08492/ using UpdraftPlus_ZipArchive, starting index 0
+0005.135 () Unzip progress: 763 out of 763 files (18.1 MB, themes/phlox/auxin/css/images/pattern/bg0.png)
+0005.135 () Moving old data: filesystem method / updraft_dir is potentially possible
+0005.136 () Moving old data: can potentially use wp_filesystem method / -old
+0005.136 () Moving old data out of the way...
+0005.171 () Top-level entities being moved: index.php, graphene, phlox, cgp, twentytwenty
+0005.171 () Moving unpacked backup into place...
+0005.198 () Top-level entities being moved: index.php, phlox, cgp, twentytwenty
+0005.198 () Cleaning up rubbish...
+0005.210 () Entity: uploads
+0005.210 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads.zip, type=uploads, info=a:2:{s:4:"path";s:32:"/var/www/html/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0005.210 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads.zip, 406.7 MB)
+0005.211 () Unzipping backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads.zip to /var/www/html/wp-content/upgrade/c4d0a3e0/ using UpdraftPlus_ZipArchive, starting index 0
+0006.288 () Unzip progress: 539 out of 1534 files (100.1 MB, uploads/2017/05/FL-32-permafrost-1200x675.jpg)
+0006.809 () Unzip progress: 726 out of 1534 files (204.7 MB, uploads/2020/02/BannerFinal.jpg)
+0008.147 () Unzip progress: 1414 out of 1534 files (319.4 MB, uploads/2020/02/BannerFinal-1.jpg)
+0008.843 () Unzip progress: 1534 out of 1534 files (408.9 MB, uploads/2020/03/Banner3-1-scaled-1-1024x1024.jpg)
+0008.843 () Moving old data: filesystem method / updraft_dir is potentially possible
+0008.844 () Moving old data: can potentially use wp_filesystem method / -old
+0008.844 () Moving old data out of the way...
+0008.904 () Moving unpacked backup into place...
+0008.946 () Cleaning up rubbish...
+0008.950 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads2.zip, type=uploads, info=a:2:{s:4:"path";s:32:"/var/www/html/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0008.950 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads2.zip, 144.6 MB)
+0008.950 () Unzipping backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-uploads2.zip to /var/www/html/wp-content/upgrade/a16c0fd9/ using UpdraftPlus_ZipArchive, starting index 0
+0009.617 () Unzip progress: 331 out of 515 files (110.5 MB, uploads/2020/03/Emergency.tif)
+0009.840 () Unzip progress: 515 out of 515 files (154.6 MB, uploads/essential-addons-elementor/eael-post-2659.min.js)
+0009.840 () Moving unpacked backup into place...
+0009.861 () Cleaning up rubbish...
+0009.867 () Entity: others
+0009.867 () restore_backup(backup_file=backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-others.zip, type=others, info=a:2:{s:4:"path";s:24:"/var/www/html/wp-content";s:11:"description";s:6:"Others";}, last_one=1)
+0009.867 () Unpacking backup... (backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-others.zip, 3.1 MB)
+0009.867 () Unzipping backup_2020-04-08-1150_Canadian_Geospatial_Platform_47067c8c6386-others.zip to /var/www/html/wp-content/upgrade/14cc4261/ using UpdraftPlus_ZipArchive, starting index 0
+0009.951 () Unzip progress: 198 out of 198 files (11.9 MB, languages/en_CA-2c5d274ea625dd91556554ad82901529.json)
+0009.952 () PHP event: code E_WARNING: copy(): The first argument to copy() function cannot be a directory (line 281, wp-admin/includes/class-wp-filesystem-direct.php)
+0009.955 () Error message: Could not move old files out of the way. You should check the file ownerships and permissions in your WordPress installation (/var/www/html/wp-content/elm-error-logs)
+0009.955 () Restore failed...
+0009.955 () Error message: Could not move old files out of the way. You should check the file ownerships and permissions in your WordPress installation (/var/www/html/wp-content/elm-error-logs)
+0009.955 () Restore failed
