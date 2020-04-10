@@ -5,6 +5,7 @@
 #cgp-shortcodes-simple-search a {
   text-decoration: none;
   user-select: none;
+  font-size: large;
 }
 
 .form-control.cgp-shortcodes-form-control {
@@ -13,6 +14,7 @@
   background-color: white;
   height: 3rem;
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 .cgp-shortcodes-search-btn {
@@ -20,10 +22,14 @@
   text-decoration: none;
   height: 3rem;
   font-weight: 700;
+  border: none;
+}
+
+.cgp-shortcodes-search-btn:hover {
+  background-color: #93E9EF;
 }
 
 .card {
   margin: 1.5rem;
   padding: 1.25rem;
 }
-
