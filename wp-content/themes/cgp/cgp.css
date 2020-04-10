@@ -7,21 +7,23 @@ Version:		 1.0.0
 Text Domain:	        Canadian Geospatial Platform  
 */
 
-*{
+/*{
     font-family: font-family:"Noto Sans", sans-serif !important;
   } 
+*/
 /* 
 Header 
 */
-.elementor-heading-title{
+.elementor-heading-title {
     font-size: 1.2em !important;
     font-weight: bold !important;
 }
+
 .elementor-heading-title {
     padding: 0;
     margin: 0;
     line-height: 1;
-    text-align: left!important;
+    text-align: left !important;
 }
 
 
@@ -30,15 +32,16 @@ footer
 */
 
 
-.div.elementor-heading-title elementor-size-small{
+.div.elementor-heading-title elementor-size-small {
     color: #000000;
-    font-size: 0.8em!important;
+    font-size: 0.8em !important;
 }
 
 .page-title-section>.aux-top .aux-page-title-entry {
     top: 0;
-    margin-bottom: unset!important;
+    margin-bottom: unset !important;
 }
+
 .page-title-section .page-header>.aux-container>*:last-child {
-    margin-bottom: 0px!important;
+    margin-bottom: 0px !important;
 }

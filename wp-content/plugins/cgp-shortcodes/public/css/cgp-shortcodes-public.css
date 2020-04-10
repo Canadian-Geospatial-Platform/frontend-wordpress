@@ -21,3 +21,10 @@
   height: 3rem;
   font-weight: 700;
 }
+
+.card {
+  margin: 1.5rem;
+  padding: 1.25rem;
+}
+
+#metadata-search-result {}

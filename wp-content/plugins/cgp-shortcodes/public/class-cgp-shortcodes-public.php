@@ -178,8 +178,14 @@ HTML;
     {
         return <<<HTML
 		<html>
-		<div id="metadata-search-result">
-			<h3>Your results will be displayed here.</h3>
+		<div id="metadata-search-result" class="container-fluid">
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<h3>Your results will be displayed here.</h3>
+					</div>
+				</div>
+			</div>
 		</div>
 		<html>
 HTML;
