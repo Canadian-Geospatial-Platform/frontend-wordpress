@@ -141,7 +141,8 @@
       return htmlString;
     }
 
-    $("#cgp-shortcodes-redirect-search button").click(function (event) {
+    $("#cgp-shortcodes-redirect-search").submit(function (event) {
+      event.preventDefault();
       sessionStorage.setItem(
         "cgpShortcodesSearchTerms",
         document.querySelector("#cgp-shortcodes-redirect-search input").value

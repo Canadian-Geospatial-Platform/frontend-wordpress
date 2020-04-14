@@ -161,13 +161,15 @@ HTML;
 		<html>
 		<div class="row">
 			<div class="col">
-				<div id="cgp-shortcodes-redirect-search" class="input-group">
-					<input type="text" class="cgp-shortcodes-form-control form-control " placeholder="Search datasets" aria-label="Search datasets"
-						aria-describedby="cgp-shortcodes-redirect-search">
-					<div class="input-group-append">
-						<button class="btn btn-primary cgp-shortcodes-search-btn">Search</button>
+				<form id="cgp-shortcodes-redirect-search">
+					<div class="input-group">
+						<input type="text" class="cgp-shortcodes-form-control form-control " placeholder="Search datasets"
+							aria-label="Search datasets" aria-describedby="cgp-shortcodes-redirect-search">
+						<div class="input-group-append">
+							<button class="btn btn-primary cgp-shortcodes-search-btn">Search</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 		<html>
