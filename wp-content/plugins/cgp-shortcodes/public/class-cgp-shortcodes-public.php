@@ -111,7 +111,6 @@ class Cgp_Shortcodes_Public
     public function hello_world_shortcode()
     {
         return <<<HTML
-		<html>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Hello world!</h5>
@@ -125,40 +124,39 @@ class Cgp_Shortcodes_Public
 				</div>
 			</div>
 		</div>
-		<html>
 HTML;
     }
 
     public function simple_search_shortcode()
     {
         return <<<HTML
-		<html>
-		<div class="card" id="cgp-shortcodes-simple-search">
+		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Search</h5>
 				<div class="row">
 					<div class="col">
-						<div class="input-group mb-3">
-							<input id="cgp-filter-search-term" type="text" class="form-control cgp-shortcodes-form-control" placeholder="Search datasets"
-								aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
-							<div class="input-group-append">
-								<button class="btn btn-secondary cgp-shortcodes-search-btn" type="button">+</button>
+						<form id="cgp-shortcodes-simple-search">
+							<div class="input-group mb-3">
+								<input id="cgp-filter-search-term" type="text"
+									class="form-control cgp-shortcodes-form-control" placeholder="Search datasets"
+									aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
+								<div class="input-group-append">
+									<button class="btn btn-secondary cgp-shortcodes-search-btn" type="button">+</button>
+								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
-				<div class="cgp-shortcodes-search-pills">
+				<div id="cgp-shortcodes-search-pills">
 				</div>
 			</div>
 		</div>
-		<html>
 HTML;
     }
 
     public function redirect_search_shortcode()
     {
         return <<<HTML
-		<html>
 		<div class="row">
 			<div class="col">
 				<form id="cgp-shortcodes-redirect-search">
@@ -172,14 +170,12 @@ HTML;
 				</form>
 			</div>
 		</div>
-		<html>
 HTML;
     }
 
     public function full_search_results_shortcode()
     {
         return <<<HTML
-		<html>
 		<div id="metadata-search-result" class="container-fluid">
 			<div class="row">
 				<div class="col">
@@ -189,14 +185,12 @@ HTML;
 				</div>
 			</div>
 		</div>
-		<html>
 HTML;
     }
 
     public function full_search_shortcode()
     {
         return <<<HTML
-		<html>
 		<div class="card">
 			<div class="card-body">
 				<div class="row">
@@ -263,7 +257,6 @@ HTML;
 				<button id="cgp-search-btn">Search</button>
 			</div>
 		</div>
-		<html>
 HTML;
     }
 }

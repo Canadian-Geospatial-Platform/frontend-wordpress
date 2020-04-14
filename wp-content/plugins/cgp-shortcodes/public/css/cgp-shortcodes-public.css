@@ -2,7 +2,7 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
-#cgp-shortcodes-simple-search a {
+#cgp-shortcodes-search-pills a {
   text-decoration: none;
   user-select: none;
   font-size: large;

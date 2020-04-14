@@ -35,6 +35,7 @@
 
     let searchParams = {
       searchTerms: [],
+      // bbox will be gotten in leaflet map
       bbox: null,
     };
 
@@ -53,9 +54,7 @@
     }
 
     function renderPill(searchTerm) {
-      document
-        .getElementById("cgp-shortcodes-simple-search")
-        .getElementsByClassName("cgp-shortcodes-search-pills")[0].innerHTML +=
+      document.getElementById("cgp-shortcodes-search-pills").innerHTML +=
         '<a href="#" class="badge badge-pill badge-primary">' +
         searchTerm +
         ' <span aria-hidden="true">&times;</span>' +
@@ -63,7 +62,7 @@
       document.getElementById("cgp-filter-search-term").value = "";
     }
 
-    $(".cgp-shortcodes-search-pills").click(function (event) {
+    $("#cgp-shortcodes-search-pills").click(function (event) {
       if (event.target.nodeName != "A") return;
       searchParams.searchTerms = searchParams.searchTerms.filter(function (
         value
@@ -74,12 +73,10 @@
       updateResults();
     });
 
-    $("#cgp-shortcodes-simple-search .cgp-shortcodes-search-btn").on(
-      "click",
-      function () {
-        addSearchTerm(document.getElementById("cgp-filter-search-term").value);
-      }
-    );
+    $("#cgp-shortcodes-simple-search").submit(function (event) {
+      event.preventDefault();
+      addSearchTerm(document.getElementById("cgp-filter-search-term").value);
+    });
 
     function updateResults() {
       let url = new URL(apiUrl);
