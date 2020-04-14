@@ -58,6 +58,7 @@
         .getElementsByClassName("cgp-shortcodes-search-pills")[0].innerHTML +=
         '<a href="#" class="badge badge-pill badge-primary">' +
         searchTerm +
+        ' <span aria-hidden="true">&times;</span>' +
         "</a>";
       document.getElementById("cgp-filter-search-term").value = "";
     }
