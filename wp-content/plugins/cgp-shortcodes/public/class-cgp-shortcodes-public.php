@@ -141,7 +141,7 @@ HTML;
 									class="form-control cgp-shortcodes-form-control" placeholder="Search datasets"
 									aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
 								<div class="input-group-append">
-									<button class="btn btn-secondary cgp-shortcodes-search-btn" type="button">+</button>
+									<button class="btn btn-primary cgp-shortcodes-search-btn">+</button>
 								</div>
 							</div>
 						</form>

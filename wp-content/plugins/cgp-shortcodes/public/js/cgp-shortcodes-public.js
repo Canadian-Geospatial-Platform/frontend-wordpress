@@ -55,21 +55,26 @@
 
     function renderPill(searchTerm) {
       document.getElementById("cgp-shortcodes-search-pills").innerHTML +=
-        '<a href="#" class="badge badge-pill badge-primary">' +
+        '<a href="#" class="badge badge-pill badge-primary"><span class="cgp-search-term">' +
         searchTerm +
-        ' <span aria-hidden="true">&times;</span>' +
+        '</span><span aria-hidden="true"> &times;</span>' +
         "</a>";
       document.getElementById("cgp-filter-search-term").value = "";
     }
 
+    /**
+     * Removes search term
+     **/
     $("#cgp-shortcodes-search-pills").click(function (event) {
-      if (event.target.nodeName != "A") return;
       searchParams.searchTerms = searchParams.searchTerms.filter(function (
         value
       ) {
-        return value != event.target.innerHTML;
+        return (
+          value !=
+          event.currentTarget.firstElementChild.firstElementChild.innerHTML
+        );
       });
-      event.target.remove();
+      event.currentTarget.firstElementChild.remove();
       updateResults();
     });
 

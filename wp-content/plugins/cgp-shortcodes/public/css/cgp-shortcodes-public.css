@@ -6,6 +6,7 @@
   text-decoration: none;
   user-select: none;
   font-size: large;
+  z-index: 1;
 }
 
 .form-control.cgp-shortcodes-form-control {
