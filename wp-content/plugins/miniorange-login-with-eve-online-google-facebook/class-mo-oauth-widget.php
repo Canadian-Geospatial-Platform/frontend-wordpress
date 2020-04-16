@@ -49,7 +49,7 @@ class Mo_Oauth_Widget extends WP_Widget {
 	}
 
 	function mo_oauth_start_session() {
-		if( ! session_id() ) {
+		if( ! session_id() && ! is_ajax_request() && ! is_rest_api_call() ) {
 			session_start();
 		}
 
@@ -98,7 +98,7 @@ class Mo_Oauth_Widget extends WP_Widget {
 
 		if( ! is_user_logged_in() ) {
 			
-			if( $appsConfigured ) {
+			if( isset($appsConfigured) && $appsConfigured ) {
 
 				$this->mo_oauth_load_login_script();
 
@@ -471,6 +471,7 @@ function mo_oauth_update_email_to_username_attr($currentappname){
 				if(!empty($nestedprefix))
 					$nestedprefix .= ".";
 				testattrmappingconfig($nestedprefix.$key,$resource, $tr_class_prefix);
+				$nestedprefix = rtrim($nestedprefix,".");
 			} else {
 				echo $tr . $td;
 				if(!empty($nestedprefix))
@@ -524,6 +525,14 @@ function mo_oauth_update_email_to_username_attr($currentappname){
 
 	function register_mo_oauth_widget() {
 		register_widget('mo_oauth_widget');
+	}
+
+	function is_ajax_request() {
+		return defined('DOING_AJAX') && DOING_AJAX;
+	}
+
+	function is_rest_api_call() {
+		return strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) == false;
 	}
 
 	add_action('widgets_init', 'register_mo_oauth_widget');

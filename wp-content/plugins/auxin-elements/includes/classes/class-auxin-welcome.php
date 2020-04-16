@@ -97,7 +97,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
 		if ( current_user_can( 'manage_options' ) ) {
 
 			// Disable redirect for "related posts for WordPress" plugin
-            update_option('rp4wp_do_install', 0);
+            update_option('rp4wp_do_install', 0, false );
             // Disable redirect for the "WooCommerce" plugin
             delete_transient( '_wc_activation_redirect' );
             // Disable redirect for Phlox Pro plugin
@@ -1010,14 +1010,23 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                 if( false !== strpos( $error_message, 'cURL error 28') ){
                     set_theme_mod('increasing_curl_timeout_is_required', 15);
                 }
-                wp_die();
+
+                if ( wp_doing_ajax() ){
+                    die();
+                } else {
+                    return;
+                }
             }
 
             // translate the JSON into Array
-            $data  = json_decode( $response, true );
+            $data = json_decode( $response, true );
 
             if( ! is_array( $data ) ){
-                wp_die();
+                if ( wp_doing_ajax() ){
+                    die();
+                } else {
+                    return;
+                }
             }
 
             // Add transient

@@ -8,17 +8,19 @@ Text Domain:	        Canadian Geospatial Platform
 
 
 ==============================================================================*/
-*{
-    font-family:"Noto Sans", sans-serif !important;
-  }
+* {
+    font-family: "Noto Sans", sans-serif !important;
+}
 
 .page-title-section>.aux-top .aux-page-title-entry {
-    top: 0;
-    margin-bottom:  0px!important;
+    /* top: 0; */
+    /* margin-bottom:  0px!important; */
 }
+
 .page-title-section .page-header>.aux-container>*:last-child {
-    margin-bottom: 0px!important;
+    /* margin-bottom: 0px!important; */
 }
-.aux-page-title-entry{
-    margin-bottom: 0px!important;
+
+.aux-page-title-entry {
+    /* margin-bottom: 0px!important; */
 }

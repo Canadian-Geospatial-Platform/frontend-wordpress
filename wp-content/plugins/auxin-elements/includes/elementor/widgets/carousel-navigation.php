@@ -1,12 +1,11 @@
 <?php
 namespace Auxin\Plugin\CoreElements\Elementor\Elements;
 
-use Elementor\Plugin;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-
+use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -114,7 +113,7 @@ class CarouselNavigation extends Widget_Base {
                 'label'       => __('Previous Button','auxin-elements' ),
                 'type'        => Controls_Manager::ICONS,
                 'default'     => [
-                    'value'   => 'auxicon-chevron-left-2',
+                    'value'   => 'auxicon2-arrows-chevron-thin-left',
                     'library' => 'auxicon'
                 ],
                 'condition'   => [
@@ -129,7 +128,7 @@ class CarouselNavigation extends Widget_Base {
                 'label'       => __('Next Button','auxin-elements' ),
                 'type'        => Controls_Manager::ICONS,
                 'default'     => [
-                    'value'   => 'auxicon-chevron-right-2',
+                    'value'   => 'auxicon2-arrows-chevron-thin-right',
                     'library' => 'auxicon'
                 ],
                 'condition'   => [
@@ -312,6 +311,9 @@ class CarouselNavigation extends Widget_Base {
                 'default'   => '#3d3d3d',
                 'selectors' => [
                     '{{WRAPPER}} .aux-custom-nav' => 'color: {{VALUE}};'
+                ],
+                'condition'   => [
+                    'nav_type' => ['custom']
                 ]
             ]
         );
@@ -337,6 +339,20 @@ class CarouselNavigation extends Widget_Base {
                     'unit' => 'px',
                     'size' => 25,
                 ],
+                'condition'   => [
+                    'nav_type' => ['custom']
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'icon_border',
+                'selector'  => '{{WRAPPER}} .aux-custom-nav',
+                'condition' => [
+                    'nav_type' => ['custom']
+                ]
             ]
         );
 
@@ -347,7 +363,7 @@ class CarouselNavigation extends Widget_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .aux-custom-nav' => 'border-radius:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .aux-custom-nav, {{WRAPPER}} .aux-arrow-nav' => 'border-radius:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'allowed_dimensions' => 'all'
             ]
@@ -361,7 +377,8 @@ class CarouselNavigation extends Widget_Base {
                 'size_units'         => [ 'px', 'em' ],
                 'allowed_dimensions' => 'all',
                 'selectors'          => [
-                    '{{WRAPPER}} .aux-custom-nav' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .aux-custom-nav, {{WRAPPER}} .aux-arrow-nav' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .aux-custom-nav > span' => 'line-height:0;'
                 ]
             ]
         );
@@ -400,6 +417,9 @@ class CarouselNavigation extends Widget_Base {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .aux-custom-nav:hover' => 'color: {{VALUE}};',
+                ],
+                'condition'   => [
+                    'nav_type' => ['custom']
                 ]
             ]
         );
@@ -423,8 +443,22 @@ class CarouselNavigation extends Widget_Base {
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 25,
+                    'size' => '',
                 ],
+                'condition'   => [
+                    'nav_type' => ['custom']
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'icon_border_hover',
+                'selector'  => '{{WRAPPER}} .aux-custom-nav:hover',
+                'condition' => [
+                    'nav_type' => ['custom']
+                ]
             ]
         );
 
@@ -435,7 +469,7 @@ class CarouselNavigation extends Widget_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .aux-custom-nav:hover' => 'border-radius:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .aux-custom-nav:hover, {{WRAPPER}} .aux-arrow-nav:hover' => 'border-radius:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'allowed_dimensions' => 'all'
             ]
@@ -449,7 +483,7 @@ class CarouselNavigation extends Widget_Base {
                 'size_units'         => [ 'px', 'em' ],
                 'allowed_dimensions' => 'all',
                 'selectors'          => [
-                    '{{WRAPPER}} .aux-custom-nav:hover' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .aux-custom-nav:hover, {{WRAPPER}} .aux-arrow-nav:hover' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );

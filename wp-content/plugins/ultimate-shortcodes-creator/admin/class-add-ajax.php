@@ -195,8 +195,9 @@ class AddAjax {
 
 		$status = array (			
 			'OK' => true,
-			'tab' => $tab,
-			'shortcodes' => $response_body['shortcodes']
+			'tab' => $response_body['tab'],
+			'shortcodes' => $response_body['shortcodes'],
+			'all' => $response_body
 		);
 		echo(json_encode($status));
 		wp_die();

@@ -152,38 +152,8 @@ class ContactForm extends Widget_Base {
         /*-----------------------------------------------------------------------------------*/
 
         /* -------------------------------------------------------------------------- */
-        /*                             General Input Style                            */
+        /* General inputs
         /* -------------------------------------------------------------------------- */
-        $this->start_controls_section(
-            'labels_section',
-            [
-                'label'      => __('Labels', 'auxin-elements' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'labels_typography',
-                'label' => __( 'Typography', 'auxin-elements' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} label'
-            ]
-        );
-
-        $this->add_control(
-            'labels_color',
-            [
-                'label' => __( 'Color', 'auxin-elements' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} label' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->end_controls_section();
 
         $this->start_controls_section(
             'general_input_section',
@@ -297,14 +267,6 @@ class ContactForm extends Widget_Base {
         );
 
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'general_input_border',
-                'selector' => '{{WRAPPER}} input:not([type="submit"])'
-            ]
-        );
-
         $this->add_responsive_control(
             'general_input_border_radius',
             [
@@ -325,6 +287,19 @@ class ContactForm extends Widget_Base {
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
                     '{{WRAPPER}} input:not([type="submit"])' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator' => 'after'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'general_input_margin',
+            [
+                'label' => __( 'Margin', 'auxin-elements' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} input:not([type="submit"])' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator' => 'after'
             ]
@@ -357,6 +332,14 @@ class ContactForm extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'general_input_border',
+                'selector' => '{{WRAPPER}} input:not([type="submit"])'
+            ]
+        );
+
         $this->end_controls_tab();
 
         $this->start_controls_tab(
@@ -379,6 +362,14 @@ class ContactForm extends Widget_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'general_input_box_shadow_hover',
+                'selector' => '{{WRAPPER}} input:not([type="submit"]):hover'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'general_input_border_hover',
                 'selector' => '{{WRAPPER}} input:not([type="submit"]):hover'
             ]
         );
@@ -406,13 +397,48 @@ class ContactForm extends Widget_Base {
 
         $this->end_controls_tab();
 
+        $this->start_controls_tab(
+            'general_input_tab_focus_state',
+            [
+                'label' => __( 'Focus', 'auxin-elements' ),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'general_input_background_focus',
+                'selector' => '{{WRAPPER}} input:not([type="submit"]):focus',
+                'types' => [ 'classic', 'gradient']
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'general_input_box_shadow_focus',
+                'selector' => '{{WRAPPER}} input:not([type="submit"]):focus'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'general_input_border_focus',
+                'selector' => '{{WRAPPER}} input:not([type="submit"]):focus'
+            ]
+        );
+
+        $this->end_controls_tab();
+
         $this->end_controls_tabs();
         // Background and Box Shadow for input - END
 
         $this->end_controls_section();
 
+
         /* -------------------------------------------------------------------------- */
-        /*                              Placeholder Style                             */
+        /* Placeholder Style
         /* -------------------------------------------------------------------------- */
         $this->start_controls_section(
             'placeholder_section',
@@ -446,7 +472,7 @@ class ContactForm extends Widget_Base {
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                              Text Input Style                              */
+        /* Text Input Style
         /* -------------------------------------------------------------------------- */
 
         $this->start_controls_section(
@@ -454,16 +480,6 @@ class ContactForm extends Widget_Base {
             [
                 'label'      => __('Text Inputs', 'auxin-elements' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'text_input_typography',
-                'label' => __( 'Typography', 'auxin-elements' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} input[type="text"]'
             ]
         );
 
@@ -676,23 +692,14 @@ class ContactForm extends Widget_Base {
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                             Email Input Style                            */
+        /* Email Input Style
         /* -------------------------------------------------------------------------- */
+
         $this->start_controls_section(
             'email_input_section',
             [
                 'label'      => __('Email Inputs', 'auxin-elements' ),
                 'tab'       => Controls_Manager::TAB_STYLE
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'email_input_typography',
-                'label' => __( 'Typography', 'auxin-elements' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} input[type="email"]'
             ]
         );
 
@@ -900,13 +907,13 @@ class ContactForm extends Widget_Base {
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
-        // Background and Box Shadow for input - END
 
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                             Dropdown Style                            */
+        /* Dropdown Style
         /* -------------------------------------------------------------------------- */
+
         $this->start_controls_section(
             'dropdown_section',
             [
@@ -1052,6 +1059,19 @@ class ContactForm extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'dropdown_margin',
+            [
+                'label' => __( 'Margin', 'auxin-elements' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} select' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'after'
+            ]
+        );
+
         // Background and Box Shadow for input - START
         $this->start_controls_tabs( 'dropdown_input_tabs' );
 
@@ -1134,8 +1154,9 @@ class ContactForm extends Widget_Base {
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                             Textarea Style                            */
+        /* Textarea Style
         /* -------------------------------------------------------------------------- */
+
         $this->start_controls_section(
             'textarea_section',
             [
@@ -1247,15 +1268,6 @@ class ContactForm extends Widget_Base {
             ]
         );
 
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'textarea_border',
-                'selector' => '{{WRAPPER}} textarea'
-            ]
-        );
-
         $this->add_responsive_control(
             'textarea_border_radius',
             [
@@ -1276,6 +1288,19 @@ class ContactForm extends Widget_Base {
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
                     '{{WRAPPER}} textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'after'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'textarea_margin',
+            [
+                'label' => __( 'Margin', 'auxin-elements' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} textarea' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator' => 'after'
             ]
@@ -1308,6 +1333,14 @@ class ContactForm extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'textarea_border',
+                'selector' => '{{WRAPPER}} textarea'
+            ]
+        );
+
         $this->end_controls_tab();
 
         $this->start_controls_tab(
@@ -1330,6 +1363,14 @@ class ContactForm extends Widget_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'textarea_box_shadow_hover',
+                'selector' => '{{WRAPPER}} textarea:hover'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'textarea_border_hover',
                 'selector' => '{{WRAPPER}} textarea:hover'
             ]
         );
@@ -1357,14 +1398,48 @@ class ContactForm extends Widget_Base {
 
         $this->end_controls_tab();
 
+        $this->start_controls_tab(
+            'textarea_tab_focus_state',
+            [
+                'label' => __( 'Focus', 'auxin-elements' ),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'textarea_background_focus',
+                'selector' => '{{WRAPPER}} textarea:focus',
+                'types' => [ 'classic', 'gradient']
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'textarea_box_shadow_focus',
+                'selector' => '{{WRAPPER}} textarea:focus'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'textarea_border_focus',
+                'selector' => '{{WRAPPER}} textarea:focus'
+            ]
+        );
+
+        $this->end_controls_tab();
+
         $this->end_controls_tabs();
-        // Background and Box Shadow for input - END
 
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                              Textarea Placeholder Style                             */
+        /* Textarea Placeholder Style
         /* -------------------------------------------------------------------------- */
+
         $this->start_controls_section(
             'textarea_placeholder_section',
             [
@@ -1389,7 +1464,7 @@ class ContactForm extends Widget_Base {
                 'label' => __( 'Color', 'auxin-elements' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} textarea::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} textarea:placeholder' => 'color: {{VALUE}};',
                 ]
             ]
         );
@@ -1397,8 +1472,44 @@ class ContactForm extends Widget_Base {
         $this->end_controls_section();
 
         /* -------------------------------------------------------------------------- */
-        /*                             Submit Button Style                            */
+        /* Labels                                                                     */
         /* -------------------------------------------------------------------------- */
+
+        $this->start_controls_section(
+            'labels_section',
+            [
+                'label'      => __('Labels', 'auxin-elements' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'labels_typography',
+                'label' => __( 'Typography', 'auxin-elements' ),
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} label'
+            ]
+        );
+
+        $this->add_control(
+            'labels_color',
+            [
+                'label' => __( 'Color', 'auxin-elements' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} label' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        /* -------------------------------------------------------------------------- */
+        /* Submit Button Style
+        /* -------------------------------------------------------------------------- */
+
         $this->start_controls_section(
             'submit_input_section',
             [
@@ -1539,6 +1650,19 @@ class ContactForm extends Widget_Base {
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
                     '{{WRAPPER}} input[type="submit"]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'after'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'submit_input_margin',
+            [
+                'label' => __( 'Margin', 'auxin-elements' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} input[type="submit"]' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator' => 'after'
             ]

@@ -45,7 +45,7 @@ class Shortcode_List_Table extends \WP_List_Table {
 				'name'			=> basename($shortcode),
 				'description'	=> $shortcode_ini['general']['description'],
 				'author'		=> $shortcode_ini['general']['author'],
-				'shortcode'		=> '[scu name="'.basename($shortcode).'" (more atts...)]'.'content'.'[/scu]',
+				'shortcode'		=> '[scu name="'.basename($shortcode).'"]',
 				'enabled'		=> $shortcode_ini['config']['enabled'],
 			);			
 		}

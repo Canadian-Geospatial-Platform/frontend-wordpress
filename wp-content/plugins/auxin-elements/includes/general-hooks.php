@@ -3367,7 +3367,9 @@ function auxin_override_inner_body_sections(){
     if( ! auxin_is_true( $use_legacy_header ) ) {
         remove_action( 'auxin_after_inner_body_open', 'auxin_the_top_header_section', 4 );
         remove_action( 'auxin_after_inner_body_open', 'auxin_the_main_header_section', 4 );
-        add_action( 'auxin_after_inner_body_open', 'auxin_get_header_template', 4 );
+        if ( ! class_exists( '\ElementorPro\Plugin' ) || empty( ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( 'header' ) ) ) {
+            add_action( 'auxin_after_inner_body_open', 'auxin_get_header_template', 4 );
+        }
     }
     if ( 'default' === $use_legacy_footer = auxin_get_post_meta( $post, 'page_footer_use_legacy', 'default' ) ) {
         $use_legacy_footer = auxin_get_option('site_footer_use_legacy');
@@ -3375,7 +3377,9 @@ function auxin_override_inner_body_sections(){
 
     if( ! auxin_is_true( $use_legacy_footer ) ) {
         remove_action( 'auxin_before_the_footer', 'auxin_the_site_footer' );
-        add_action( 'auxin_before_the_footer', 'auxin_get_footer_template' );
+        if ( ! class_exists( '\ElementorPro\Plugin' ) || empty( ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( 'footer' ) ) ) {
+            add_action( 'auxin_before_the_footer', 'auxin_get_footer_template' );
+        }
     }
 }
 add_action( 'wp', 'auxin_override_inner_body_sections' );
@@ -3422,3 +3426,20 @@ function auxin_override_elementor_canvas_template( $template ){
 	return $template;
 }
 add_filter( 'template_include', 'auxin_override_elementor_canvas_template', 12 );
+
+/* -------------------------------------------------------------------------- */
+/*        override default wordpress archive link for custom post types       */
+/* -------------------------------------------------------------------------- */
+
+function auxin_override_post_types_archive_link( $link, $post_type ) {
+    if ( $post_type == 'portfolio' && auxin_is_true( auxin_get_option('portfolio_show_custom_archive_link') && ! empty( auxin_get_option( 'portfolio_custom_archive_link' ) ) ) ) {
+        return get_permalink( auxin_get_option( 'portfolio_custom_archive_link' ) );
+    }
+
+    if ( $post_type == 'news' && auxin_is_true( auxin_get_option('news_show_custom_archive_link') && ! empty( auxin_get_option( 'news_custom_archive_link' ) ) ) ) {
+        return get_permalink( auxin_get_option( 'news_custom_archive_link' ) );
+    }
+
+    return $link;
+}
+add_filter( 'post_type_archive_link', 'auxin_override_post_types_archive_link', 10, 2 );

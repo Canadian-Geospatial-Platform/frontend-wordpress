@@ -4,7 +4,7 @@
 ;(function($, window, document, undefined){
 
     $( window ).on( 'elementor:init', function() {
-
+        
         // Add auxin specific css class to elementor body
         $('.elementor-editor-active').addClass('auxin');
 
@@ -334,6 +334,18 @@
             }
         } );
         elementor.addControlView( 'aux-query', ControlQueryPostsItemView );
+
+        /*!
+         * ================== Auxin Featured Color Controller ===================
+         **/
+        var AuxControlFeaturedColorItemView = AuxControlBaseDataView.extend( {
+            
+            onReady: function() {
+                this.ui.select.AuxFeaturedColor();
+            },
+
+        } );
+        elementor.addControlView( 'aux-featured-color', AuxControlFeaturedColorItemView );
 
         /*!
          * ================== Others ===================

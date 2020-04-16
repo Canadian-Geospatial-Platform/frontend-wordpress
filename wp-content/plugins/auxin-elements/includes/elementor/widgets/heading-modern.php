@@ -168,9 +168,14 @@ class ModernHeading extends Widget_Base {
                         'icon'  => 'fa fa-align-right',
                     )
                 ),
-                'selectors' => array(
-                    '{{WRAPPER}} .aux-widget-inner' => 'text-align: {{VALUE}};'
-                )
+                'selectors_dictionary' => [
+					'left'   => '',
+					'center' => 'text-align:center;margin-left:auto !important;margin-right:auto !important;',
+					'right'  => 'text-align:right;margin-left:auto !important;'
+                ],
+                'selectors' => [
+					'{{WRAPPER}} .aux-widget-inner > *' => '{{VALUE}}'
+				]
             )
         );
 
@@ -1136,10 +1141,9 @@ class ModernHeading extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $divider_markup  = auxin_is_true( $settings['divider'] ) ? '<div class="aux-modern-heading-divider"></div>' : '';
-        $alignment_class = ! empty( $settings['alignment'] ) ? 'aux-text-align-' . $settings['alignment'] : '';
 
         echo '<section class="aux-widget-modern-heading">
-            <div class="aux-widget-inner '. esc_attr( $alignment_class ) .'">';
+            <div class="aux-widget-inner">';
 
                 // Maybe print divider before
                 if( empty( $settings['divider_position'] ) || 'before' == $settings['divider_position'] ){

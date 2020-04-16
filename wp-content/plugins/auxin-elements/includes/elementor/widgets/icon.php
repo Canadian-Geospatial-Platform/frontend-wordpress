@@ -109,11 +109,10 @@ class Icon extends Widget_Base {
         );
 
         $this->add_control(
-            'icon',
+            'aux_new_icon',
             array(
                 'label'   => __( 'Icon', 'elementor' ),
-                'type'    => 'aux-icon',
-                'default' => 'fa fa-wordpress',
+                'type'    => Controls_Manager::ICONS
             )
         );
 
@@ -407,15 +406,22 @@ class Icon extends Widget_Base {
             }
         }
 
-        if ( ! empty( $settings['icon'] ) ) {
-            $this->add_render_attribute( 'icon', 'class', $settings['icon'] );
-            $this->add_render_attribute( 'icon', 'aria-hidden', 'true' );
-        }
-
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
             <<?php echo $icon_tag . ' ' . $this->get_render_attribute_string( 'icon-wrapper' ); ?>>
-                <i <?php echo $this->get_render_attribute_string( 'icon' ); ?>></i>
+                <?php 
+                if ( ! empty( $settings['aux_new_icon']['value'] ) ) { 
+                    \Elementor\Icons_Manager::render_icon( $settings['aux_new_icon'], [ 'aria-hidden' => 'true' ] );
+                } else {
+                    if ( ! empty( $settings['icon'] ) ) {
+                        $this->add_render_attribute( 'icon', 'class', $settings['icon'] );
+                        $this->add_render_attribute( 'icon', 'aria-hidden', 'true' );
+                    ?>
+                    <i <?php echo $this->get_render_attribute_string( 'icon' ); ?>></i>
+                    <?php
+                    }
+                }    
+                ?>
             </<?php echo $icon_tag; ?>>
         </div>
         <?php
@@ -431,11 +437,16 @@ class Icon extends Widget_Base {
      */
     protected function _content_template() {
         ?>
-        <# var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
+        <# var  link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
+                iconHTML = elementor.helpers.renderIcon( view, settings.aux_new_icon, { 'aria-hidden': true }, 'i' , 'object' ),
                 iconTag = link ? 'a' : 'div'; #>
         <div class="elementor-icon-wrapper">
             <{{{ iconTag }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}" {{{ link }}}>
-                <i class="{{ settings.icon }}" aria-hidden="true"></i>
+                <# if ( iconHTML && iconHTML.rendered && settings.aux_new_icon.value !== '' ) { #>
+					{{{ iconHTML.value }}}
+				<# } else if ( settings.icon !== '' ) { #>
+					<i class="{{ settings.icon }}" aria-hidden="true"></i>
+				<# } #>
             </{{{ iconTag }}}>
         </div>
         <?php

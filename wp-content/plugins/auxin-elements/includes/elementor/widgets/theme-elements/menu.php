@@ -1486,7 +1486,7 @@ class MenuBox extends Widget_Base {
         echo '</div>';
 
         if ( 'burger' !== $settings['type'] ) {
-            printf( '<style>@media only screen and (min-width: %spx) { .elementor-element-%s .aux-burger-box { display: none } }</style>', $breakpoint,  $this->get_id() );
+            printf( '<style>@media only screen and (min-width: %spx) { .elementor-element-%s .aux-burger-box { display: none } }</style>', $breakpoint + 1,  $this->get_id() );
         }
 
     }

@@ -86,6 +86,7 @@ class Auxin_SiteOrigin_Widget extends SiteOrigin_Widget {
                 case 'aux_iconpicker':
                     $so_field['type'] = 'iconpicker';
                 break;
+
                 case 'textarea_html':
                     $so_field['type'] = 'tinymce';
                     $so_field['rows'] = 20;
@@ -156,6 +157,8 @@ class Auxin_SiteOrigin_Widget extends SiteOrigin_Widget {
                 case 'attach_audio':
                     $so_field['type'] = 'media';
                     $so_field['library'] = 'audio';
+                break;
+
                 default:
                     continue;
                 break;

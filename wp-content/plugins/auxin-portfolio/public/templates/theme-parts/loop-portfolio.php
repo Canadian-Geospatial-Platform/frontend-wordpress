@@ -14,7 +14,7 @@ if( in_array( $template_type, array('grid', 'masonry', 'tiles') ) ){
 
     $args = array(
         'posts_per_page'              => -1,
-        'paged'                       => '',
+        'paged'                       => $paged,
         'order_by'                    => 'menu_order date',
         'order'                       => 'desc',
         'num'                         => auxin_get_option( 'portfolio_archive_items_perpage' ),

@@ -363,6 +363,10 @@ final class Elements {
             '245' => [
                 'file'  => $this->dir_path . '/widgets/theme-elements/breadcrumbs.php',
                 'class' => 'Elements\Theme_Elements\Breadcrumbs'
+            ],
+            '250' => [
+                'file'  => $this->dir_path . '/widgets/modern-button.php',
+                'class' => 'Elements\ModernButton'
             ]
         ];
 
@@ -515,6 +519,11 @@ final class Elements {
             'aux-icon' => array(
                 'file'  => $this->dir_path . '/controls/icon-select.php',
                 'class' => 'Controls\Control_Icon_Select',
+                'type'  => 'single'
+            ),
+            'aux-featured-color' => array(
+                'file'  => $this->dir_path . '/controls/featured-color.php',
+                'class' => 'Controls\Control_Featured_Color',
                 'type'  => 'single'
             )
         );
@@ -725,6 +734,7 @@ final class Elements {
      */
     public function add_auxin_font_icons( $tabs = [] ) {
 
+        // Phlox Icon set 1
         $icons = Auxin()->Font_Icons->get_icons_list( 'fontastic' );
 
         foreach ( $icons as $icon ) {
@@ -733,7 +743,7 @@ final class Elements {
 
         $tabs['auxicon'] = [
             'name' => 'auxicon',
-            'label' => __( 'Phlox Icons', 'auxin-elements' ),
+            'label' => __( 'Phlox Icons - Set 1', 'auxin-elements' ),
             'url' => THEME_URL . 'css/auxin-icon.css',
             'enqueue' => [ THEME_URL . 'css/auxin-icon.css' ],
             'prefix' => 'auxicon-',
@@ -741,6 +751,25 @@ final class Elements {
             'labelIcon' => 'auxicon-sun',
             'ver' => '1.0.0',
             'icons' => $icons_list
+        ];
+
+        // Phlox Icon set 2
+        $icons_v2 = Auxin()->Font_Icons->get_icons_list( 'auxicon2' );
+
+        foreach ( $icons_v2 as $icon ) {
+            $icons_list2[] = str_replace( '.auxicon2-', '', $icon->classname );
+        }
+
+        $tabs['auxicon2'] = [
+            'name' => 'auxicon2',
+            'label' => __( 'Phlox Icons - Set 2', 'auxin-elements' ),
+            'url' => THEME_URL . 'css/auxin-icon.css',
+            'enqueue' => [ THEME_URL . 'css/auxin-icon.css' ],
+            'prefix' => 'auxicon2-',
+            'displayPrefix' => 'auxicon2',
+            'labelIcon' => 'auxicon-sun',
+            'ver' => '1.0.0',
+            'icons' => $icons_list2
         ];
 
         return $tabs;

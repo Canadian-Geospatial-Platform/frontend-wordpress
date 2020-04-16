@@ -6,8 +6,8 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: phlox, gallery, elementor, siteorigin, auxin, averta, auxin-elements, framework, widget, fullwidth, masonry, timeline, parallax
 Requires PHP: 5.4
 Requires at least: 4.6
-Tested up to: 5.3.3
-Stable tag: 2.5.3
+Tested up to: 5.4.0
+Stable tag: 2.5.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 

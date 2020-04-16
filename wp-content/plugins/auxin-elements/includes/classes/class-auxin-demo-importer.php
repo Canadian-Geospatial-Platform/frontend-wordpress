@@ -210,9 +210,9 @@ class Auxin_Demo_Importer {
                 $options[ $value['name'] ] = $value['value'];
             }
 
-            update_option( 'auxin_demo_options', $options );
+            update_option( 'auxin_demo_options', $options, false );
 
-            update_option( 'auxin_last_imported_demo', array( 'id' => $demo_ID, 'time' => current_time( 'mysql' ), 'status' => $options ) );
+            update_option( 'auxin_last_imported_demo', array( 'id' => $demo_ID, 'time' => current_time( 'mysql' ), 'status' => $options ), false );
 
             flush_rewrite_rules();
 
@@ -303,6 +303,7 @@ class Auxin_Demo_Importer {
                 }
 
                 auxin_delete_transient( 'aux-old-products-id-transformation' );
+                $this->update_imported_ids();
                 wp_send_json_success( array( 'step' => 'content', 'message' => __( 'Importing Options', 'auxin-elements' ), 'next' => 'auxin_options' ) );
 
             case 'auxin_options':
@@ -429,7 +430,7 @@ class Auxin_Demo_Importer {
     public function import_options( array $options ) {
         $auxin_custom_images   = $this->get_options_by_type( 'image' );
         extract( $options );
-        
+
         $elementor_header_footer_options = array(
             'site_elementor_header_template' => 'site_elementor_header_edit_template',
             'site_elementor_footer_template' => 'site_elementor_footer_edit_template',
@@ -440,15 +441,19 @@ class Auxin_Demo_Importer {
                 // This line is for changing the old attachment ID with new one.
                 $auxin_value    = $this->get_attachment_id( 'auxin_import_id', $auxin_value );
             }
-            
+
             if ( in_array( $auxin_key, array_keys( $elementor_header_footer_options ) ) ) {
                 $auxin_new_value = auxin_get_transient( "aux-elementor-library-{$auxin_value}-changs-to" );
-                
+
                 auxin_update_option( $elementor_header_footer_options[ $auxin_key ] , maybe_unserialize( $auxin_new_value ) );
-                auxin_update_option( $auxin_key , maybe_unserialize( $auxin_new_value ) );    
-                
+                auxin_update_option( $auxin_key , maybe_unserialize( $auxin_new_value ) );
+
                 auxin_delete_transient( "aux-elementor-library-{$auxin_value}-changs-to" );
                 continue;
+            }
+
+            if ( ( $auxin_key == 'portfolio_custom_archive_link' || $auxin_key == 'news_custom_archive_link' ) && ! empty( $auxin_value ) ) {
+                $auxin_value = auxin_get_transient( "aux-page-{$auxin_value}-changs-to" );
             }
             // Update exclusive auxin options
             auxin_update_option( $auxin_key , maybe_unserialize( $auxin_value ) );
@@ -597,7 +602,7 @@ class Auxin_Demo_Importer {
         foreach ( $args as $menu_name => $menu_data ) {
 
             $menu_exists = wp_get_nav_menu_object( $menu_name );
-            update_option( 'auxin_demo_importer_menu_origin_id_' . $menu_data['id'], $menu_exists );
+            update_option( 'auxin_demo_importer_menu_origin_id_' . $menu_data['id'], $menu_exists, false );
 
             // If it doesn't exist, let's create it.
             if( ! $menu_exists ) {
@@ -605,7 +610,7 @@ class Auxin_Demo_Importer {
                 $menu_id = wp_create_nav_menu( $menu_name );
                 if( is_wp_error( $menu_id ) ) continue;
 
-                update_option( 'auxin_demo_importer_menu_origin_id_' . $menu_data['id'], $menu_id );
+                update_option( 'auxin_demo_importer_menu_origin_id_' . $menu_data['id'], $menu_id, false );
                 // Create menu items
                 foreach ( $menu_data['items'] as $item_key => $item_value ) {
                     //Keep 'menu-meta' in a variable
@@ -803,6 +808,10 @@ class Auxin_Demo_Importer {
                     auxin_set_transient( "aux-elementor-library-{$post['ID']}-changs-to", $post_id, 48 * HOUR_IN_SECONDS );
                 }
 
+                if ( $post['post_type'] == 'page' ) {
+                    auxin_set_transient( "aux-page-{$post['ID']}-changs-to", $post_id, 48 * HOUR_IN_SECONDS );
+                }
+
                 //Check post terms existence
                 if ( ! empty( $post['post_terms'] ) ){
                     // Start adding post terms
@@ -844,10 +853,10 @@ class Auxin_Demo_Importer {
                             $add_these_terms = array();
 
                             foreach ($term as $key => $value) {
-                                
+
                                 $key = is_numeric( $key ) ? (string) $key : $key;
                                 $term_obj               = term_exists( $key, $tax );
-                                
+
                                 // If the taxonomy doesn't exist, then we create it
                                 if ( ! $term_obj ) {
 
@@ -867,7 +876,7 @@ class Auxin_Demo_Importer {
 
                                     auxin_set_transient( 'auxin_category_new_id_of' . $value, $term_obj['term_id'] );
 
-                                }  
+                                }
 
                                 $add_these_terms[]  = intval($term_obj['term_id']);
                             }
@@ -936,7 +945,7 @@ class Auxin_Demo_Importer {
                 // Set default_form_id for mailchimp plugin
                 if( $post['post_type'] == 'mc4wp-form' ){
                     // set default_form_id
-                    update_option( 'mc4wp_default_form_id', $post_id );
+                    update_option( 'mc4wp_default_form_id', $post_id, false );
                 }
 
                 if ( ! empty( $post['post_comments'] ) ){
@@ -992,6 +1001,55 @@ class Auxin_Demo_Importer {
         //wp_send_json_success( array( 'step' => 'content', 'next' => 'auxin_options', 'message' => __( 'Importing Options' ) ) );
     }
 
+    public function update_imported_ids() {
+        
+        $args = array(
+            'post_type' => array(
+                'post',
+                'page',
+                'portfolio'
+            ),
+            'posts_per_page' => -1
+        );
+
+        $query = new WP_Query($args);
+
+        if ( $query->have_posts() ) {
+            while( $query->have_posts() ) {
+                $query->the_post();
+                $elementor_data = get_post_meta( get_the_ID() , '_elementor_data', true );
+                
+                // Change slide's id in flexible carousel element
+                preg_match_all( '/template":"\d*/', $elementor_data, $templates, PREG_SET_ORDER );
+                if ( ! empty( $templates ) ) {
+                    foreach ( $templates as $key => $template ) {
+                        $old_id         = str_replace( 'template":"', '', $template[0] );
+                        if ( ! is_numeric( $old_id ) ) {
+                            continue;
+                        }
+                        $new_template   = 'template":"'. auxin_get_transient( "aux-elementor-library-{$old_id}-changs-to" );
+                        $elementor_data = str_replace( $template[0], $new_template, $elementor_data );
+                    }
+                }
+
+                // Change template's id in flexible recent posts element
+                preg_match_all( '/post_column":"\d*/', $elementor_data, $templates, PREG_SET_ORDER );
+                if ( ! empty( $templates ) ) {
+                    foreach ( $templates as $key => $template ) {
+                        $old_id         = str_replace( 'post_column":"', '', $template[0] );
+                        if ( ! is_numeric( $old_id ) ) {
+                            continue;
+                        }
+                        $new_template   = 'post_column":"'. auxin_get_transient( "aux-elementor-library-{$old_id}-changs-to" );
+                        $elementor_data = str_replace( $template[0], $new_template, $elementor_data );
+                    }
+                }
+
+                update_post_meta( get_the_ID(), '_elementor_data', wp_slash( $elementor_data ) );
+            }
+        }
+        wp_reset_postdata();
+    }
 
     public function prepare_download( array $args ) {
 
@@ -1015,8 +1073,8 @@ class Auxin_Demo_Importer {
 
         }
 
-        update_option( 'auxin_demo_media_args', $args );
-        update_option( 'auxin_demo_media_requests', $requests );
+        update_option( 'auxin_demo_media_args', $args, false );
+        update_option( 'auxin_demo_media_requests', $requests, false );
 
         return $requests;
     }
@@ -1728,7 +1786,7 @@ class Auxin_Demo_Importer {
                 $meta = str_replace( $url[0], $site_url, $meta);
             }
         }
-        
+
         preg_match_all( '#\\"url\\":\\"\\\\\/.[a-z,0-9]*\\\\\/#', $meta, $relative_urls, PREG_SET_ORDER );
         if ( ! empty( $relative_urls ) ) {
             foreach($relative_urls as $key => $url) {

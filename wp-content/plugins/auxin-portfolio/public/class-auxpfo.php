@@ -139,13 +139,8 @@ class AUXPFO {
     * @return void
     */
     public function init(){
-
-        // @deprecate version 5.0
-        global $wp_version;
-        if ( version_compare( $wp_version, '4.6', '<' ) ) {
-            // Load plugin text domain
-            $this->load_plugin_textdomain();
-        }
+      // Load plugin text domain
+      $this->load_plugin_textdomain();
     }
 
 

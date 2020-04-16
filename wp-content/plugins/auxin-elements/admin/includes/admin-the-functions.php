@@ -183,6 +183,15 @@ if ( ! function_exists('auxin_template_importer') ) {
         // Get All Templates data
         $templates_data = Auxin_Welcome::get_instance()->get_demo_list('templates');
 
+        if ( empty( $templates_data ) ) {
+            return [
+                'success'   => false,
+                'data'      => [
+                    'message' => __( "An error occurred while updating templates library.", 'auxin-elements' )
+                ]
+            ];
+        }
+
         // Find data of selected template
         $has_template = false;
         foreach ( $templates_data['templates'] as $key => $template_info ) {

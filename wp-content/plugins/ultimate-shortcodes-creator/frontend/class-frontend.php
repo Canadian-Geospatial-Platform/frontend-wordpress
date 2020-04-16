@@ -14,65 +14,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class Frontend /*extends \CMBShortcodes\Main */{	
+class Frontend /*extends \CMBShortcodes\Main */{
 
-	protected $shortcodes_in_page = array();	// Array of shortcodes that are present in current page (including widgets)
 	//Main::$installedShortcodes				// Array of installed shortcodes
-	protected $active_shortcodes = array();		// Array of shortcodes that are in page, installed and config.ini-enabled
+	protected $shortcodes_in_page = array();	// Array of shortcodes that are present in current page (including widgets)
+	protected $shortcodes_in_theme = array();	// Array of shortcodes that are always enabled for their use in the theme
+	protected $activated_shortcodes = array();	// Array of shortcodes objects that are in page or theme, installed and config.ini-enabled
 	protected $added_shortcodes = array();		// Array of shortcodes objects
 		
 	
-	private function _presentShortcodes( $content, $tag ) {		// Own version of the original has _shortocde() in shortcodes.php
-
-		if ( false === strpos( $content, '[' ) ) {
-			return false;
-		}
-		preg_match_all( '/' . get_shortcode_regex([$tag]) . '/', $content, $matches, PREG_SET_ORDER );		
-		if ( empty( $matches ) ) {
-			return false;
-		}
-		foreach ( $matches as $shortcode ) {
-			if ( $tag === $shortcode[2] ) {
-				$attr = shortcode_parse_atts( $shortcode[3] );
-				if(isset($attr['name'])) {
-					$this->shortcodes_in_page[] = $attr['name'];
-				}
-			} 
-			if ( ! empty( $shortcode[5] )) {	// && _presentShortcodes( $shortcode[5], $tag ) ) {
-				$this->_presentShortcodes($shortcode[5], $tag);
-			}
-		}
-	}
-
-	public function addShortcodes() {
+	private function _set_variables() {
+		// Set $this->shortcodes_in_page
 		// Check shortcodes in current post
 		global $post;
-		$this->_presentShortcodes($post->post_content, 'scu');
+		$present_shortcodes = $this->_presentShortcodes($post->post_content, 'scu');
+		$this->shortcodes_in_page = array_merge($this->shortcodes_in_page, $present_shortcodes);
 
 		// Check shortcodes in any text widget
-	//	$text_widgets = get_option('widget_text');		
-	//	foreach ($text_widgets as $key => $text_widget) {
-	//		$this->_presentShortcodes($text_widget['text'], 'scu');
-	//	}
+		$text_widgets = get_option('widget_text');
 
-		// Check shortcodes in any custom html widget
-	//	$html_widgets = get_option('widget_custom_html');
-	//	foreach ($html_widgets as $key => $html_widget) {
-	//		$this->_presentShortcodes($html_widget['content'], 'scu');
-	//	}
-
-		if(empty($this->shortcodes_in_page)) {
-			return;
+		foreach ($text_widgets as $key => $text_widget) {
+			$present_shortcodes = $this->_presentShortcodes($text_widget['text'], 'scu');			
+			$this->shortcodes_in_page = array_merge($this->shortcodes_in_page, $present_shortcodes);			
 		}
 
-		$potencial_shortcodes = array_intersect(Main::$availableShortcodes, $this->shortcodes_in_page);
-		foreach ($potencial_shortcodes as $key => $shortcode) {			
+		// Check shortcodes in any custom html widget
+		$html_widgets = get_option('widget_custom_html');
+		foreach ($html_widgets as $key => $html_widget) {
+			$present_shortcodes = $this->_presentShortcodes($html_widget['content'], 'scu');
+			$this->shortcodes_in_page = array_merge($this->shortcodes_in_page, $present_shortcodes);
+		}
+
+		// Set $this->shortcodes_in_theme
+		foreach (Main::$availableShortcodes as $key => $shortcode) {			
 			$ini_file = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-config.ini');
 			if(file_exists($ini_file)) {
 				$config_array = parse_ini_file($ini_file, true);
-				$enabled = $config_array["config"]["enabled"];
-				if($enabled) {
-					$this->active_shortcodes[] = $shortcode;
+				$theme_use = $config_array["config"]["theme_use"];
+				if($theme_use) {
+					$this->shortcodes_in_theme[] = $shortcode;
 				}
 			}
 			else {
@@ -80,17 +60,66 @@ class Frontend /*extends \CMBShortcodes\Main */{
 			}
 		}
 
-		if(empty($this->active_shortcodes)) {
+		// Set $this->activated_shortcodes
+		$detected_shortcodes = array_merge($this->shortcodes_in_page, $this->shortcodes_in_theme);
+		$potencial_shortcodes = array_intersect(Main::$availableShortcodes, $detected_shortcodes);
+		foreach ($potencial_shortcodes as $key => $shortcode) {			
+			$ini_file = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-config.ini');
+			if(file_exists($ini_file)) {
+				$config_array = parse_ini_file($ini_file, true);
+				$enabled = $config_array["config"]["enabled"];
+				if($enabled) {
+					$this->activated_shortcodes[] = $shortcode;
+				}
+			}
+			else {
+				wp_die($ini_file.__(' does not exit', 'ultimate-shortcodes-creator'));
+			}
+		}
+	}
+
+	private function _presentShortcodes( $content, $tag ) {		// Own version of the original has _shortocde() in shortcodes.php
+		$shortcodes_in_page = array();
+		if ( false === strpos( $content, '[' ) ) {
+			return array();
+		}
+		preg_match_all( '/' . get_shortcode_regex([$tag]) . '/', $content, $matches, PREG_SET_ORDER );		
+		if ( empty( $matches ) ) {
+			return array();
+		}
+		foreach ( $matches as $shortcode ) {
+			if ( $tag === $shortcode[2] ) {
+				$attr = shortcode_parse_atts( $shortcode[3] );
+				if(isset($attr['name'])) {
+					//$this->shortcodes_in_page[] = $attr['name'];
+					$shortcodes_in_page[] = $attr['name'];
+				}
+			} 
+			if ( ! empty( $shortcode[5] )) {	// && _presentShortcodes( $shortcode[5], $tag ) ) {
+				$this->_presentShortcodes($shortcode[5], $tag);
+			}
+		}
+		return $shortcodes_in_page;
+	}
+
+	public function addShortcodes() {
+
+		$this->_set_variables();
+
+		if(empty($this->activated_shortcodes)) {
 			return;
 		}
+
+		// Shortcode(s) has to be created
 
 		$this->enqueueCommonScripts();
 
 		add_shortcode( 'scu', array( $this, 'shortcode_handler' ) );
+		
+		//$this->activated_shortcodes = array_unique(array_merge($this->shortcodes_in_theme, $this->active_shortcodes), SORT_REGULAR);
 
-		foreach ($this->active_shortcodes as $key => $shortcode) {
-
-			require_once(realpath(dirname( __FILE__ ).'/class-shortcode.php'));	// See also wp_normalize_path()
+		require_once(realpath(dirname( __FILE__ ).'/class-shortcode.php'));	// See also wp_normalize_path()
+		foreach ($this->activated_shortcodes as $key => $shortcode) {			
 			$this->added_shortcodes[] = new Shortcode($shortcode);
 		}
 	}
@@ -109,43 +138,45 @@ class Frontend /*extends \CMBShortcodes\Main */{
 	}
 
 	public function shortcode_handler( $atts = [], $content = null ) {		
-		static $count = 0;				// Increments when a new shortcode is executed in the page
-		$count++;
+		static $scu_count = 0;				// Increments when a new shortcode is executed in the page
+		$scu_count++;
 
 		//$atts = shortcode_atts(array('param1' => 'default1','param2' => 'default2'), $atts);	//set defaults values if needed
 
 		if(!isset($atts["name"])) {
-			return(__('attribute "name" does not exit', 'ultimate-shortcodes-creator'));
+			return('<span>'.__('attribute "name" does not exit', 'ultimate-shortcodes-creator').'</span>');
 		}
 		$shortcode = $atts["name"];
+		if(!in_array($shortcode, $this->activated_shortcodes )) {
+			return('<span>[scu name="'.$shortcode.'"] '.__('is not installed or enabled', 'ultimate-shortcodes-creator').'</span>');
+		}
 		$resources_url = \SCU\URL.'/shortcodes/'.$shortcode.'/resources/assets/';
-		$output = '<div class="scu-shortcode sc-'.$shortcode.'"';
+		$scu_output = '<div class="scu-shortcode sc-'.$shortcode.'"';
 		if($atts) {
 			foreach($atts as $key => $att) {
-				$output .= ' data-'.$key.'="'.$att.'"';
+				$scu_output .= ' data-'.$key.'="'.$att.'"';
 			}
 		}
-		$output .= '>';
-		$output .= '<div class="scu-content" style="display:none;">'.$content.'</div>';
-		
-		$shortcode_config_file = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-config.ini'); // File exists because it has been already checked before
-		$config_array = parse_ini_file($shortcode_config_file, true);
-		if($config_array["type"]["html"]) {
-			$html_file_path = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-html.php');
-			if(!file_exists($html_file_path)) {
-				wp_die($html_file_path.__(' does not exit', 'ultimate-shortcodes-creator'), E_USER_ERROR);
+		$scu_output .= '>';
+		$scu_output .= '<div class="scu-content" style="display:none;">'.$content.'</div>';
+		$scu_shortcode_config_file = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-config.ini'); // File exists because it has been already checked before
+		$scu_config_array = parse_ini_file($scu_shortcode_config_file, true);
+		if($scu_config_array["type"]["html"]) {
+			$scu_html_file_path = wp_normalize_path(dirname( __FILE__, 2).'/shortcodes/'.$shortcode.'/scu-html.php');
+			if(!file_exists($scu_html_file_path)) {
+				wp_die($scu_html_file_path.__(' does not exit', 'ultimate-shortcodes-creator'), E_USER_ERROR);
 			}
 			ob_start();			
-			include ($html_file_path);
-			$output .= ob_get_clean();
+			include ($scu_html_file_path);
+			$scu_output .= ob_get_clean();
 		}
 		else {
-			$output .= $content;
+			$scu_output .= $content;
 		}
 	
-		$output .= "</div>";		
+		$scu_output .= "</div>";		
 	
-		return do_shortcode($output);
+		return do_shortcode($scu_output);
 	}
 	
 	public function __construct() {

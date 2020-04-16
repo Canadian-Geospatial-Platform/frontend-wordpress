@@ -298,7 +298,8 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
         'custom_styles' => array(),
         'extra_classes' => '', // custom css class names for this element
         'custom_el_id'  => '',
-        'base_class'    => 'aux-widget-button'
+        'base_class'    => 'aux-widget-button',
+        'open_video_in_lightbox' => false, 
     );
 
     $result = auxin_get_widget_scafold( $atts, $default_atts, $shortcode_content );
@@ -364,6 +365,11 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
         $btn_css_classes[] =  $extra_classes;
     }
 
+    if ( auxin_is_true( $open_video_in_lightbox ) ) {
+        $btn_css_classes[] = 'aux-open-video'; 
+        $btn_other_attrs .= ' data-type="video"';
+    }
+
     // get escaped class attributes
     $button_class_attr = auxin_make_html_class_attribute( $btn_css_classes );
 
@@ -388,10 +394,12 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
     $output   = '';
 
     // widget custom output -----------------------
-
     $output .= "<$btn_tag $btn_href $btn_other_attrs $button_class_attr $extra_styles>";
     $output .= $btn_content;
     $output .= "</$btn_tag>";
 
+    if ( auxin_is_true( $open_video_in_lightbox ) ) {
+        $output = '<span class="aux-lightbox-video ">' . $output . '</span>';
+    }
     return $output;
 }

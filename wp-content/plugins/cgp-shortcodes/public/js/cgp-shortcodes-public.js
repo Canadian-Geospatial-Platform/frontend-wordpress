@@ -139,7 +139,14 @@
         '<h6>Theme: </h6><p class="card-text">  ' +
         data.properties.topiccategory +
         "</p>" +
-        "</div>";
+        '<div class="text-center">' +
+        '<form action="/about-cgp" method="post">' +
+        '<input type="hidden" name="id" value="' +
+        data.id +
+        '" />' +
+        '<input type="submit" value="Detailed View"/>' +
+        "</form>" +
+        "</div></div>";
       return htmlString;
     }
 

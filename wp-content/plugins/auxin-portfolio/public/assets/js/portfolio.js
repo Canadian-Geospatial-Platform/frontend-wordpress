@@ -1,4 +1,4 @@
-/*! Auxin portfolio - v1.9.2 (2020-03-16)
+/*! Auxin portfolio - v1.9.4 (2020-04-11)
  *  All required plugins 
  *  http://averta.net/phlox/
  */

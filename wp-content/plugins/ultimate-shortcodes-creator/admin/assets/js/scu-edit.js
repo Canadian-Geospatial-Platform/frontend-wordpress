@@ -72,7 +72,7 @@
 				case 'scu-edit-ajax-tab':
 					$("#title").prop('disabled', false);
 					$(".submit").show();				
-					break;				
+					break;		
 				case 'scu-edit-resources-css-tab':
 					$("#title").prop('disabled', true);
 					$(".submit").hide();					
@@ -84,6 +84,10 @@
 				case 'scu-edit-resources-assets-tab':
 					$("#title").prop('disabled', true);
 					$(".submit").hide();				
+					break;
+				case 'scu-edit-head-or-footer-tab':
+					$("#title").prop('disabled', false);
+					$(".submit").show();				
 					break;
 				default:
 					break;
@@ -112,7 +116,10 @@
 					break;
 				case 'general_type_resources_assets':
 					$("#scu-edit-resources-assets-tab").toggle();					
-					break;				
+					break;
+				case 'general_type_head_or_footer':
+					$("#scu-edit-head-or-footer-tab").toggle();					
+					break;			
 				default:
 					break;
 			}

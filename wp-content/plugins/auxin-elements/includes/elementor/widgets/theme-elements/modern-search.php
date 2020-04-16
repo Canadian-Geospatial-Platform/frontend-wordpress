@@ -145,7 +145,7 @@ class ModernSearch extends Widget_Base {
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'options'     => $this->get_post_types(),
-                'default'     => [ 'post' ],
+                'default'     => [ 'category' ],
             ]
         );
 
@@ -928,17 +928,22 @@ class ModernSearch extends Widget_Base {
      */
     protected function render_category( $args ) {
         $taxonomies     = $args['post_types'];
-        $options_output = '<option value="">' . __('All Categories', THEME_DOMAIN) . '</option>';
+        $post_types     = [];
+        $options_output = '';
 
         foreach ( $taxonomies as $taxonomy ) {
-            
-            $terms = get_terms( $taxonomy );
+
+            $terms     = get_terms( $taxonomy );
+            $post_type = get_taxonomy( $taxonomy )->object_type;
+            $post_types = array_merge( $post_types, $post_type );
 
             foreach ($terms as $term => $term_args) {
-                $options_output .= '<option data-taxonomy="' . esc_attr( $term_args->taxonomy ) . '" value="'. esc_attr( $term_args->term_id ) .'">'. esc_html( $term_args->name ) .'</option>';
+                $options_output .= '<option data-post-type="' . esc_attr( wp_json_encode( $post_type ) ) . '" data-taxonomy="' . esc_attr( wp_json_encode( [$term_args->taxonomy] ) ) . '" value="'. esc_attr( $term_args->term_id ) .'">'. esc_html( $term_args->name ) .'</option>';
             }
 
         }
+
+        $options_output = '<option value="all" data-taxonomy="' . esc_attr ( wp_json_encode( $taxonomies ) ) . '" data-post-type="' . esc_attr ( wp_json_encode( $post_types ) ) . '">' . __('All Categories', THEME_DOMAIN) . '</option>' . $options_output ;
 
         $output  = '<div class="aux-search-cats">';
             $output .= '<select class="aux-modern-search-cats" name="cat">' . $options_output . '</select>';

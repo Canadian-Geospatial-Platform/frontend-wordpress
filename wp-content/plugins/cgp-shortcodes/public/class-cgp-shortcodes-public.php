@@ -186,77 +186,98 @@ HTML;
 			</div>
 		</div>
 HTML;
-    }
+	}
 
-    public function full_search_shortcode()
+	public function single_search_result_shortcode()
     {
-        return <<<HTML
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col">
-						<h3>Metadata search - Query button</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Title</span>
-							</div>
-							<input id="cgp-filter-title" type="text" class="form-control" placeholder="Title"
-								aria-label="Title" aria-describedby="cgp-filter-title">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Description</span>
-							</div>
-							<input id="cgp-filter-description" type="text" class="form-control" placeholder="Description"
-								aria-label="Description" aria-describedby="cgp-filter-description">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Keywords</span>
-							</div>
-							<input id="cgp-filter-keyword" type="text" class="form-control" placeholder="Keyword"
-								aria-label="Keyword" aria-describedby="cgp-filter-keyword">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Topic Category</span>
-							</div>
-							<input id="cgp-filter-topic-category" type="text" class="form-control"
-								placeholder="Topic Category" aria-label="Topic Category"
-								aria-describedby="cgp-filter-topic-category">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Tags</span>
-							</div>
-							<input id="cgp-filter-tag" type="text" class="form-control" placeholder="Tags" aria-label="Tags"
-								aria-describedby="cgp-filter-tag">
-						</div>
-					</div>
-				</div>
-				<button id="cgp-search-btn">Search</button>
-			</div>
-		</div>
-HTML;
+        $processed = FALSE;
+        $ERROR_MESSAGE = '';
+
+        // ************* Call API:
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo?select=[%22properties%22]&id=" . $_POST['id']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $json = curl_exec($ch);
+        curl_close ($ch);
+
+        $result = json_decode($json);
+
+        if ($result->{'code'} == '1')
+        {
+          $processed = TRUE;
+        }else{
+          $ERROR_MESSAGE = $result->{'data'};
+        }
+
+        if (!$processed && $ERROR_MESSAGE != '') {
+            echo $ERROR_MESSAGE;
+        }
+        $ret .= <<<HTML
+            <div id="single-search-result" class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card p-4">
+                        <div class="card-header mb-3">
+                            <h4 class="card-title">
+        HTML;
+        $ret .= $result->Items[0]->properties->title->en; 
+        $ret .= <<<HTML
+                          </h4>
+                          </div>
+                          <br>
+                          <h5>Description </h5>
+                          <p class="card-text">
+        HTML;
+        $ret .= $result->Items[0]->properties->description->en;
+        $ret .= <<<HTML
+                          </p><div class="row"><div class="col">
+                          <h5>Theme </h5>
+                          <p class="card-text">
+        HTML;
+        $ret .= $result->Items[0]->properties->topiccategory;
+        $ret .= "</p></div>";   
+        $ret .= <<<HTML
+        <div class="col">
+        <h5>Country </h5>
+        <p class="card-text"> 
+        HTML;
+        $ret .= $result->Items[0]->properties->country;    
+        $ret .= "</p></div>";   
+        $ret .= <<<HTML
+        <div class="col">
+        <h5>Time Period </h5>
+        <p class="card-text">
+        HTML;
+$ret .= "From: " . $result->Items[0]->properties->datestart . "<br> To: " . $result->Items[0]->properties->dateend;
+$ret .= "</p></div></div>";
+        $ret .= '<h3>Resources </h3>';
+        foreach ($result->Items[0]->properties->resources as $resource) {
+            $ret .= <<<HTML
+            <div class="row">
+            <div class="col">
+                <div class="card">
+            HTML;
+            $ret .= "<div class=\"row m-3\"><div class=\"col\"><h4>" . $resource->name->en . "</h4></div></div>";
+            $ret .= "<div class=\"row m-3\"><div class=\"col\"><h5>Type </h5>" . $resource->format . $the_title;
+            $ret .= "</div><div class=\"col\"><h5>Language </h5>" . $resource->description->en . "</div>";
+            $ret .= "<div class=\"col\"><h5>Format </h5>" . $resource->format;
+            $ret .= "</div><div class=\"col\"><h5></h5><a href=\"" . $resource->url . "\"><button class=\"btn btn-primary\">Download</button></div></div>";
+            $ret .= <<<HTML
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            HTML;
+        }                       
+        $ret .= <<<HTML
+                     </div>
+                 </div>
+             </div>
+         </div>
+        HTML;
+
+
+
+        return $ret;
     }
 }

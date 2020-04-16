@@ -30,12 +30,18 @@ class Auxin_Featured_Colors extends Tag {
     }
 
     public function get_colors() {
+
 		$items = [
-            '' => __( 'Select...', 'auxin-elements' )
+            '' => [
+				'label' => __( 'Select...', 'auxin-elements' ),
+			]
         ];
 
 		for( $i = 1; $i <= 8 ; ++$i ) {
-			$items[$i] = sprintf( __( 'Color %s', THEME_DOMAIN ), $i );
+			$items[$i] = [
+				'label' =>  sprintf( __( 'Color %s', THEME_DOMAIN ), $i ),
+				'color'	=> auxin_get_option( 'site_featured_color_' . $i )
+			];
 		}
 
         return $items;
@@ -49,9 +55,10 @@ class Auxin_Featured_Colors extends Tag {
 		$this->add_control(
 			'key',
 			[
-				'label' => __( 'Colors', 'auxin-elements' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => $this->get_colors()
+				'label'   => __( 'Colors', 'auxin-elements' ),
+				'type'    => 'aux-featured-color',
+				'options' => $this->get_colors(),
+				'default' => ''
             ]
         );
 	}

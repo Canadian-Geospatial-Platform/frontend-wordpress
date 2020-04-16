@@ -54,7 +54,7 @@ Shortcodes have a fixed files an directories structure. They are stored in plugi
 
 = Can I request a feature ? =
 
-Yes, you can contact with me at cmorillas1@gmail.com.
+Yes, you can contact with me at cesar@shortcodescreator.com.
 
 = Will I lose my shortcodes if I change the theme or upgrade WordPress?
 
@@ -76,6 +76,20 @@ Yes, because when Wordpress update any plugin the entire directory is removed. P
 == Changelog ==
 ***** WARNING AGAIN ******
 If update the plugin, all shortcodes will be permanently removed. Please backup shortcodes before update the plugin.
+
+= 1.9.6 =
+* Redefined categories when adding from remote
+
+= 1.9.5 =
+* Allow the use of shortcodes in theme
+* Allow custom code in <head> or footer
+* Fix minor errors
+
+= 1.9.4 =
+* Fix load in correct order of the js files as dependencies of the main js code
+
+= 1.9.3 =
+* Fix Escape textarea in edit shortcode render
 
 = 1.9.2 =
 * Fixed upload plugin error

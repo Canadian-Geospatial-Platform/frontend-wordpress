@@ -112,20 +112,21 @@ class Text extends Widget_Base {
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'icon',
                 'options'     => array(
-                    'none'  => __( 'None'  , 'auxin-elements' ),
-                    'icon'  => __( 'Icon'  , 'auxin-elements' ),
+                    'none'    => __( 'None'  , 'auxin-elements' ),
+                    'icon'    => __( 'Icon'  , 'auxin-elements' ),
+                    'image'   => __( 'Image'  , 'auxin-elements' ),
                     'inline-svg' => __( 'Inline SVG' , 'auxin-elements' )
                 )
             )
         );
 
        $this->add_control(
-            'icon',
+            'aux_text_icon',
             array(
                 'label'       => __('Icon','auxin-elements' ),
+                'label_block' => true,
                 'description' => __('Please choose an icon from the list.', 'auxin-elements'),
-                'type'        => 'aux-icon',
-                'default'     => 'fa fa-wordpress',
+                'type'        => Controls_Manager::ICONS,
                 'condition'   => array(
                     'icon_or_image' => array('icon')
                 )
@@ -304,10 +305,10 @@ class Text extends Widget_Base {
         );
 
        $this->add_control(
-            'btn_icon',
+            'aux_text_btn_icon',
             array(
                 'label'        => __('Icon for button','auxin-elements' ),
-                'type'         => 'aux-icon',
+                'type'         => Controls_Manager::ICONS,
                 'condition'    => array(
                     'display_button' => 'yes',
                 )
@@ -414,31 +415,11 @@ class Text extends Widget_Base {
         );
 
         $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            array(
-                'name'      => 'header_box_shadow',
-                'selector'  => '{{WRAPPER}} .aux-ico-box'
-            )
-        );
-
-        $this->add_group_control(
             Group_Control_Border::get_type(),
             array(
                 'name'     => 'icon_border',
                 'label'    => __( 'Border', 'auxin-elements' ),
                 'selector' => '{{WRAPPER}} .aux-ico-box',
-            )
-        );
-
-        $this->add_control(
-            'icon_color',
-            array(
-                'label'       => __('Icon color', 'auxin-elements'),
-                'type'        => Controls_Manager::COLOR,
-                'default'     => '#ffffff',
-                'condition'   => array(
-                    'icon_or_image' => array('icon')
-                )
             )
         );
 
@@ -462,18 +443,6 @@ class Text extends Widget_Base {
                 'selectors'  => array(
                     '{{WRAPPER}} .aux-ico' => 'font-size: {{SIZE}}{{UNIT}};',
                 ),
-                'condition'   => array(
-                    'icon_or_image' => array('icon')
-                )
-            )
-        );
-
-        $this->add_control(
-            'icon_bg_color',
-            array(
-                'label'       => __('Icon background color','auxin-elements' ),
-                'type'        => Controls_Manager::COLOR,
-                'default'     => '#1bb0ce',
                 'condition'   => array(
                     'icon_or_image' => array('icon')
                 )
@@ -529,6 +498,102 @@ class Text extends Widget_Base {
                 )
             )
         );
+
+        $this->start_controls_tabs( 'icon_style_tabs' );
+
+        $this->start_controls_tab(
+            'icon_style_normal',
+            array(
+                'label'     => __( 'Normal' , 'auxin-elements' )
+            )
+        );
+
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            array(
+                'name'      => 'header_box_shadow',
+                'selector'  => '{{WRAPPER}} .aux-ico-box'
+            )
+        );
+
+        $this->add_control(
+            'icon_color',
+            array(
+                'label'       => __('Icon color', 'auxin-elements'),
+                'type'        => Controls_Manager::COLOR,
+                'default'     => '#ffffff',
+                'condition'   => array(
+                    'icon_or_image' => array('icon')
+                )
+            )
+        );
+
+        $this->add_control(
+            'icon_bg_color',
+            array(
+                'label'       => __('Icon background color','auxin-elements' ),
+                'type'        => Controls_Manager::COLOR,
+                'default'     => '#1bb0ce',
+                'condition'   => array(
+                    'icon_or_image' => array('icon')
+                )
+            )
+        );
+
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'icon_style_hover',
+            array(
+                'label'     => __( 'Hover' , 'auxin-elements' )
+            )
+        );
+
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            array(
+                'name'      => 'header_box_shadow_hover',
+                'selector'  => '{{WRAPPER}}:hover .aux-ico-box'
+            )
+        );
+
+        $this->add_control(
+            'icon_color_hover',
+            array(
+                'label'       => __('Icon color', 'auxin-elements'),
+                'type'        => Controls_Manager::COLOR,
+                'default'     => '',
+                'selectors' => array(
+                    '{{WRAPPER}}:hover .aux-ico-box' => 'color:{{VALUE}} !important;',
+                ),
+                'condition'   => array(
+                    'icon_or_image' => ['icon']
+                )
+            )
+        );
+
+        $this->add_control(
+            'icon_bg_color_hover',
+            array(
+                'label'       => __('Icon background color','auxin-elements' ),
+                'type'        => Controls_Manager::COLOR,
+                'default'     => '',
+                'selectors' => array(
+                    '{{WRAPPER}}:hover .aux-ico-box' => 'background-color:{{VALUE}} !important;',
+                ),
+                'condition'   => array(
+                    'icon_or_image' => ['icon']
+                )
+            )
+        );
+
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
         $this->add_control(
             'img_shape',
@@ -1011,9 +1076,10 @@ class Text extends Widget_Base {
                 'label'     => __( 'Button Icon', 'auxin-elements' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
-                'condition'   => array(
-                    'btn_icon!' => '',
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => '',
+                // )
             )
         );
 
@@ -1031,9 +1097,10 @@ class Text extends Widget_Base {
                    'left-animate'   =>  __('Animate from Left'  , 'auxin-elements' ),
                    'right-animate'  =>  __('Animate from Right' , 'auxin-elements' )
                 ),
-                'condition'   => array(
-                    'btn_icon!' => '',
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => '',
+                // )
             )
         );
 
@@ -1057,18 +1124,20 @@ class Text extends Widget_Base {
                 'selectors'  => array(
                     '{{WRAPPER}} .aux-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ),
-                'condition'   => array(
-                    'btn_icon!' => ''
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => ''
+                // )
             )
         );
 
         $this->start_controls_tabs(
             'btn_icon_color',
             array(
-                'condition'   => array(
-                    'btn_icon!' => '',
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => '',
+                // )
             )
          );
 
@@ -1120,9 +1189,10 @@ class Text extends Widget_Base {
                 'label'     => __( 'Button Text', 'auxin-elements' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
-                'condition'   => array(
-                    'btn_icon!' => '',
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => '',
+                // )
             )
         );
 
@@ -1212,9 +1282,10 @@ class Text extends Widget_Base {
                 'label'     => __( 'Button Wrapper', 'auxin-elements' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
-                'condition'   => array(
-                    'btn_icon!' => '',
-                )
+                // @TODO: un comment after some release
+                // 'condition'   => array(
+                //     'aux_text_btn_icon!' => '',
+                // )
             )
         );
 
@@ -1504,6 +1575,13 @@ class Text extends Widget_Base {
     protected function render() {
 
         $settings   = $this->get_settings_for_display();
+        $main_icon  = '';
+
+        if( 'icon' == $settings['icon_or_image'] ){
+            $main_icon = ! empty( $settings['aux_text_icon']['value'] ) ? $settings['aux_text_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : '' ) ;
+        }
+
+        $btn_icon_value = ! empty( $settings['aux_text_btn_icon']['value'] ) ? $settings['aux_text_btn_icon']['value'] : ( ! empty( $settings['btn_icon'] ) ? $settings['btn_icon'] : '' ) ;
 
         $btn_target = $settings['btn_link']['is_external'] ? '_blank' : '_self';
 
@@ -1518,15 +1596,16 @@ class Text extends Widget_Base {
             'btn_size'           => $settings['btn_size'],
             'btn_border'         => $settings['btn_border'],
             'btn_style'          => $settings['btn_style'],
-            'btn_icon'           => $settings['btn_icon'],
+            'btn_icon'           => $btn_icon_value,
             'btn_icon_align'     => $settings['btn_icon_align'],
             'btn_color_name'     => $settings['btn_color_name'],
             'btn_link'           => $settings['btn_link']['url'],
             'btn_nofollow'       => $settings['btn_link']['nofollow'],
             'btn_target'         => $btn_target,
 
+
             'icon_or_image'      => $settings['icon_or_image'],
-            'icon'               => $settings['icon'],
+            'icon'               => $main_icon,
             'icon_color'         => $settings['icon_color'],
             'icon_bg_color'      => $settings['icon_bg_color'],
             'icon_shape'         => $settings['icon_shape'],

@@ -278,30 +278,175 @@ function auxin_define_portfolio_theme_options( $fields_sections_list ){
         'default'     => '1',
         'type'        => 'switch'
     );
-
-    $options[] =    array(
-        'title'       => __('Display like button', 'auxin-portfolio'),
-        'description' => __( 'Enable it to display the like button. Please note that you should have "ulike" plugin installed for this feature.'),
-        'id'          => 'show_portfolio_single_like',
+    $options[] = array(
+        'title'       => __( 'Share Button Icon', 'auxin-portfolio' ),
+        'id'          => 'portfolio_single_share_button_icon',
         'section'     => 'portfolio-section-single',
-        'dependency'  => '',
-        'transport'   => 'postMessage',
+        'transport'   => 'refresh',
+        'type'        => 'icon',
+        'default'     => 'auxicon-share',
         'dependency'  => array(
             array(
                  'id'      => 'show_portfolio_single_share_like_section',
-                 'value'   => '1'
-            )
-        ),
-        'partial'     => array(
-            'selector'              => '.single-portfolio .aux-single .content',
-            'container_inclusive'   => false,
-            'render_callback'       => function(){
-                auxpfo_get_template_part( 'theme-parts/entry/single', 'portfolio');
-            }
-        ),
-        'default'     => '1',
-        'type'        => 'switch'
+                 'value'   => array('1'),
+                 'operator'=> ''
+            ),
+            array(
+                'id'      => 'show_portfolio_single_share',
+                'value'   => array('1'),
+                'operator'=> ''
+           )
+        )
     );
+
+    $options[] = array(
+        'title'       => __( 'Share Button Icon Size', 'auxin-portfolio' ),
+        'id'          => 'portfolio_single_share_button_icon_size',
+        'section'     => 'portfolio-section-single',
+        'transport'   => 'postMessage',
+        'type'        => 'text',
+        'dependency'  => array(
+            array(
+                 'id'      => 'show_portfolio_single_share_like_section',
+                 'value'   => array('1'),
+                 'operator'=> ''
+            ),
+            array(
+                'id'      => 'show_portfolio_single_share',
+                'value'   => array('1'),
+                'operator'=> ''
+           )
+        ),
+        'style_callback' => function( $value = null ){
+            if( ! $value ){
+                $value = esc_attr( auxin_get_option( 'blog_post_share_button_icon_size' ) );
+            }
+            if( ! is_numeric( $value ) ){
+                $value = 10;
+            }
+            return $value ? ".single-portfolio .aux-single-portfolio-share span::before { font-size:{$value}px; }" : '';
+        }
+    );
+
+    $options[] = array(
+        'title'          => __( 'Share Button Margin', 'auxin-portfolio' ),
+        'id'             => 'portfolio_single_share_button_margin',
+        'section'        => 'portfolio-section-single',
+        'type'           => 'responsive_dimensions',
+        'selectors'      => '.single-portfolio .aux-single-portfolio-share',
+        'transport'      => 'postMessage',
+        'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+        'dependency'  => array(
+            array(
+                 'id'      => 'show_portfolio_single_share_like_section',
+                 'value'   => array('1'),
+                 'operator'=> ''
+            ),
+            array(
+                'id'      => 'show_portfolio_single_share',
+                'value'   => array('1'),
+                'operator'=> ''
+           )
+        ),
+    );
+
+    if ( class_exists( 'wp_ulike' ) ) {
+        $options[] =    array(
+            'title'       => __('Display like button', 'auxin-portfolio'),
+            'description' => __( 'Enable it to display the like button. Please note that you should have "ulike" plugin installed for this feature.'),
+            'id'          => 'show_portfolio_single_like',
+            'section'     => 'portfolio-section-single',
+            'dependency'  => '',
+            'transport'   => 'postMessage',
+            'dependency'  => array(
+                array(
+                    'id'      => 'show_portfolio_single_share_like_section',
+                    'value'   => '1'
+                )
+            ),
+            'partial'     => array(
+                'selector'              => '.single-portfolio .aux-single .content',
+                'container_inclusive'   => false,
+                'render_callback'       => function(){
+                    auxpfo_get_template_part( 'theme-parts/entry/single', 'portfolio');
+                }
+            ),
+            'default'     => '1',
+            'type'        => 'switch'
+        );
+
+        $options[] = array(
+            'title'       => __( 'Like Icon', 'auxin-portfolio' ),
+            'id'          => 'portfolio_single_like_icon',
+            'section'     => 'portfolio-section-single',
+            'transport'   => 'refresh',
+            'type'        => 'icon',
+            'default'     => 'auxicon-heart-2',
+            'dependency'  => array(
+                array(
+                     'id'      => 'show_portfolio_single_share_like_section',
+                     'value'   => array('1'),
+                     'operator'=> ''
+                ),
+                array(
+                    'id'      => 'show_portfolio_single_like',
+                    'value'   => array('1'),
+                    'operator'=> ''
+               )
+            )
+        );
+    
+        $options[] = array(
+            'title'       => __( 'Like Button Icon Size', 'auxin-portfolio' ),
+            'id'          => 'portfolio_single_like_icon_size',
+            'section'     => 'portfolio-section-single',
+            'transport'   => 'postMessage',
+            'type'        => 'text',
+            'dependency'  => array(
+                array(
+                     'id'      => 'show_portfolio_single_share_like_section',
+                     'value'   => array('1'),
+                     'operator'=> ''
+                ),
+                array(
+                    'id'      => 'show_portfolio_single_like',
+                    'value'   => array('1'),
+                    'operator'=> ''
+               )
+            ),
+            'style_callback' => function( $value = null ){
+                if( ! $value ){
+                    $value = esc_attr( auxin_get_option( 'portfolio_single_like_icon_size' ) );
+                }
+                if( ! is_numeric( $value ) ){
+                    $value = 10;
+                }
+                return $value ? ".single-portfolio .wp_ulike_general_class button::before { font-size:{$value}px; }" : '';
+            }
+        );
+    
+        $options[] = array(
+            'title'          => __( 'Like Button Margin', 'auxin-portfolio' ),
+            'id'             => 'portfolio_single_like_margin',
+            'section'        => 'portfolio-section-single',
+            'type'           => 'responsive_dimensions',
+            'selectors'      => '.single-portfolio .wp_ulike_general_class button',
+            'transport'      => 'postMessage',
+            'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+            'dependency'  => array(
+                array(
+                     'id'      => 'show_portfolio_single_share_like_section',
+                     'value'   => array('1'),
+                     'operator'=> ''
+                ),
+                array(
+                    'id'      => 'show_portfolio_single_like',
+                    'value'   => array('1'),
+                    'operator'=> ''
+               )
+            ),
+        );
+    }
 
     $options[] =    array(
         'title'       => __('Skin for Next & Previous Links', 'auxin-portfolio'),
@@ -1906,6 +2051,31 @@ function auxin_define_portfolio_theme_options( $fields_sections_list ){
         'preview_link' => auxin_get_post_type_archive_shortlink('portfolio')
     );
 
+    $options[] =    array(
+        'title'       => __( 'Custom Page For Archive', 'auxin-portfolio' ),
+        'description' => __( 'Enable this option to select custom page for archive page', 'auxin-portfolio' ),
+        'id'          => 'portfolio_show_custom_archive_link',
+        'section'     => 'portfolio-section-archive',
+        'transport'   => 'postMessage',
+        'type'        => 'switch',
+        'default'     => '0'
+    );
+
+    $options[] = array(
+        'title'       => __( 'Select Page', 'auxin-portfolio' ),
+        'id'          => 'portfolio_custom_archive_link',
+        'section'     => 'portfolio-section-archive',
+        'dependency'  => array(
+            array(
+                'id'      => 'portfolio_show_custom_archive_link',
+                'value'   => '1',
+                'operator'=> '=='
+            )
+        ),
+        'type'        => 'select',
+        'choices'     => auxin_list_pages(),
+        'transport'   => 'postMessage'
+    );
 
     $options[] = array(
         'title'       => __('Portfolio Template', 'auxin-portfolio'),
@@ -3181,6 +3351,12 @@ if ( auxin_is_plugin_active( 'wp-ulike/wp-ulike.php' ) ) {
 
 // Portfolio single ------------------------------------------------------------
 
+function auxpfo_change_like_icon ( $args ) {
+    $like_icon = ' aux-icon ' . auxin_get_option( 'portfolio_single_like_icon', 'auxicon-heart-2' );
+    $args['button_class'] .= $like_icon;
+    return $args;                                                                
+}
+
 /**
  * Adding share and like buttons to single portfolio actions section
  *
@@ -3189,13 +3365,16 @@ if ( auxin_is_plugin_active( 'wp-ulike/wp-ulike.php' ) ) {
 function auxpfo_add_single_portfolio_actions( $show_like_btn, $show_share_btn ){
 
     if( function_exists( 'wp_ulike' ) && $show_like_btn ){
+        add_filter( 'wp_ulike_add_templates_args', 'auxpfo_change_like_icon', 1, 1 ); 
         wp_ulike( 'get', array( 'style' => 'wpulike-heart', 'button_type' => 'image', 'wrapper_class' => 'aux-wpulike aux-wpulike-portfolio' ) );
+        remove_filter( 'wp_ulike_add_templates_args', 'auxpfo_change_like_icon', 1 );
     }
     if( $show_share_btn ) {
     ?>
+        <?php $share_icon = auxin_get_option( 'portfolio_single_share_button_icon', 'auxicon-share' ) ; ?>
          <div class="aux-single-portfolio-share">
              <div class="aux-tooltip-socials aux-tooltip-dark aux-socials aux-icon-left aux-medium">
-                 <span class="aux-icon auxicon-share"></span>
+                 <span class="aux-icon <?php echo esc_attr( $share_icon );?>"></span>
                  <span class="aux-text"><?php _e( 'Share', 'auxin-portfolio' ); ?></span>
              </div>
          </div>

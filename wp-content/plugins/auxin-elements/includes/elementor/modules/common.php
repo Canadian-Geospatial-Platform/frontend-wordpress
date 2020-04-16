@@ -749,146 +749,180 @@ selector .child-element{ margin: 10px; }
         );
 
         $widget->add_responsive_control(
-			'flex_grow',
-			[
-				'label' => __( 'Grow in width', 'auxin-elements' ),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 0,
-				'selectors' => [
-					'{{WRAPPER}}' => 'flex-grow: {{VALUE}};'
-				],
-				'label_block' => false
-			]
-		);
-
-        $widget->add_responsive_control(
             'aux_max_width',
-            array(
+            [
                 'label'      => __('Max Width','auxin-elements' ),
                 'type'       => Controls_Manager::SLIDER,
-                'size_units' => array('px', 'em', '%', 'vw'),
-                'range'      => array(
-                    'px' => array(
+                'size_units' => ['px', 'em', '%', 'vw'],
+                'range'      => [
+                    'px' => [
                         'min'  => 0,
                         'step' => 1
-                    ),
-                    '%' => array(
-                        'min'  => 0,
-                        'max'  => 100,
-                        'step' => 1
-                    ),
-                    'em' => array(
-                        'min'  => 0,
-                        'step' => 1
-                    ),
-                    'vw' => array(
+                    ],
+                    '%' => [
                         'min'  => 0,
                         'max'  => 100,
                         'step' => 1
-                    )
-                ),
-                'selectors' => array(
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    'vw' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'selectors' => [
                     '{{WRAPPER}}' => 'max-width:{{SIZE}}{{UNIT}};'
-                )
-            )
+                ]
+            ]
         );
 
         $widget->add_responsive_control(
             'aux_max_height',
-            array(
+            [
                 'label'      => __('Max Height','auxin-elements' ),
                 'type'       => Controls_Manager::SLIDER,
-                'size_units' => array('px', 'em', '%', 'vh'),
-                'range'      => array(
-                    'px' => array(
+                'size_units' => ['px', 'em', '%', 'vh'],
+                'range'      => [
+                    'px' => [
                         'min'  => 0,
                         'step' => 1
-                    ),
-                    '%' => array(
-                        'min'  => 0,
-                        'max'  => 100,
-                        'step' => 1
-                    ),
-                    'em' => array(
-                        'min'  => 0,
-                        'step' => 1
-                    ),
-                    'vh' => array(
+                    ],
+                    '%' => [
                         'min'  => 0,
                         'max'  => 100,
                         'step' => 1
-                    )
-                ),
-                'selectors' => array(
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    'vh' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'selectors' => [
                     '{{WRAPPER}}' => 'max-height:{{SIZE}}{{UNIT}};'
-                ),
+                ],
                 'separator'       => 'after'
-            )
+            ]
         );
 
         $widget->add_responsive_control(
             'aux_min_width',
-            array(
+            [
                 'label'      => __('Min Width','auxin-elements' ),
                 'type'       => Controls_Manager::SLIDER,
-                'size_units' => array('px', 'em', '%', 'vw'),
-                'range'      => array(
-                    'px' => array(
+                'size_units' => ['px', 'em', '%', 'vw'],
+                'range'      => [
+                    'px' => [
                         'min'  => 0,
                         'step' => 1
-                    ),
-                    '%' => array(
-                        'min'  => 0,
-                        'max'  => 100,
-                        'step' => 1
-                    ),
-                    'em' => array(
-                        'min'  => 0,
-                        'step' => 1
-                    ),
-                    'vw' => array(
+                    ],
+                    '%' => [
                         'min'  => 0,
                         'max'  => 100,
                         'step' => 1
-                    )
-                ),
-                'selectors' => array(
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    'vw' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'selectors' => [
                     '{{WRAPPER}}' => 'min-width:{{SIZE}}{{UNIT}};'
-                )
-            )
+                ]
+            ]
         );
 
         $widget->add_responsive_control(
             'aux_min_height',
-            array(
+            [
                 'label'      => __('Min Height','auxin-elements' ),
                 'type'       => Controls_Manager::SLIDER,
-                'size_units' => array('px', 'em', '%', 'vh'),
-                'range'      => array(
-                    'px' => array(
+                'size_units' => ['px', 'em', '%', 'vh'],
+                'range'      => [
+                    'px' => [
                         'min'  => 0,
                         'step' => 1
-                    ),
-                    '%' => array(
-                        'min'  => 0,
-                        'max'  => 100,
-                        'step' => 1
-                    ),
-                    'em' => array(
-                        'min'  => 0,
-                        'step' => 1
-                    ),
-                    'vh' => array(
+                    ],
+                    '%' => [
                         'min'  => 0,
                         'max'  => 100,
                         'step' => 1
-                    )
-                ),
-                'selectors' => array(
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    'vh' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'selectors' => [
                     '{{WRAPPER}}' => 'min-height:{{SIZE}}{{UNIT}};'
-                )
-            )
+                ],
+                'separator'       => 'after'
+            ]
         );
+
+        $widget->add_responsive_control(
+            'aux_height',
+            [
+                'label'      => __('Height','auxin-elements' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%', 'vh'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    '%' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'step' => 1
+                    ],
+                    'vh' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}' => 'height:{{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $widget->add_responsive_control(
+			'flex_grow',
+			[
+				'label'       => __( 'Grow in width', 'auxin-elements' ),
+                'label_block' => false,
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 0,
+				'selectors'   => [
+					'{{WRAPPER}}' => 'flex-grow: {{VALUE}};'
+                ],
+                'separator' => 'before'
+			]
+		);
 
         $widget->end_controls_section();
     }

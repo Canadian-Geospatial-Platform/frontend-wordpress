@@ -5,6 +5,10 @@
 
 <?php
 global	$wp_version;
-echo ('Wordpress version: '.$wp_version.'<br>');
-echo ('Shortcode: ['.$atts["name"].'] successfully installed. ');
+echo 'Wordpress version: '.$wp_version.'<br>';
+echo 'Attributes: '.json_encode($atts).'<br>';
+echo 'Content: '.json_encode($content).'<br>';
+echo 'Resources URL: '.$resources_url.'<br>';
 ?>
+<p id="scu-test"></p>
+<img id="scu-img-test" src="<?php echo($resources_url).'image1.png'; ?>">

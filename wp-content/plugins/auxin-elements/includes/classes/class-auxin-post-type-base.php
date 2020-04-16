@@ -191,7 +191,7 @@ class Auxin_Post_Type_Base {
                 $wp_roles->add_cap( 'editor'       , $cap );
             }
 
-            update_option( "auxin_{$this->post_type}_capabilities_added", 1 );
+            update_option( "auxin_{$this->post_type}_capabilities_added", 1, false );
         }
 
     }

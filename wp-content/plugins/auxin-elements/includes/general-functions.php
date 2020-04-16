@@ -2475,3 +2475,18 @@ function auxin_maybe_create_image_size( $attachment_id, $size = '' ) {
         wp_update_image_subsizes( $attachment_id );
     }
 }
+
+/**
+ * Get List of available pages with id and title
+ *
+ * @return array
+ */
+function auxin_list_pages() {
+    $all_pages = get_pages();
+    $list = array( '' => __( 'Select Page', 'auxin-elements' ) );
+    foreach( $all_pages as $page ) {
+        $list[ $page->ID ] = $page->post_title ; 
+    }
+
+    return $list;
+}

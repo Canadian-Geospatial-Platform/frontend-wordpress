@@ -60,6 +60,35 @@ class ShortCode {
 		}
 	}
 
+	private function _includeHeaderAndFooter() {
+		if($this->config_array["type"]["head_or_footer"]) {
+			add_action( 'wp_head', function() {			
+				$head_file_url =  $this->shortcode_url.'/scu-head.html';
+				$head_file_path = wp_normalize_path($this->shortcode_path.'scu-head.html');
+				if(!file_exists($head_file_path)) {
+					wp_die($head_file_path.__(' does not exit', 'ultimate-shortcodes-creator'), E_USER_ERROR);
+				}
+				ob_start();			
+				include ($head_file_path);
+				$scu_head_output = ob_get_clean();
+				echo $scu_head_output;
+			
+			}, 8);		// 8 is after jquery and before enqueue scripts
+
+			add_action( 'wp_footer', function() {
+				$footer_file_url =  $this->shortcode_url.'/scu-footer.html';
+				$footer_file_path = wp_normalize_path($this->shortcode_path.'scu-footer.html');
+				if(!file_exists($footer_file_path)) {
+					wp_die($footer_file_path.__(' does not exit', 'ultimate-shortcodes-creator'), E_USER_ERROR);
+				}
+				ob_start();			
+				include ($footer_file_path);
+				$scu_footer_output = ob_get_clean();
+				echo $scu_footer_output;
+			}, 10);
+		}		
+	}
+
 	private function _enqueueResources() {
 		//wp_die('enqueue');
 		if($this->config_array["type"]["resources_css"]) {
@@ -73,7 +102,7 @@ class ShortCode {
 			foreach ($this->resources_js as $key => $resource_js) {
 				$jsfile_url = $this->shortcode_url.'/resources/js/'.$resource_js;
 				wp_register_script($resource_js, $jsfile_url, array(), null, 'all');				
-				wp_enqueue_script($resource_js);
+				//wp_enqueue_script($resource_js);
 			}
 		}
 	}
@@ -97,7 +126,8 @@ class ShortCode {
 				wp_die($js_file_path.__(' does not exit', 'ultimate-shortcodes-creator'), E_USER_ERROR);
 			}
 			$js_ver = date("ymd-Gis", filemtime($js_file_path));
-			wp_register_script('scu-'.$this->shortcode.'-js',  $js_file_url, array('wp-i18n'), $js_ver, false);
+			//wp_register_script('scu-'.$this->shortcode.'-js',  $js_file_url, array('wp-i18n'), $js_ver, false);
+			wp_register_script('scu-'.$this->shortcode.'-js',  $js_file_url, $this->resources_js, $js_ver, false);
 			wp_set_script_translations('scu-'.$this->shortcode.'-js', 'ultimate-shortcodes-creator', wp_normalize_path($this->shortcode_path. 'languages' ));
 			
 			add_filter('script_loader_tag', function ($tag, $handle, $src) {				
@@ -127,11 +157,10 @@ class ShortCode {
 
 	
 	public function __construct($shortcode='') {		
-		$this->_initprops($shortcode);		
+		$this->_initprops($shortcode);	
+		$this->_includeHeaderAndFooter();
 		$this->_enqueueResources();
-		$this->_enqueueCssAndJS();
-		
-		
+		$this->_enqueueCssAndJS();		
 	}	
 }
 ?>

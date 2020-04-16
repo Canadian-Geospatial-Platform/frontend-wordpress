@@ -145,6 +145,11 @@
   background-repeat: no-repeat;
 }
 
+/* Select2 Empty Issue */
+.select2-container  {
+    min-width: 100px;
+}
+
 /* Select2 icons issue
 --------------------------*/
 .select2-container [class^="auxicon-"]::before, .select2-container [class*=" auxicon-"]::before {
@@ -310,4 +315,65 @@ div[class*="elementor-control-aux_pro"]:before{
 }
 .auxin-elementor-go-pro-link{
     background-color: #0089ff !important;
+}
+
+/*Featured Color */
+.aux-featured-color-item-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 14px;
+}
+
+.select2-selection__rendered .aux-featured-color-item-wrapper {
+    padding-right: 0;
+}
+.aux-featured-color-item {
+    display: flex;
+    align-items: center;
+}
+.aux-featured-color-shape {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-right: 7px;
+    border: 1px solid #d5dadf;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.aux-featured-color-shape.aux-featured-color-empty{
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
+    background-size: 9px 9px;
+}
+
+.aux-featured-color-dropdown .select2-results__options {
+    max-height: none;
+}
+
+.aux-featured-color-dropdown .select2-results__option[aria-selected="true"] .aux-featured-color-item-wrapper:after {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6.364' height='4.949' viewBox='0 0 6.364 4.949'%3E%3Cpath id='Rectangle_2' data-name='Rectangle 2' d='M386.818,237.56l.688-.688,1.414,1.414,3.555-3.555.707.706-3.555,3.555-.688.688Z' transform='translate(-386.818 -234.733)' fill='%23e0e1e3'/%3E%3C/svg%3E");
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    width: 6.4px;
+    height: 5px;
+}
+/* Hide Svg Upload Button in some elements
+--------------------------*/
+
+.elementor-control-aux_button_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_price_list_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_price_table_feature_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_progressbar_text_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_post_info_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_custom_list_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+/* .elementor-control-aux_new_icon .elementor-control-media__tool.elementor-control-svg-uploader, */
+.elementor-control-aux_text_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_text_btn_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_search_icon .elementor-control-media__tool.elementor-control-svg-uploader,
+.elementor-control-aux_shopping_cart_icon .elementor-control-media__tool.elementor-control-svg-uploader {
+    display: none;
 }

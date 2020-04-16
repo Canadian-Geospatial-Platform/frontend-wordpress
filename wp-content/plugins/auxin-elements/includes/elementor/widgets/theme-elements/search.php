@@ -126,12 +126,11 @@ class SearchBox extends Widget_Base {
         );
 
         $this->add_control(
-            'icon',
+            'aux_search_icon',
             array(
                 'label'       => __('Icon','auxin-elements' ),
                 'description' => __('Please choose an icon from the list.', 'auxin-elements'),
-                'type'        => 'aux-icon',
-                'default'     => 'auxicon-search-4',
+                'type'        => Controls_Manager::ICONS,
                 'conditions'   => array(
                     'relation' => 'or',
                     'terms'    => array(
@@ -491,7 +490,10 @@ class SearchBox extends Widget_Base {
             }
 
         }
-        $args['icon_classname'] = $settings['icon'];
+
+        $icon_value = ! empty( $settings['aux_search_icon']['value'] ) ? $settings['aux_search_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : 'auxicon-search-4' ) ;
+
+        $args['icon_classname'] = $icon_value;
         $args['css_class'] = 'aux-search-elementor-element';
 
         echo auxin_get_search_box( $args );

@@ -115,12 +115,10 @@ class CustomList extends Widget_Base {
         );
 
         $repeater->add_control(
-            'icon',
+            'aux_custom_list_icon',
             array(
                 'label'       => __( 'Icon', 'auxin-elements' ),
-                'type'        => 'aux-icon',
-                'default'     => 'check-1',
-                'label_block' => true
+                'type'        => Controls_Manager::ICONS
             )
         );
 
@@ -156,16 +154,26 @@ class CustomList extends Widget_Base {
                 'label_on'     => __( 'On', 'auxin-elements' ),
                 'label_off'    => __( 'Off', 'auxin-elements' ),
                 'return_value' => 'yes',
-                'default'      => 'no',
-                'separator'    => 'after'
+                'default'      => 'no'
+            )
+        );
+
+        $repeater->add_responsive_control(
+            'icon_custom_style_heading',
+            array(
+                'label'       => __( 'Icon Styles:', 'auxin-elements' ),
+                'type'        => Controls_Manager::HEADING,
+                'condition'   => array(
+                    'display_advanced' => 'yes'
+                ),
+                'separator'   => 'before'
             )
         );
 
         $repeater->add_responsive_control(
             'icon_color',
             array(
-                'label'       => __( 'Icon Color', 'auxin-elements' ),
-                'label_block' => 'true',
+                'label'       => __( 'Color', 'auxin-elements' ),
                 'type'        => Controls_Manager::COLOR,
                 'selectors'   => array(
                     '{{WRAPPER}} {{CURRENT_ITEM}} .aux-icon-list-icon' => 'color: {{VALUE}};',
@@ -177,9 +185,23 @@ class CustomList extends Widget_Base {
         );
 
         $repeater->add_responsive_control(
+            'icon_background_color',
+            array(
+                'label'       => __( 'Background Color', 'auxin-elements' ),
+                'type'        => Controls_Manager::COLOR,
+                'selectors'   => array(
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .aux-icon-list-icon' => 'background-color: {{VALUE}};',
+                ),
+                'condition'    => array(
+                    'display_advanced' => 'yes'
+                )
+            )
+        );
+
+        $repeater->add_responsive_control(
             'icon_item_margin',
             array(
-                'label'      => __( 'Icon Margin', 'auxin-elements' ),
+                'label'      => __( 'Margin', 'auxin-elements' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => array( 'px', 'em' ),
                 'selectors'  => array(
@@ -193,9 +215,21 @@ class CustomList extends Widget_Base {
         );
 
         $repeater->add_responsive_control(
+            'text_custom_style_heading',
+            array(
+                'label'       => __( 'Text Styles:', 'auxin-elements' ),
+                'type'        => Controls_Manager::HEADING,
+                'condition'   => array(
+                    'display_advanced' => 'yes'
+                ),
+                'separator'   => 'before'
+            )
+        );
+
+        $repeater->add_responsive_control(
             'text_primary_color',
             array(
-                'label'     => __( 'Text Color', 'auxin-elements' ),
+                'label'     => __( 'Color', 'auxin-elements' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} {{CURRENT_ITEM}} .aux-icon-list-text' => 'color: {{VALUE}};',
@@ -221,7 +255,7 @@ class CustomList extends Widget_Base {
         $repeater->add_responsive_control(
             'text_primary_margin',
             array(
-                'label'      => __( 'Text Margin', 'auxin-elements' ),
+                'label'      => __( 'Margin', 'auxin-elements' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => array( 'px', 'em' ),
                 'selectors'  => array(
@@ -432,10 +466,10 @@ class CustomList extends Widget_Base {
         $this->add_responsive_control(
             'align',
             array(
-                'label'      => __('Align','auxin-elements'),
+                'label'      => __('Horizontal Align','auxin-elements'),
                 'type'       => Controls_Manager::CHOOSE,
                 'options'    => array(
-                    'left' => array(
+                    'flex-start' => array(
                         'title' => __( 'Left', 'auxin-elements' ),
                         'icon' => 'fa fa-align-left',
                     ),
@@ -443,18 +477,52 @@ class CustomList extends Widget_Base {
                         'title' => __( 'Center', 'auxin-elements' ),
                         'icon' => 'fa fa-align-center',
                     ),
-                    'right' => array(
+                    'flex-end' => array(
                         'title' => __( 'Right', 'auxin-elements' ),
                         'icon' => 'fa fa-align-right',
                     ),
                 ),
                 'default'    => 'center',
                 'toggle'     => true,
+                'selectors_dictionary' => [
+					'flex-start' => 'flex-start; text-align:left;',
+					'center'     => 'center; text-align:center;',
+					'flex-end'   => 'flex-end;text-align:right;'
+                ],
                 'selectors'  => array(
-                    '{{WRAPPER}}' => 'text-align: {{VALUE}}',
+                    '{{WRAPPER}} .aux-icon-list-items' => 'justify-content: {{VALUE}}',
                 )
             )
         );
+
+        $this->add_responsive_control(
+            'align_vertical',
+            array(
+                'label'      => __('Vertical Align','auxin-elements'),
+                'type'       => Controls_Manager::CHOOSE,
+                'options'    => array(
+                    'flex-start' => array(
+                        'title' => __( 'Left', 'auxin-elements' ),
+                        'icon' => 'eicon-v-align-top',
+                    ),
+                    'center' => array(
+                        'title' => __( 'Center', 'auxin-elements' ),
+                        'icon' => 'eicon-v-align-middle',
+                    ),
+                    'flex-end' => array(
+                        'title' => __( 'Right', 'auxin-elements' ),
+                        'icon' => 'eicon-v-align-bottom',
+                    )
+                ),
+                'default'    => '',
+                'toggle'     => true,
+                'selectors'  => array(
+                    '{{WRAPPER}} .aux-direction-horizontal' => 'align-items: {{VALUE}}',
+                    '{{WRAPPER}} .aux-icon-list-item' => 'align-items: {{VALUE}}'
+                )
+            )
+        );
+
 
         $this->end_controls_section();
 
@@ -813,6 +881,15 @@ class CustomList extends Widget_Base {
             )
         );
 
+        $this->start_controls_tabs( 'icon_style_tabs' );
+
+        $this->start_controls_tab(
+            'icon_style_normal',
+            array(
+                'label' => __( 'Normal' , 'auxin-elements' )
+            )
+        );
+
         $this->add_responsive_control(
             'icon_color',
             array(
@@ -825,16 +902,46 @@ class CustomList extends Widget_Base {
             )
         );
 
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            array(
+                'name'      => 'icon_background',
+                'selector'  => '{{WRAPPER}} .aux-icon-list-item'
+            )
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'icon_style_hover',
+            array(
+                'label' => __( 'Hover' , 'auxin-elements' )
+            )
+        );
+
         $this->add_responsive_control(
             'icon_hover_color',
             array(
-                'label'     => __( 'Hover Color', 'auxin-elements' ),
+                'label'     => __( 'Color', 'auxin-elements' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .aux-icon-list-item:hover .aux-icon-list-icon' => 'color: {{VALUE}};',
                 )
             )
         );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            array(
+                'name'      => 'icon_background_hover',
+                'selector'  => '{{WRAPPER}} .aux-icon-list-item'
+            )
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
 
         $this->add_responsive_control(
             'icon_size',
@@ -852,19 +959,33 @@ class CustomList extends Widget_Base {
                 ),
                 'selectors' => array(
                     '{{WRAPPER}} .aux-icon-list-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                )
+                ),
+                'separator' => 'before'
             )
         );
 
         $this->add_responsive_control(
             'icon_margin',
             array(
-                'label'              => __( 'Icon Margin', 'auxin-elements' ),
+                'label'              => __( 'Margin', 'auxin-elements' ),
                 'type'               => Controls_Manager::DIMENSIONS,
                 'size_units'         => array( 'px', 'em' ),
                 'allowed_dimensions' => 'all',
                 'selectors'          => array(
                     '{{WRAPPER}} .aux-icon-list-icon' => 'margin:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                )
+            )
+        );
+
+        $this->add_responsive_control(
+            'icon_padding',
+            array(
+                'label'              => __( 'Padding', 'auxin-elements' ),
+                'type'               => Controls_Manager::DIMENSIONS,
+                'size_units'         => array( 'px', 'em' ),
+                'allowed_dimensions' => 'all',
+                'selectors'          => array(
+                    '{{WRAPPER}} .aux-icon-list-icon' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; line-height:0;'
                 )
             )
         );
@@ -1001,6 +1122,12 @@ class CustomList extends Widget_Base {
     protected function render() {
 
         $settings = $this->get_settings_for_display();
+
+        foreach ( $settings['list'] as $key => $list_item ) {
+
+            $settings['list'][$key]['icon'] =  ! empty( $list_item['aux_custom_list_icon']['value'] ) ? $list_item['aux_custom_list_icon']['value'] : ( ! empty( $list_item['icon'] ) ? $list_item['icon'] : '' ) ;
+
+        }
 
         $args     = array(
             'list'               => $settings['list'], // repeater items

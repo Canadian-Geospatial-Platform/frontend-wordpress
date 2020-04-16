@@ -66,6 +66,7 @@ class Edit_Render {
 			<div id="scu-edit-resources-css-tab" class="nav-tab" style="cursor: default; <?php echo((!$shortcode_ini['type']['resources_css']) ? 'display: none;' : '') ?>"><?php _e('CSS Files', 'ultimate-shortcodes-creator'); ?></div>
 			<div id="scu-edit-resources-js-tab" class="nav-tab" style="cursor: default; <?php echo((!$shortcode_ini['type']['resources_js']) ? 'display: none;' : '') ?>"><?php _e('JS Files', 'ultimate-shortcodes-creator'); ?></div>
 			<div id="scu-edit-resources-assets-tab" class="nav-tab" style="cursor: default; <?php echo((!$shortcode_ini['type']['resources_assets']) ? 'display: none;' : '') ?>"><?php _e('Other Resources', 'ultimate-shortcodes-creator'); ?></div>
+			<div id="scu-edit-head-or-footer-tab" class="nav-tab" style="cursor: default; <?php echo((!$shortcode_ini['type']['head_or_footer']) ? 'display: none;' : '') ?>"><?php _e('Head or Footer', 'ultimate-shortcodes-creator'); ?></div>
 		</h2>
 		
 		<div id="scu-edit-content" style="visibility: hidden; margin-top: 20px;">
@@ -76,6 +77,10 @@ class Edit_Render {
 						<tr>
 							<th scope="row"><?php _e('Enabled', 'ultimate-shortcodes-creator'); ?></th>									
 							<td><input type="checkbox" id="general_enabled" name="general_enabled" value="1" <?php echo(($shortcode_ini['config']['enabled']) ? 'checked' : '') ?>></td>
+						</tr>
+						<tr>
+							<th scope="row"><?php _e('Used in Theme', 'ultimate-shortcodes-creator'); ?></th>
+							<td><input type="checkbox" id="general_theme_use" name="general_theme_use" value="1" <?php echo(($shortcode_ini['config']['theme_use']) ? 'checked' : '') ?>></td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="general_author"><?php _e('Author', 'ultimate-shortcodes-creator'); ?></label></th>
@@ -124,6 +129,11 @@ class Edit_Render {
 										<input type="checkbox" name="general_type_resources_assets" id="general_type_resources_assets" value="1"  <?php echo(($shortcode_ini['type']['resources_assets']) ? 'checked' : '') ?>>
 										<?php _e('Other resources', 'ultimate-shortcodes-creator'); ?>
 									</label>
+									<br>
+									<label for="general_type_head_or_footer">
+										<input type="checkbox" name="general_type_head_or_footer" id="general_type_head_or_footer" value="1"  <?php echo(($shortcode_ini['type']['head_or_footer']) ? 'checked' : '') ?>>
+										<?php _e('Head and/or Footer', 'ultimate-shortcodes-creator'); ?>
+									</label>
 									<br>																		  
 								</fieldset> 
 							</td>
@@ -135,7 +145,7 @@ class Edit_Render {
 			
 			<div id="scu-edit-html-div" class="tab-div">
 				<p>HTML/PHP: <?php echo($shortcode)?></p>
-				<p><textarea id="code_editor_html" name="code-editor-html"><?php echo(file_get_contents(\SCU\PATH.'shortcodes/'.basename($shortcode).'/scu-html.php')); ?></textarea></p>
+				<p><textarea id="code_editor_html" name="code-editor-html"><?php echo(esc_textarea(file_get_contents(\SCU\PATH.'shortcodes/'.basename($shortcode).'/scu-html.php'))); ?></textarea></p>
 			</div>
 			<div id="scu-edit-css-div" class="tab-div">
 				<p>CSS: <?php echo($shortcode)?></p>
@@ -149,6 +159,15 @@ class Edit_Render {
 				<p>AJAX: <?php echo($shortcode)?></p>
 				<p><textarea id="code_editor_ajax" name="code-editor-ajax"><?php echo(file_get_contents(\SCU\PATH.'shortcodes/'.basename($shortcode).'/scu-ajax-handler.php')); ?></textarea></p>
 			</div>
+			<div id="scu-edit-head-or-footer-div" class="tab-div">
+				<h3><?php _e('Head Section', 'ultimate-shortcodes-creator');?></h3>				
+				<p><textarea id="code_editor_head" name="code-editor-head" style="width:98%;" rows="6" cols="57"><?php echo(esc_textarea(file_get_contents(\SCU\PATH.'shortcodes/'.basename($shortcode).'/scu-head.html'))); ?></textarea></p>
+				<p><?php _e('The script will be inserted after the tag: ', 'ultimate-shortcodes-creator') ?><code>&lt;head&gt;</code>.</p>
+				<hr>
+				<h3><?php _e('Footer Section', 'ultimate-shortcodes-creator');?></h3>				
+				<p><textarea id="code_editor_footer" name="code-editor-footer" style="width:98%;" rows="6" cols="57"><?php echo(esc_textarea(file_get_contents(\SCU\PATH.'shortcodes/'.basename($shortcode).'/scu-footer.html'))); ?></textarea></p>
+				<p><?php _e('The script will be inserted before the end of the tag: ', 'ultimate-shortcodes-creator') ?><code>&lt;/body&gt;</code>.</p>
+			</div>	
 			<p class="submit">
 				<?php submit_button( null, 'primary', 'submit', false ); ?>	
 			</p>			
@@ -228,7 +247,7 @@ class Edit_Render {
 					?>
 					</div>
 				</div>
-			</div>		
+			</div>			
 		</div>	
 		<?php	
 	}

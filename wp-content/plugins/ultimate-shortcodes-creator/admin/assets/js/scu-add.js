@@ -87,18 +87,21 @@
 			$(".scu-remote-li a").removeClass('current');
 			$(e.target).addClass('current');
 			switch(e.currentTarget.id) {
-				case 'plugin-install-all':					
-					var tab = 'all'
+				case 'plugin-install-simple':					
+					var tab = 'simple'
 					break;
-				case 'plugin-install-featured':
-					var tab = 'featured'
+				case 'plugin-install-easy':
+					var tab = 'easy'
 					break;
-				case 'plugin-install-popular':
-					var tab = 'popular'
+				case 'plugin-install-intermediate':
+					var tab = 'intermediate'
 					break;
-				case 'plugin-install-recommended':
-					var tab = 'recommended'
-					break;				
+				case 'plugin-install-advanced':
+					var tab = 'advanced'
+					break;
+				case 'plugin-install-expert':
+					var tab = 'expert'
+					break;			
 			}
 
 			var data = {
@@ -139,8 +142,9 @@
 						html += '<img src="'+item.url_img+'" class="plugin-icon">';
 						html += '</a></h3></div>';
 						html += '<div class="action-links">';
-						html += '<a href="'+item.url_download+'" class="install-now button">Install Now';
-						html += '</a></div>';
+						//html += '<a href="'+item.url_download+'" class="install-now button">Install Now</a>';
+						html += '<button data-urldownload="'+item.url_download+'" class="install-now button">Install Now</button>';
+						html += '</div>';
 						html += '<div class="desc column-description">';
 						html += '<p>'+item.excerpt;
 						html += '</p>';
@@ -153,10 +157,10 @@
 			});
 		});
 
-		$("#scu-remote-shortcodes").on("click", ".install-now", function(e) {
+		$("#scu-remote-shortcodes").on("click", ".install-now", function(e) {			
 			e.preventDefault();			
 			var data = {
-				url_shortcode: e.currentTarget.href,				
+				url_shortcode: e.currentTarget.getAttribute('data-urldownload'),				
 				action: 'scu_add_remote',
 				ajaxNonce: scu_ajax_add.ajaxNonce
 			};
@@ -167,7 +171,7 @@
 				data: data
 			})
 			.done(function(response) {
-				console.log(response);
+				//console.log(response);
 				if(!response.OK) {
 					var html ='<div id="scu-add-menu-notice" class="notice settings-error is-dismissible notice-error">';
 					html += '<p><strong>Error: '+response.error.message+'</strong></p>';
@@ -181,10 +185,12 @@
 					html += '<button type="button" class="notice-dismiss"><span class="screen-reader-text">';
 					html += 'Descartar este aviso.</span></button></div>';
 					$('#scu-add-menu-notices').append(html);
+					$(e.currentTarget).attr("disabled", true);
+					$(e.currentTarget).html('Installed');
 				}								
 			});			
 		});
 
-		$('#plugin-install-all a').trigger('click');
+		$('#plugin-install-simple a').trigger('click');
 	});
 })(jQuery);

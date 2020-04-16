@@ -16,7 +16,7 @@
  * Plugin Name:       Shortcodes Creator Ultimate
  * Plugin URI:        http://shortcodescreator.com
  * Description:       Create custom shortcodes with the option of make ajax calls and inject code.
- * Version:           1.9.2
+ * Version:           1.9.6
  * Author:            C&eacute;sar Morillas
  * Author URI:        http://shortcodescreator.com/contact/
  * License:           GPL-2.0+
@@ -31,6 +31,7 @@ namespace SCU;
 // Useful plugins for developement:
 // · https://wordpress.org/plugins/display-text-domains/
 // · https://wordpress.org/plugins/simply-show-hooks/
+// · https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/#naming-conventions
 
 // Using Chrome Logger por php debug: https://craig.is/writing/chrome-logger
 //require_once (plugin_dir_path( __FILE__ ). 'vendor/ChromePhp.php');	

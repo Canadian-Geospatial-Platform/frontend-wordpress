@@ -103,11 +103,10 @@ class Shopping_Cart extends Widget_Base {
         );
 
         $this->add_control(
-            'icon',
+            'aux_shopping_cart_icon',
             array(
                 'label'   => __( 'Icon', 'auxin-elements' ),
-                'type'    => 'aux-icon',
-                'default' => 'auxicon-shopping-bag-4'
+                'type'        => Controls_Manager::ICONS
             )
         );
 
@@ -573,6 +572,8 @@ class Shopping_Cart extends Widget_Base {
         $dropdown_class .= ' aux-modern-dropdown';
     }
 
+    $icon_value = ! empty( $settings['aux_shopping_cart_icon']['value'] ) ? $settings['aux_shopping_cart_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : 'auxicon-shopping-bag-4' ) ;
+
     echo '<div class="aux-cart-element-container">';
     echo auxin_wc_add_to_cart(
         array(
@@ -580,7 +581,7 @@ class Shopping_Cart extends Widget_Base {
             'dropdown_class' => $dropdown_class,
             'dropdown_skin' => $settings['cart_content_skin'],
             'action_on' => $settings['action'],
-            'icon'      => $settings['icon'],
+            'icon'      => $icon_value,
             'size'      => $settings['image_size'],
             'width'     => $settings['image_custom_dimension']['width'],
             'height'    => $settings['image_custom_dimension']['height'],

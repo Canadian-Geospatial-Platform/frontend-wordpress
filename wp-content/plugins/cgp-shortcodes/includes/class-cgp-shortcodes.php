@@ -181,10 +181,11 @@ class Cgp_Shortcodes
 
         // Declare new shortcodes under here
         $this->loader->add_shortcode($this->plugin_name . '-hello-world', $plugin_public, 'hello_world_shortcode');
-        $this->loader->add_shortcode($this->plugin_name . '-full-search', $plugin_public, 'full_search_shortcode');
         $this->loader->add_shortcode($this->plugin_name . '-simple-search', $plugin_public, 'simple_search_shortcode');
         $this->loader->add_shortcode($this->plugin_name . '-full-search-results', $plugin_public, 'full_search_results_shortcode');
         $this->loader->add_shortcode($this->plugin_name . '-redirect-search', $plugin_public, 'redirect_search_shortcode');
+        $this->loader->add_shortcode($this->plugin_name . '-single-search-result', $plugin_public, 'single_search_result_shortcode');
+
     }
 
     /**

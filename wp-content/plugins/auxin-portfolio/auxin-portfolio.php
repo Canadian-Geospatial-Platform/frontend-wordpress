@@ -12,7 +12,7 @@
  * Plugin Name:       Phlox Portfolio
  * Plugin URI:        http://phlox.pro/
  * Description:       Showcase your projects beautifully in Phlox theme
- * Version:           1.9.2
+ * Version:           1.9.4
  * Author:            averta
  * Author URI:        http://averta.net
  * License:           GPL2

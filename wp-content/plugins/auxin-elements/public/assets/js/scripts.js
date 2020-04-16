@@ -53,7 +53,7 @@
         $(document).on( 'click', '.aux-ajax-add-to-cart', function(e) {
             var productType  = $(this).data("product-type");
 
-            if ( productType !== 'simple') {
+            if ( productType !== 'simple' || typeof auxin_cart_options === 'undefined' ) {
                 return;
             }
 

@@ -124,6 +124,17 @@ class Button extends Widget_Base {
             )
         );
 
+        $this->add_control(
+            'open_video_in_lightbox',
+            array(
+                'label'        => __('Open Video in Lightbox','auxin-elements' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => __( 'On', 'auxin-elements' ),
+                'label_off'    => __( 'Off', 'auxin-elements' ),
+                'return_value' => 'yes',
+                'default'      => ''
+            )
+        );
 
         $this->end_controls_section();
 
@@ -349,10 +360,10 @@ class Button extends Widget_Base {
         );
 
         $this->add_control(
-            'icon',
+            'aux_button_icon',
             array(
                 'label'        => __('Icon for button','auxin-elements' ),
-                'type'         => 'aux-icon'
+                'type'         => Controls_Manager::ICONS,
             )
         );
 
@@ -573,20 +584,23 @@ class Button extends Widget_Base {
 
     $settings   = $this->get_settings_for_display();
 
+    $icon_value = ! empty( $settings['aux_button_icon']['value'] ) ? $settings['aux_button_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : '' ) ;
+    
     $btn_target = $settings['link']['is_external'] ? '_blank' : '_self';
 
     $args       = array(
-        'label'      => $settings['label'],
-        'size'       => $settings['size'],
-        'border'     => $settings['border'],
-        'style'      => $settings['style'],
-        'uppercase'  => $settings['uppercase'],
-        'icon'       => $settings['icon'],
-        'icon_align' => $settings['icon_align'],
-        'color_name' => $settings['color_name'],
-        'link'       => $settings['link']['url'],
-        'nofollow'   => $settings['link']['nofollow'],
-        'target'     => $btn_target
+        'label'                  => $settings['label'],
+        'size'                   => $settings['size'],
+        'border'                 => $settings['border'],
+        'style'                  => $settings['style'],
+        'uppercase'              => $settings['uppercase'],
+        'icon'                   => $icon_value,
+        'icon_align'             => $settings['icon_align'],
+        'color_name'             => $settings['color_name'],
+        'link'                   => $settings['link']['url'],
+        'nofollow'               => $settings['link']['nofollow'],
+        'target'                 => $btn_target,
+        'open_video_in_lightbox' => $settings['open_video_in_lightbox'],
     );
 
     // get the shortcode base blog page

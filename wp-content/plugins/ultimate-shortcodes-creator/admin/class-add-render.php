@@ -57,37 +57,45 @@ class Add_Render {
 		<div id="scu-add-tab-remote">
 			<div class="wp-filter">
 				<ul class="filter-links">
-					<li id="plugin-install-all" class="scu-remote-li"><a href="<?php 
+					<li id="plugin-install-simple" class="scu-remote-li"><a href="<?php 
 						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
-						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'all' ) );
+						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'simple' ) );
 						echo($url_redirect);						
-						echo (!isset($_GET['tab']) || $_GET['tab'] == 'all') ? '" class="current" ' : '" ';
+						echo (!isset($_GET['tab']) || $_GET['tab'] == 'simple') ? '" class="current" ' : '" ';
 						?>
-						aria-current="page">All</a>
-					</li>				
-					<li id="plugin-install-featured" class="scu-remote-li"><a href="<?php 
-						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
-						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'featured' ) );
-						echo($url_redirect);						
-						echo (isset($_GET['tab']) && $_GET['tab'] == 'featured') ? '" class="current" ' : '" ';
-						?>
-						aria-current="page">Featured</a>
+						aria-current="page">Simple</a>
 					</li>
-					<li id="plugin-install-popular" class="scu-remote-li"><a href="<?php 
+					<li id="plugin-install-easy" class="scu-remote-li"><a href="<?php 
 						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
-						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'popular' ) );
+						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'easy' ) );
 						echo($url_redirect);						
-						echo (isset($_GET['tab']) && $_GET['tab'] == 'popular') ? '" class="current" ' : '" ';
+						echo (!isset($_GET['tab']) && $_GET['tab'] == 'easy') ? '" class="current" ' : '" ';
 						?>
-						aria-current="page">Popular</a>
+						aria-current="page">Easy</a>
+					</li>			
+					<li id="plugin-install-intermediate" class="scu-remote-li"><a href="<?php 
+						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
+						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'intermediate' ) );
+						echo($url_redirect);						
+						echo (isset($_GET['tab']) && $_GET['tab'] == 'intermediate') ? '" class="current" ' : '" ';
+						?>
+						aria-current="page">Intermediate</a>
 					</li>
-					<li id="plugin-install-recommended" class="scu-remote-li"><a href="<?php 
+					<li id="plugin-install-advanced" class="scu-remote-li"><a href="<?php 
 						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
-						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'recommended' ) );
+						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'advanced' ) );
 						echo($url_redirect);						
-						echo (isset($_GET['tab']) && $_GET['tab'] == 'recommended') ? '" class="current" ' : '" ';
+						echo (isset($_GET['tab']) && $_GET['tab'] == 'advanced') ? '" class="current" ' : '" ';
 						?>
-						aria-current="page">Recommended</a>
+						aria-current="page">Advanced</a>
+					</li>
+					<li id="plugin-install-expert" class="scu-remote-li"><a href="<?php 
+						$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'tab' ) );
+						$url_redirect = esc_url_raw( add_query_arg( 'tab', 'expert' ) );
+						echo($url_redirect);						
+						echo (isset($_GET['tab']) && $_GET['tab'] == 'expert') ? '" class="current" ' : '" ';
+						?>
+						aria-current="page">Expert</a>
 					</li>
 					
 				</ul>

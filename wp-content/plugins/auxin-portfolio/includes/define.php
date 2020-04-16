@@ -15,7 +15,7 @@ if( ! defined( 'THEME_NAME' ) ){
 
 
 
-define( 'AUXPFO_VERSION'        , '1.9.2' );
+define( 'AUXPFO_VERSION'        , '1.9.4' );
 
 define( 'AUXPFO_SLUG'           , 'auxin-portfolio' );
 

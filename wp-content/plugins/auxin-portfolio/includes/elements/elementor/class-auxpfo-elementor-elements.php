@@ -138,6 +138,9 @@ final class Elements {
         // Register Elementor for portfolio post type
         add_action( 'auxin_plugin_updated',  array( $this, 'aux_add_portfolio_support' ) );
 
+        // let Elementor pro override single portfolio template
+        add_filter( 'elementor/theme/need_override_location', array( $this, 'aux_elementor_pro_override_templates' ) );
+
         // Register Widget Styles
         // add_action( 'elementor/frontend/after_enqueue_styles'   , array( $this, 'widget_styles' ) );
 
@@ -243,6 +246,17 @@ final class Elements {
         // Elementor Custom Style
     }
 
+    /**
+     * Override portfolio templates
+     *
+     * Let Elementor Pro override portfolio templates
+     *
+     * @access public
+     */
+    public function aux_elementor_pro_override_templates( $need_override_location ) {
+        
+        return ( ( ( is_single() && get_post_type() == 'portfolio' ) || is_post_type_archive( 'portfolio' ) ) || $need_override_location ) ;
+    }
 }
 
 Elements::instance();

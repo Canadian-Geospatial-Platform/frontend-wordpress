@@ -32,6 +32,7 @@ class Edit_Save_Shortcode {
 		$iniFile->update(['general' => ['author' =>  sanitize_text_field($_POST['general_author'])]]);
 		$iniFile->update(['general' => ['description' => sanitize_text_field($_POST['general_description'])]]);
 		$iniFile->update(['config' => ['enabled' => (isset($_POST['general_enabled']) ? 1 : 0)]]);
+		$iniFile->update(['config' => ['theme_use' => (isset($_POST['general_theme_use']) ? 1 : 0)]]);
 		$iniFile->update(['type' => ['html' => (isset($_POST['general_type_html']) ? 1 : 0)]]);
 		$iniFile->update(['type' => ['css' => (isset($_POST['general_type_css']) ? 1 : 0)]]);
 		$iniFile->update(['type' => ['js' => (isset($_POST['general_type_js']) ? 1 : 0)]]);
@@ -39,6 +40,7 @@ class Edit_Save_Shortcode {
 		$iniFile->update(['type' => ['resources_css' => (isset($_POST['general_type_resources_css']) ? 1 : 0)]]);
 		$iniFile->update(['type' => ['resources_js' => (isset($_POST['general_type_resources_js']) ? 1 : 0)]]);
 		$iniFile->update(['type' => ['resources_assets' => (isset($_POST['general_type_resources_assets']) ? 1 : 0)]]);
+		$iniFile->update(['type' => ['head_or_footer' => (isset($_POST['general_type_head_or_footer']) ? 1 : 0)]]);
 		$iniFile->write();
 
 		// Create scu-html.php, scu-style.css, scu-js.js, scu-script.js and scu-ajax-handler.php filea
@@ -51,6 +53,10 @@ class Edit_Save_Shortcode {
 		self::createScript($shortcode);
 		$file_path = $shortcode_path.'/scu-ajax-handler.php';
 		$wp_filesystem->put_contents($file_path, wp_unslash($_POST['code-editor-ajax']), FS_CHMOD_FILE);
+		$file_path = $shortcode_path.'/scu-head.html';
+		$wp_filesystem->put_contents($file_path, wp_unslash($_POST['code-editor-head']), FS_CHMOD_FILE);
+		$file_path = $shortcode_path.'/scu-footer.html';
+		$wp_filesystem->put_contents($file_path, wp_unslash($_POST['code-editor-footer']), FS_CHMOD_FILE);
 		$result = 'saved';
 		$shortcodeRedirect = sanitize_text_field($_GET['shortcode']);
 
