@@ -248,8 +248,8 @@ HTML;
         <h5>Time Period </h5>
         <p class="card-text">
         HTML;
-$ret .= "From: " . $result->Items[0]->properties->datestart . "<br> To: " . $result->Items[0]->properties->dateend;
-$ret .= "</p></div></div>";
+        $ret .= "From: " . $result->Items[0]->properties->datestart . "<br> To: " . $result->Items[0]->properties->dateend;
+        $ret .= "</p></div></div>";
         $ret .= '<h3>Resources </h3>';
         foreach ($result->Items[0]->properties->resources as $resource) {
             $ret .= <<<HTML

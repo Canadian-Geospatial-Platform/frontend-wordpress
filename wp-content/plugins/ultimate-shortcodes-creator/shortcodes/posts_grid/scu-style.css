@@ -1,0 +1,138 @@
+/**
+ * @author   
+ * @category CSS
+ */
+/*
+
+.grid-item--width2 { width: 50%; }
+*/
+.info {
+    display: inline-block;
+    text-decoration: none!important;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000;
+	font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+	opacity: 0;
+	transition: all 0.2s ease-in-out;
+	text-align:center;
+}
+p.info:hover {
+    box-shadow: 0 0 5px #000;
+}
+.grid-item:hover p.info {
+    opacity: 1;
+	margin-top:40%;
+	transition: 1s;
+    /* transform: translateY(100%); */
+}
+.grid-item:hover .title2 {
+	margin-top: -50%;
+	transform: translateY(100%);
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.grid {
+	display: flex;
+	flex-flow: row wrap;
+	position: relative;
+	width: 90%;
+	clear:both;
+}
+
+.grid-item:before {
+    content: "";
+    display: block;
+    position: absolute;
+	background: rgba(0, 0, 0, .4);
+    top: 0;
+    left: 0;
+	width: 100%;
+	height: 100%;
+}
+.grid-item2 a:hover:before {
+	background: rgba(255, 0, 0, .5);
+}
+.mask {
+	position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+	width:100%;
+	height:100%;
+	opacity: 0;
+    background-color: rgba(219,127,8, 0.7); 
+    transition: all 0.4s ease-in-out;
+	text-align: center;
+}
+.grid-item:hover:before {
+	opacity: 0;
+	transition: 0.5s;
+}
+.grid-item:hover .mask {
+	opacity: 1;
+	transition: 0.5s;
+}
+.grid-item:hover {
+	transition: all 1s;
+}
+
+.grid-item {
+	width: 30.33%; 
+	margin: 1.5%;
+    position: relative;
+}
+
+.grid-item img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+.title2 {
+	color: white;
+	text-shadow: 1px 1px 3px white;
+	position: absolute;
+	bottom: 30%;
+	left: 3%;
+	/* font-size: 2vw; */
+}
+.author2 {
+	color: white;
+	position: absolute;
+	bottom: 10%;
+	left: 3%;
+	z-index: 1;
+}
+.author2 span {
+	color: #aaa;
+	font-weight: lighter;
+}
+
+.scu_grid_header {
+	border-bottom: 2px solid #222222;
+	margin-bottom: 10px;
+	width: 90%
+}
+
+.scu_grid_header > h4 {
+	float: left;
+	background-color: #222222;
+	color: #fff;
+	font-size: .9em;
+	padding: 5px 12px;
+	line-height: 16px;
+}
+.scu_grid_header_menu {
+	text-align: right;
+}
+.scu_grid_header_menu > a {
+	color: black;
+}
+.scu_grid_header_menu > button {
+	background-color: transparent;
+}
