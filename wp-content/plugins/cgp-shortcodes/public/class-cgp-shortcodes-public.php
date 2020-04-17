@@ -154,9 +154,9 @@ HTML;
 HTML;
     }
 
-    public function redirect_search_shortcode()
+    public function redirect_search_shortcode($atts = [])
     {
-        return <<<HTML
+        $ret .= <<<HTML
 		<div class="row">
 			<div class="col">
 				<form id="cgp-shortcodes-redirect-search">
@@ -169,8 +169,11 @@ HTML;
 					</div>
 				</form>
 			</div>
-		</div>
+        </div>
 HTML;
+        $ret .= "<script>var cgpShortcodesRedirectSearchPath = \"";
+        $ret .= esc_url($atts['redirect_path']) . "\"</script>";
+        return $ret;
     }
 
     public function full_search_results_shortcode()
@@ -211,7 +214,7 @@ HTML;
 
         if (!$processed && $ERROR_MESSAGE != '') {
             echo $ERROR_MESSAGE;
-        }
+        } else {
         $ret .= <<<HTML
             <div id="single-search-result" class="container-fluid">
                 <div class="row">
@@ -276,8 +279,7 @@ HTML;
          </div>
         HTML;
 
-
-
         return $ret;
+        }
     }
 }

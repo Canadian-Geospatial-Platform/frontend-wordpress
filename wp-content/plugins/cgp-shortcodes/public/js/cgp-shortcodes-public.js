@@ -30,8 +30,13 @@
    */
 
   $(window).ready(function () {
-    const apiUrl =
-      "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo";
+    // var cgpShorcodesGlobalVars;
+
+    const cgpShortcodesEnv = {
+      apiUrl:
+        "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo",
+      singleSearchResultPath: "/about-cgp",
+    };
 
     let searchParams = {
       searchTerms: [],
@@ -84,7 +89,7 @@
     });
 
     function updateResults() {
-      let url = new URL(apiUrl);
+      let url = new URL(cgpShortcodesEnv.apiUrl);
 
       let params = {
         regex: [],
@@ -140,7 +145,9 @@
         data.properties.topiccategory +
         "</p>" +
         '<div class="text-center">' +
-        '<form action="/about-cgp" method="post">' +
+        '<form action="' +
+        cgpShortcodesEnv.singleSearchResultPath +
+        '" method="post">' +
         '<input type="hidden" name="id" value="' +
         data.id +
         '" />' +
@@ -156,7 +163,7 @@
         "cgpShortcodesSearchTerms",
         document.querySelector("#cgp-shortcodes-redirect-search input").value
       );
-      window.location.href = "/use/content/data/";
+      window.location.pathname = cgpShortcodesRedirectSearchPath;
     });
   });
 })(jQuery);
