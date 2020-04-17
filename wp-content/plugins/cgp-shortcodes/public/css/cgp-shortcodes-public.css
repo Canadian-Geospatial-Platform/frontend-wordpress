@@ -9,6 +9,10 @@
   z-index: 1;
 }
 
+#cgp-shortcodes-search-pills {
+  user-select: none;
+}
+
 .form-control.cgp-shortcodes-form-control {
   text-decoration: none;
   max-width: 100%;

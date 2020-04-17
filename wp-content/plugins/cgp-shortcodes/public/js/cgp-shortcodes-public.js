@@ -58,6 +58,19 @@
       updateResults();
     }
 
+    /**
+     * Removes search term
+     **/
+    $("#cgp-shortcodes-search-pills").on("click", "a", function (event) {
+      searchParams.searchTerms = searchParams.searchTerms.filter(function (
+        value
+      ) {
+        return value != event.srcElement.innerText;
+      });
+      event.currentTarget.remove();
+      updateResults();
+    });
+
     function renderPill(searchTerm) {
       document.getElementById("cgp-shortcodes-search-pills").innerHTML +=
         '<a href="#" class="badge badge-pill badge-primary"><span class="cgp-search-term">' +
@@ -66,22 +79,6 @@
         "</a>";
       document.getElementById("cgp-filter-search-term").value = "";
     }
-
-    /**
-     * Removes search term
-     **/
-    $("#cgp-shortcodes-search-pills").click(function (event) {
-      searchParams.searchTerms = searchParams.searchTerms.filter(function (
-        value
-      ) {
-        return (
-          value !=
-          event.currentTarget.firstElementChild.firstElementChild.innerHTML
-        );
-      });
-      event.currentTarget.firstElementChild.remove();
-      updateResults();
-    });
 
     $("#cgp-shortcodes-simple-search").submit(function (event) {
       event.preventDefault();
