@@ -108,7 +108,7 @@ class Cgp_Shortcodes_Public
 
         wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js', [], '2.5.17');
 
-        wp_enqueue_script('latest-posts', plugin_dir_url( __FILE__ ) . 'js/latest-posts.js', [], '1.0', true);
+        wp_enqueue_script('cgp-shortcodes-search-page', plugin_dir_url( __FILE__ ) . 'js/cgp-shortcodes-search-page.js', [], '1.0', true);
 
     }
 
@@ -166,7 +166,7 @@ HTML;
 				<h5 class="card-title">Filters</h5>
 				<div class="row">
 					<div class="col">
-                        <div id="mount"></div>
+                        <div id="cgp-search-page"></div>
 					</div>
 				</div>
 			</div>
