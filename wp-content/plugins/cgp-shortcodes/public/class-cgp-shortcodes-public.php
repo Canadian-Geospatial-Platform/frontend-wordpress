@@ -106,6 +106,10 @@ class Cgp_Shortcodes_Public
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/cgp-shortcodes-public.js', array('jquery'), $this->version, false);
 
+        wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js', [], '2.5.17');
+
+        wp_enqueue_script('latest-posts', plugin_dir_url( __FILE__ ) . 'js/latest-posts.js', [], '1.0', true);
+
     }
 
     public function hello_world_shortcode()
@@ -148,6 +152,22 @@ HTML;
 					</div>
 				</div>
 				<div id="cgp-shortcodes-search-pills">
+				</div>
+			</div>
+		</div>
+HTML;
+    }
+
+    public function search_filters_shortcode()
+    {
+        return <<<HTML
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Filters</h5>
+				<div class="row">
+					<div class="col">
+                        <div id="mount"></div>
+					</div>
 				</div>
 			</div>
 		</div>
