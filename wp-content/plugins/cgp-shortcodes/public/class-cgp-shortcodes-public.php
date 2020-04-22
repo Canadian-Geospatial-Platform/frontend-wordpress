@@ -131,39 +131,21 @@ class Cgp_Shortcodes_Public
 HTML;
     }
 
-    public function simple_search_shortcode()
+    public function full_search_shortcode()
     {
-        return <<<HTML
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Search</h5>
-				<div class="row">
-					<div class="col">
-						<form id="cgp-shortcodes-simple-search">
-							<div class="input-group mb-3">
-								<input id="cgp-filter-search-term" type="text"
-									class="form-control cgp-shortcodes-form-control" placeholder="Search datasets"
-									aria-label="Topic Category" aria-describedby="cgp-filter-search-term">
-								<div class="input-group-append">
-									<button class="btn btn-primary cgp-shortcodes-search-btn">+</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div id="cgp-shortcodes-search-pills">
-				</div>
-			</div>
-		</div>
-HTML;
-    }
-
-    public function search_filters_shortcode()
-    {
-        return <<<HTML
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Filters</h5>
+        if (isset($_GET['keyword'])) {
+            $ret .= '<script>sessionStorage.setItem("cgpShortcodesSearchTermsKeyword", "';
+            $ret .= $_GET['keyword'];
+            $ret .= '");</script>';
+        }
+        if (isset($_GET['theme'])) {
+            $ret .= '<script>sessionStorage.setItem("cgpShortcodesSearchTermsTheme", "';
+            $ret .= $_GET['theme'];
+            $ret .= '");</script>';
+        }
+        $ret .= 
+        $ret .= <<<HTML
+		<div>
 				<div class="row">
 					<div class="col">
                         <div id="cgp-search-page"></div>
@@ -172,6 +154,7 @@ HTML;
 			</div>
 		</div>
 HTML;
+        return $ret;
     }
 
     public function redirect_search_shortcode($atts = [])
@@ -196,22 +179,7 @@ HTML;
         return $ret;
     }
 
-    public function full_search_results_shortcode()
-    {
-        return <<<HTML
-		<div id="metadata-search-result" class="container-fluid">
-			<div class="row">
-				<div class="col">
-					<div class="card">
-						<h3>Your results will be displayed here.</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-HTML;
-	}
-
-	public function single_search_result_shortcode()
+    public function single_search_result_shortcode()
     {
         $processed = FALSE;
         $ERROR_MESSAGE = '';
