@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       cgp-shortcodes
  * Plugin URI:        http://www.gcgeo.com/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       A collection of shortcodes for displaying data from the cgp project.
  * Version:           1.0.0
  * Author:            gcgeo
  * Author URI:        http://www.gcgeo.com/

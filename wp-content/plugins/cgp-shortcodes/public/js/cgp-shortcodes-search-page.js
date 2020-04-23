@@ -39,13 +39,66 @@
     },
   });
 
+  var cgpOptionsFilter = Vue.component("cgp-options-filter", {
+    template:
+      '<div class="form-check">\
+      <input type="checkbox" class="form-check-input" v-model="checked" v-on:change="stateChange">\
+      <label class="form-check-label" for="checkbox">{{ title }}</label></div>\
+      </div>',
+    props: {
+      title: { required: true, type: String },
+    },
+    data: function () {
+      return {
+        checked: false,
+      };
+    },
+    methods: {
+      stateChange: function () {
+        this.$emit("stateChange", this.title, this.checked, this.index);
+      },
+    },
+  });
+
+  var cgpOptionsFilters = Vue.component("cgp-options-filters", {
+    template:
+      '<div>\
+      <h4>{{ filterData.title }}</h4>\
+      <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :fieldName="fieldName" :title="option"/>\
+      </div>',
+    props: {
+      fieldName: { required: true, type: String },
+      filterData: { required: true, type: Object },
+    },
+    data: function () {
+      return {};
+    },
+    methods: {
+      updateFilter: function (title, checked, index) {
+        if (checked) {
+          this.$emit("addFilter", this.fieldName, title);
+        } else {
+          this.$emit(
+            "removeFilter",
+            this.fieldName,
+            this.filterData.values.indexOf(this.fieldName)
+          );
+        }
+      },
+    },
+  });
+
   var cgpFilters = Vue.component("cgp-filters", {
     template:
       '<div class="card">\
       <h2>Filters</h2>\
-      <cgp-text-filter v-for="( value, keyname ) in query" v-bind:key="keyname" \
+      <div v-for="( value, keyname ) in query" v-bind:key="keyname">\
+      <cgp-text-filter v-if="value.type==\'text\'" \
       v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
-    </div>',
+      <cgp-options-filters v-if="value.type==\'multipleselect\'"\
+      v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
+      </div>\
+      </div>',
     props: { query: { required: true, type: Object } },
     data: function () {
       return {};
@@ -113,6 +166,8 @@
       {{ item.properties.topiccategory }}\
       <h5 class="pt-3">Country </h5>\
       {{ item.properties.country }}\
+      <h5 class="pt-3">Tags </h5>\
+      {{ item.tags }}\
       <cgp-result-resources :resources="item.properties.resources"/>\
       </div>',
     props: { item: { required: true, type: Object } },
@@ -121,8 +176,8 @@
   var cgpResults = Vue.component("cgp-results", {
     template:
       '<div>\
-      <div class="card" v-if="!items"><h3>Your results will be displayed here...</h3></div>\
-      <div v-else><cgp-result v-for="item in items" :item="item"/></div>\
+      <div class="card" v-if="items.length == 0"><h3>Your results will be displayed here...</h3></div>\
+      <div v-else><cgp-result v-for="item in items" v-bind:key="item.id" :item="item"/></div>\
       </div>',
     props: { items: { required: true, type: Array } },
   });
@@ -154,10 +209,18 @@
           keywords: {
             title: "Keywords",
             values: [],
+            type: "text",
           },
           themes: {
             title: "Themes",
             values: [],
+            type: "text",
+          },
+          tags: {
+            title: "Tags",
+            values: [],
+            options: ["air", "water", "Lorem Ipsum"],
+            type: "multipleselect",
           },
         },
         result: { Items: [] },
@@ -165,17 +228,20 @@
     },
     methods: {
       addFilter: function (filter, value) {
-        filter = filter;
-        this.query[filter].values.push(value);
-        this.fetchData();
+        if (this.query[filter].values.indexOf(value) === -1) {
+          this.query[filter].values.push(value);
+          this.fetchData();
+        }
+        console.log(this.query);
       },
       removeFilter: function (filter, index) {
         this.query[filter].values.splice(index, 1);
+        console.log(this.query);
         this.fetchData();
       },
       fetchData: function () {
         let url = new URL(
-          "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo"
+          "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo"
         );
 
         let params = {
@@ -185,9 +251,11 @@
             "properties.description",
             "properties.topiccategory",
             "properties.resources",
+            "tags",
           ],
           regex: this.query.keywords.values,
           themes: this.query.themes.values,
+          tags: this.query.tags.values,
         };
 
         Object.keys(params).forEach((key) =>
@@ -198,6 +266,7 @@
           .then((response) => {
             response.json().then((data) => {
               this.result = data;
+              console.log(data);
             });
           })
           .catch((error) => console.log(`Failed because of: ${error}`));
