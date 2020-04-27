@@ -13,7 +13,7 @@
     template:
       '<div>\
       <h4>{{ filterData.title }}</h4>\
-      <input v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
+      <input style="max-width:100%;" v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
       :placeholder="fieldName" class="m-2">\
       <div class="d-flex justify-content-start flex-wrap">\
       <cgp-pill class="p-1" v-for="(filter, index) in filterData.values" v-bind:key="index"  \
@@ -116,6 +116,113 @@
     },
   });
 
+  var cgpResultField = Vue.component("cgp-result-field", {
+    template:
+      '<div class="col-md-3">\
+      <h5>{{ title }}</h5>\
+      <div v-for="value in values" class="row"><div class="col">{{ value }}</div></div>\
+      </div>',
+    props: {
+      title: { required: true, type: String },
+      values: { required: true, type: Array },
+    },
+  });
+
+  var cgpResultFieldGroup = Vue.component("cgp-result-field-group", {
+    template:
+      '<div><h3>{{ title }}</h3><div class="row">\
+      <cgp-result-field v-for="(field, index) in fields" :key="index" :title="field.title" :values="field.values" />\
+      </div></div>',
+    props: {
+      title: { required: true, type: String },
+      fields: { required: true, type: Array },
+    },
+  });
+
+  var cgpResultFieldGroupView = Vue.component("cgp-result-field-group-view", {
+    template:
+      '<div><cgp-result-field-group :title="metadata.title" :fields="metadata.fields" />\
+      <cgp-result-field-group :title="contact.title" :fields="contact.fields" /></div>',
+    props: { item: { required: true, type: Object } },
+    computed: {
+      metadata: function () {
+        return {
+          title: "Metadata",
+          fields: [
+            { title: "Language", values: [this.item.properties.language] },
+            {
+              title: "Published",
+              values: [this.item.properties.published],
+            },
+            {
+              title: "Duration",
+              values: [
+                "From: " + this.item.properties.datestart,
+                "To: " + this.item.properties.dateend,
+              ],
+            },
+            {
+              title: "Type",
+              values: [this.item.properties.type],
+            },
+            {
+              title: "Use Limits",
+              values: [this.item.properties.uselimits.en],
+            },
+            {
+              title: "Maintenance",
+              values: [this.item.properties.maintenance],
+            },
+            {
+              title: "Status",
+              values: [this.item.properties.status],
+            },
+          ],
+        };
+      },
+      contact: function () {
+        return {
+          title: "Contact",
+          fields: [
+            {
+              title: "Organisation",
+              values: [this.item.properties.organisationname.en],
+            },
+            {
+              title: "City",
+              values: [this.item.properties.city],
+            },
+            {
+              title: "Province/Territory",
+              values: [this.item.properties.pt.en],
+            },
+            {
+              title: "Postal Code",
+              values: [this.item.properties.postalcode],
+            },
+
+            {
+              title: "Phone",
+              values: ["From: " + this.item.properties.phone],
+            },
+            {
+              title: "Individual Name",
+              values: [this.item.properties.individualname],
+            },
+            {
+              title: "Email",
+              values: [this.item.properties.email],
+            },
+            {
+              title: "Address",
+              values: [this.item.properties.address],
+            },
+          ],
+        };
+      },
+    },
+  });
+
   var cgpResultResource = Vue.component("cgp-result-resource", {
     template:
       '<div class="card p-4">\
@@ -168,6 +275,7 @@
       {{ item.properties.country }}\
       <h5 class="pt-3">Tags </h5>\
       {{ item.tags }}\
+      <cgp-result-field-group-view :item="item" />\
       <cgp-result-resources :resources="item.properties.resources"/>\
       </div>',
     props: { item: { required: true, type: Object } },
@@ -176,10 +284,177 @@
   var cgpResults = Vue.component("cgp-results", {
     template:
       '<div>\
-      <div class="card" v-if="items.length == 0"><h3>Your results will be displayed here...</h3></div>\
+      <div class="card" v-if="items.length == 0"><cgp-result :item="result"/><h3>Your results will be displayed here...</h3>\
+      </div>\
       <div v-else><cgp-result v-for="item in items" v-bind:key="item.id" :item="item"/></div>\
       </div>',
     props: { items: { required: true, type: Array } },
+    data() {
+      return {
+        result: {
+          id: "7da452cc-0701-465d-b26d-d501f4f6e22a",
+          properties: {
+            topiccategory: "biota",
+            country: "CanadaCanada (le)",
+            organisationname: {
+              en: "Government of Canada; Fisheries and Oceans Canada",
+              fr: "Gouvernement du Canada; P�ches et Oc�ans Canada",
+            },
+            address:
+              "Pacific Biological Station,3190 Hammond Bay RoadLa station biologique du Pacifique, 3190, chemin Hammond BayNanaimoBritish ColumbiaColombie-BritanniqueV9T 6N7CanadaCanada (le)leslie.barton@dfo-mpo.gc.caleslie.barton@dfo-mpo.gc.ca",
+            pt: {
+              en: "British Columbia",
+              fr: "Colombie-Britannique",
+            },
+            city: "Nanaimo",
+            description: {
+              en:
+                "Survey for Physella wright - the hotwater physa, at Liard River Hotsprings Provincial Park, August 2006.",
+              fr:
+                "Relev� pour le Physella wrighti - de la physe d?eau chaude, � Liard River Hotsprings Provincial Park, Ao�t 2006.",
+            },
+            resources: [
+              {
+                format: "HTTPS",
+                name: {
+                  en: "Data Dictionary",
+                  fr: "Dictionnaire de donn�es",
+                },
+                description: {
+                  en: "Supporting Document;HTML;eng,fra",
+                  fr: "Document de soutien;HTML;eng,fra",
+                },
+                url:
+                  "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Data_Dictionary_Physa_bi.htm",
+              },
+              {
+                format: "HTTPS",
+                name: {
+                  en: "P.wrighti survey data",
+                  fr:
+                    "Donn�es du relev� sur la physe d?eau chaude (Physella wrighti)",
+                },
+                description: {
+                  en: "Dataset;CSV;eng",
+                  fr: "Donn�es;CSV;eng",
+                },
+                url:
+                  "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Pwrighti_survey_data_2006.csv",
+              },
+              {
+                format: "HTTPS",
+                name: {
+                  en: "P.wrighti survey data",
+                  fr:
+                    "Donn�es du relev� sur la physe d?eau chaude (Physella wrighti)",
+                },
+                description: {
+                  en: "Dataset;CSV;fra",
+                  fr: "Donn�es;CSV;fra",
+                },
+                url:
+                  "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Pwrighti_survey_data_2006_FR.csv",
+              },
+              {
+                format: "HTTP",
+                name: {
+                  en: "Species at Risk Public Library - Physella wrighti",
+                  fr: "Physella wrighti - Registre public des esp�ces en p�ril",
+                },
+                description: {
+                  en: "Supporting Document;HTML;eng",
+                  fr: "Document de soutien;HTML;eng",
+                },
+                url:
+                  "http://www.sararegistry.gc.ca/species/speciesDetails_e.cfm?sid=548",
+              },
+              {
+                format: "HTTP",
+                name: {
+                  en:
+                    "Recovery Potential Assessment for Hotwater Physa (Physella wrighti)",
+                  fr:
+                    "�valuation du potentiel de r�tablissement de la physe d?eau chaude",
+                },
+                description: {
+                  en: "Supporting Document;PDF;eng",
+                  fr: "Document de soutien;PDF;eng",
+                },
+                url: "http://www.dfo-mpo.gc.ca/Library/339207.pdf",
+              },
+              {
+                format: "HTTP",
+                name: {
+                  en: "Species at Risk Public Registry - Physella wrighti",
+                  fr: "Physella wrighti - Registre public des esp�ces en p�ril",
+                },
+                description: {
+                  en: "Supporting Document;HTML;fra",
+                  fr: "Document de soutien;HTML;fra",
+                },
+                url:
+                  "http://www.sararegistry.gc.ca/species/speciesDetails_f.cfm?sid=548",
+              },
+              {
+                format: "ESRI REST: Map Service",
+                name: {
+                  en: "Survey for Physella Wright",
+                  fr: "Relev� pour le Physella wrighti",
+                },
+                description: {
+                  en: "Web Service;ESRI REST;eng",
+                  fr: "Service Web;ESRI REST;eng",
+                },
+                url:
+                  "https://gisp.dfo-mpo.gc.ca/arcgis/rest/services/FGP/Survey_for_Physella_Wrighti/MapServer/0",
+              },
+              {
+                format: "ESRI REST: Map Service",
+                name: {
+                  en: "Survey for Physella Wright",
+                  fr: "Relev� pour le Physella wrighti",
+                },
+                description: {
+                  en: "Web Service;ESRI REST;fra",
+                  fr: "Service Web;ESRI REST;fra",
+                },
+                url:
+                  "https://gisp.dfo-mpo.gc.ca/arcgis/rest/services/FGP/Survey_for_Physella_Wrighti/MapServer/1",
+              },
+            ],
+            language: "eng; CAN",
+            dateend: "2006-12-20",
+            published: "null",
+            title: {
+              en:
+                "Survey for Physella wrighti - the hotwater physa, at Liard River Hotsprings Provincial Park, August 2006.",
+              fr:
+                "Relev� pour le Physella wrighti - de la physe d?eau chaude, � Liard River Hotsprings Provincial Park, Ao�t 2006.",
+            },
+            type: "dataset; jeuDonn�es",
+            datestart: "2006-01-03",
+            phone: "250-756-7306250-756-7306",
+            uselimits: {
+              en:
+                "Open Government Licence - Canada (http://open.canada.ca/en/open-government-licence-canada)",
+              fr:
+                "Licence du gouvernement ouvert - Canada (http://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada)",
+            },
+            postalcode: "V9T 6N7",
+            individualname: "Leslie Barton",
+            id: "7da452cc-0701-465d-b26d-d501f4f6e22a",
+            keyword: {
+              en: "PacificPacifique",
+              fr: "PacifiquePacifique",
+            },
+            maintenance: "notPlanned; nonPlanifi�",
+            email: "leslie.barton@dfo-mpo.gc.caleslie.barton@dfo-mpo.gc.ca",
+            status: "completed; compl�t�",
+          },
+          tags: ["water", "air"],
+        },
+      };
+    },
   });
 
   var vm = new Vue({
@@ -245,14 +520,7 @@
         );
 
         let params = {
-          select: [
-            "properties.title",
-            "properties.organisationname",
-            "properties.description",
-            "properties.topiccategory",
-            "properties.resources",
-            "tags",
-          ],
+          select: ["properties", "tags"],
           regex: this.query.keywords.values,
           themes: this.query.themes.values,
           tags: this.query.tags.values,
