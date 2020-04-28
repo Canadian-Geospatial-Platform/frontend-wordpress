@@ -118,7 +118,7 @@
 
   var cgpResultField = Vue.component("cgp-result-field", {
     template:
-      '<div class="col-md-3">\
+      '<div class="col-md-4">\
       <h5>{{ title }}</h5>\
       <div v-for="value in values" class="row"><div class="col">{{ value }}</div></div>\
       </div>',
@@ -130,25 +130,27 @@
 
   var cgpResultFieldGroup = Vue.component("cgp-result-field-group", {
     template:
-      '<div><h3>{{ title }}</h3><div class="row">\
+      '<div class="row">\
       <cgp-result-field v-for="(field, index) in fields" :key="index" :title="field.title" :values="field.values" />\
-      </div></div>',
+      </div>',
     props: {
-      title: { required: true, type: String },
       fields: { required: true, type: Array },
     },
   });
 
   var cgpResultFieldGroupView = Vue.component("cgp-result-field-group-view", {
     template:
-      '<div><cgp-result-field-group :title="metadata.title" :fields="metadata.fields" />\
-      <cgp-result-field-group :title="contact.title" :fields="contact.fields" /></div>',
-    props: { item: { required: true, type: Object } },
+      '<div><cgp-result-field-group v-if="display == \'metadata\'" :fields="metadata.fields" />\
+      <cgp-result-field-group v-if="display == \'contact\'" :fields="contact.fields" /></div>',
+    props: {
+      item: { required: true, type: Object },
+      display: { required: true, type: String },
+    },
     computed: {
       metadata: function () {
         return {
-          title: "Metadata",
           fields: [
+            { title: "Id", values: [this.item.properties.id] },
             { title: "Language", values: [this.item.properties.language] },
             {
               title: "Published",
@@ -182,7 +184,6 @@
       },
       contact: function () {
         return {
-          title: "Contact",
           fields: [
             {
               title: "Organisation",
@@ -237,27 +238,32 @@
 
   var cgpResultResources = Vue.component("cgp-result-resources", {
     template:
-      '<div><div><h3 style="display:inline">Resources</h3>\
-      <a href="#" \
-      v-on:click="hidden=!hidden">( {{ toggleKeyWord(hidden) }} )</a></div>\
+      '<div>\
       <div v-for="resource in resources" >\
       <div class="row"><div class="col">\
-      <cgp-result-resource v-if="!hidden" :resource="resource"/>\
+      <cgp-result-resource :resource="resource"/>\
       </div></div></div></div>',
     props: { resources: { required: true, type: Array } },
-    data: function () {
+  });
+
+  var cgpResult = Vue.component("cgp-result-data-selector", {
+    template:
+      '<div class="card"><div class="btn-group" role="group" aria-label="Additional info">\
+    <button type="button" class="btn btn-primary" :class="{active: display == \'metadata\'}" \
+    v-on:click="display = \'metadata\';">Metadata</button>\
+    <button type="button" class="btn btn-primary" :class="{active: display == \'resources\'}" \
+    v-on:click="display = \'resources\';">Resources</button>\
+    <button type="button" class="btn btn-primary" :class="{active: display == \'contact\'}" \
+    v-on:click="display = \'contact\';">Contact</button>\
+    </div><cgp-result-resources v-if="display == \'resources\'" :resources="item.properties.resources" /> \
+    <cgp-result-field-group-view v-if="display == \'metadata\' || display == \'contact\'" \
+    :item="item" :display="display" />\
+    </div>',
+    props: { item: { required: true, type: Object } },
+    data() {
       return {
-        hidden: true,
+        display: "metadata",
       };
-    },
-    methods: {
-      toggleKeyWord(hidden) {
-        if (hidden) {
-          return "show";
-        } else {
-          return "hide";
-        }
-      },
     },
   });
 
@@ -269,14 +275,11 @@
       </h4></div>\
       <h5 class="pt-3">Description </h5>\
       {{ item.properties.description.en }}\
-      <h5 class="pt-3">Theme </h5>\
+      <h5 class="pt-3">Themes </h5>\
       {{ item.properties.topiccategory }}\
-      <h5 class="pt-3">Country </h5>\
-      {{ item.properties.country }}\
       <h5 class="pt-3">Tags </h5>\
-      {{ item.tags }}\
-      <cgp-result-field-group-view :item="item" />\
-      <cgp-result-resources :resources="item.properties.resources"/>\
+      <p><span v-for="(tag, index) in item.tags" :key="index"><span v-if="index > 0">, </span>{{ tag }}</span></p>\
+      <cgp-result-data-selector :item="item" />\
       </div>',
     props: { item: { required: true, type: Object } },
   });
