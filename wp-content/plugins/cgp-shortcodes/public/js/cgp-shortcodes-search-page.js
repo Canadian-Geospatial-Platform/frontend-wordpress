@@ -311,12 +311,12 @@
       <div class="card-header mb-3 row"><div class="col"><h4 class="card-title">\
       <p>{{ item.properties.title.en }}</p>\
       </h4></div><div class="col-1"><button @click="expand">\
-      <svg v-show="isExpanded" class="bi bi-arrows-angle-expand" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <svg v-show="!expandedView" class="bi bi-arrows-angle-expand" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M1.5 10.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M6.354 9.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0zm8.5-8.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M10.036 1.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 11-1 0V2h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>\
       </svg>\
-      <svg v-show="!isExpanded" class="bi bi-arrows-angle-contract" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <svg v-show="expandedView" class="bi bi-arrows-angle-contract" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M9.5 2.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.708l4.5-4.5a.5.5 0 01.708 0zm-7.5 7.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M2.036 9.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V10h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>\
@@ -331,16 +331,14 @@
     props: {
       item: { required: true, type: Object },
       index: { required: true, type: Number },
+      expandedView: { required: true, type: Boolean },
     },
     data: function () {
-      return {
-        isExpanded: true,
-      };
+      return {};
     },
     methods: {
       expand: function () {
         this.$emit("expand", this.index);
-        this.isExpanded = !this.isExpanded;
       },
     },
   });
@@ -350,14 +348,21 @@
       '<div>\
       <div class="card" v-if="items.length == 0"><h3>Your results will be displayed here...</h3>\
       </div>\
-      <div v-else><cgp-result v-for="(item, index) in items" v-bind:key="index" v-show="focusedIndex == -1 || focusedIndex == index"  v-on:expand="expand"  :item="item" :index="index" />\
+      <div v-else><cgp-result v-for="(item, index) in items" v-bind:key="index" \
+      v-show="focusedIndex == -1 || focusedIndex == index"  v-on:expand="expand"  :item="item" :index="index" :expandedView="expandedView" />\
       </div>\
       </div>',
-    props: { items: { required: true, type: Array } },
+    props: {
+      items: { required: true, type: Array },
+      expandedView: { required: true, type: Boolean },
+    },
     data() {
       return {
         focusedIndex: -1,
       };
+    },
+    mounted: function () {
+      if (this.expandedView) this.focusedIndex = 0;
     },
     methods: {
       expand: function (index) {
@@ -372,26 +377,36 @@
     el: document.querySelector("#cgp-search-page"),
     template:
       '<div class="row">\
-      <cgp-filters  v-show="showFilters" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
-      <div class="col"><cgp-results :items="result.Items" v-on:expand="showFilters = !showFilters"/></div>\
+      <cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
+      <div class="col"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
       </div>',
     mounted: function () {
-      if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword"))
+      if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")) {
         this.addFilter(
           "keywords",
           sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")
         );
-      if (sessionStorage.getItem("cgpShortcodesSearchTermsTheme"))
+        sessionStorage.removeItem("cgpShortcodesSearchTermsKeyword");
+      }
+      if (sessionStorage.getItem("cgpShortcodesSearchTermsTheme")) {
         this.addFilter(
           "themes",
           sessionStorage.getItem("cgpShortcodesSearchTermsTheme")
         );
-      sessionStorage.removeItem("cgpShortcodesSearchTermsKeyword");
-      sessionStorage.removeItem("cgpShortcodesSearchTermsTheme");
+        sessionStorage.removeItem("cgpShortcodesSearchTermsTheme");
+      }
+      if (sessionStorage.getItem("cgpShortcodesSearchTermsId")) {
+        this.addFilter(
+          "id",
+          sessionStorage.getItem("cgpShortcodesSearchTermsId")
+        );
+        this.expandedView = true;
+        sessionStorage.removeItem("cgpShortcodesSearchTermsId");
+      }
     },
     data: function () {
       return {
-        showFilters: true,
+        expandedView: false,
         query: {
           id: {
             title: "Id",
@@ -426,172 +441,7 @@
           },
         },
         result: {
-          Items: [
-            {
-              id: "7da452cc-0701-465d-b26d-d501f4f6e22a",
-              properties: {
-                topiccategory: "biota",
-                country: "CanadaCanada (le)",
-                organisationname: {
-                  en: "Government of Canada; Fisheries and Oceans Canada",
-                  fr: "Gouvernement du Canada; P�ches et Oc�ans Canada",
-                },
-                address:
-                  "Pacific Biological Station,3190 Hammond Bay RoadLa station biologique du Pacifique, 3190, chemin Hammond BayNanaimoBritish ColumbiaColombie-BritanniqueV9T 6N7CanadaCanada (le)leslie.barton@dfo-mpo.gc.caleslie.barton@dfo-mpo.gc.ca",
-                pt: {
-                  en: "British Columbia",
-                  fr: "Colombie-Britannique",
-                },
-                city: "Nanaimo",
-                description: {
-                  en:
-                    "Survey for Physella wright - the hotwater physa, at Liard River Hotsprings Provincial Park, August 2006.",
-                  fr:
-                    "Relev� pour le Physella wrighti - de la physe d?eau chaude, � Liard River Hotsprings Provincial Park, Ao�t 2006.",
-                },
-                resources: [
-                  {
-                    format: "HTTPS",
-                    name: {
-                      en: "Data Dictionary",
-                      fr: "Dictionnaire de donn�es",
-                    },
-                    description: {
-                      en: "Supporting Document;HTML;eng,fra",
-                      fr: "Document de soutien;HTML;eng,fra",
-                    },
-                    url:
-                      "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Data_Dictionary_Physa_bi.htm",
-                  },
-                  {
-                    format: "HTTPS",
-                    name: {
-                      en: "P.wrighti survey data",
-                      fr:
-                        "Donn�es du relev� sur la physe d?eau chaude (Physella wrighti)",
-                    },
-                    description: {
-                      en: "Dataset;CSV;eng",
-                      fr: "Donn�es;CSV;eng",
-                    },
-                    url:
-                      "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Pwrighti_survey_data_2006.csv",
-                  },
-                  {
-                    format: "HTTPS",
-                    name: {
-                      en: "P.wrighti survey data",
-                      fr:
-                        "Donn�es du relev� sur la physe d?eau chaude (Physella wrighti)",
-                    },
-                    description: {
-                      en: "Dataset;CSV;fra",
-                      fr: "Donn�es;CSV;fra",
-                    },
-                    url:
-                      "https://pacgis01.dfo-mpo.gc.ca/FGPPublic/Survey_for_Physella_Wrighti/Pwrighti_survey_data_2006_FR.csv",
-                  },
-                  {
-                    format: "HTTP",
-                    name: {
-                      en: "Species at Risk Public Library - Physella wrighti",
-                      fr:
-                        "Physella wrighti - Registre public des esp�ces en p�ril",
-                    },
-                    description: {
-                      en: "Supporting Document;HTML;eng",
-                      fr: "Document de soutien;HTML;eng",
-                    },
-                    url:
-                      "http://www.sararegistry.gc.ca/species/speciesDetails_e.cfm?sid=548",
-                  },
-                  {
-                    format: "HTTP",
-                    name: {
-                      en:
-                        "Recovery Potential Assessment for Hotwater Physa (Physella wrighti)",
-                      fr:
-                        "�valuation du potentiel de r�tablissement de la physe d?eau chaude",
-                    },
-                    description: {
-                      en: "Supporting Document;PDF;eng",
-                      fr: "Document de soutien;PDF;eng",
-                    },
-                    url: "http://www.dfo-mpo.gc.ca/Library/339207.pdf",
-                  },
-                  {
-                    format: "HTTP",
-                    name: {
-                      en: "Species at Risk Public Registry - Physella wrighti",
-                      fr:
-                        "Physella wrighti - Registre public des esp�ces en p�ril",
-                    },
-                    description: {
-                      en: "Supporting Document;HTML;fra",
-                      fr: "Document de soutien;HTML;fra",
-                    },
-                    url:
-                      "http://www.sararegistry.gc.ca/species/speciesDetails_f.cfm?sid=548",
-                  },
-                  {
-                    format: "ESRI REST: Map Service",
-                    name: {
-                      en: "Survey for Physella Wright",
-                      fr: "Relev� pour le Physella wrighti",
-                    },
-                    description: {
-                      en: "Web Service;ESRI REST;eng",
-                      fr: "Service Web;ESRI REST;eng",
-                    },
-                    url:
-                      "https://gisp.dfo-mpo.gc.ca/arcgis/rest/services/FGP/Survey_for_Physella_Wrighti/MapServer/0",
-                  },
-                  {
-                    format: "ESRI REST: Map Service",
-                    name: {
-                      en: "Survey for Physella Wright",
-                      fr: "Relev� pour le Physella wrighti",
-                    },
-                    description: {
-                      en: "Web Service;ESRI REST;fra",
-                      fr: "Service Web;ESRI REST;fra",
-                    },
-                    url:
-                      "https://gisp.dfo-mpo.gc.ca/arcgis/rest/services/FGP/Survey_for_Physella_Wrighti/MapServer/1",
-                  },
-                ],
-                language: "eng; CAN",
-                dateend: "2006-12-20",
-                published: "null",
-                title: {
-                  en:
-                    "Survey for Physella wrighti - the hotwater physa, at Liard River Hotsprings Provincial Park, August 2006.",
-                  fr:
-                    "Relev� pour le Physella wrighti - de la physe d?eau chaude, � Liard River Hotsprings Provincial Park, Ao�t 2006.",
-                },
-                type: "dataset; jeuDonn�es",
-                datestart: "2006-01-03",
-                phone: "250-756-7306250-756-7306",
-                uselimits: {
-                  en:
-                    "Open Government Licence - Canada (http://open.canada.ca/en/open-government-licence-canada)",
-                  fr:
-                    "Licence du gouvernement ouvert - Canada (http://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada)",
-                },
-                postalcode: "V9T 6N7",
-                individualname: "Leslie Barton",
-                id: "7da452cc-0701-465d-b26d-d501f4f6e22a",
-                keyword: {
-                  en: "PacificPacifique",
-                  fr: "PacifiquePacifique",
-                },
-                maintenance: "notPlanned; nonPlanifi�",
-                email: "leslie.barton@dfo-mpo.gc.caleslie.barton@dfo-mpo.gc.ca",
-                status: "completed; compl�t�",
-              },
-              tags: ["water", "air"],
-            },
-          ],
+          Items: [],
         },
       };
     },
@@ -610,7 +460,7 @@
       },
       fetchData: function () {
         let url = new URL(
-          "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo"
+          "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo"
         );
 
         let params = {
