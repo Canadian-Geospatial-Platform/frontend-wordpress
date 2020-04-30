@@ -3,9 +3,9 @@
     template:
       '<button v-on:click="$emit(\'removeFilter\')" class="p-2 badge badge-pill \
       badge-primary text-break">\
-    {{ fieldName }}\
-    <span aria-hidden="true"> &times;</span>\
-    </button>',
+      {{ fieldName }}\
+      <span aria-hidden="true"> &times;</span>\
+      </button>',
     props: { fieldName: String },
   });
 
@@ -41,10 +41,10 @@
 
   var cgpOptionsFilter = Vue.component("cgp-options-filter", {
     template:
-      '<div class="form-check">\
-      <input type="checkbox" class="form-check-input" v-model="checked" v-on:change="stateChange">\
-      <label class="form-check-label" for="checkbox">{{ title }}</label></div>\
-      </div>',
+      '<label class="btn btn-primary" :class="{ active: checked }">\
+      <input type="checkbox" class="form-check-input" v-model="checked"  v-on:change="stateChange">\
+      {{ title }}</div>\
+      </label>',
     props: {
       title: { required: true, type: String },
     },
@@ -55,7 +55,8 @@
     },
     methods: {
       stateChange: function () {
-        this.$emit("stateChange", this.title, this.checked, this.index);
+        console.log(this.checked);
+        this.$emit("stateChange", this.title, this.checked);
       },
     },
   });
@@ -64,7 +65,9 @@
     template:
       '<div>\
       <h4>{{ filterData.title }}</h4>\
-      <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :fieldName="fieldName" :title="option"/>\
+      <div class="btn-group-vertical btn-group-toggle" style="width: 100%;">\
+      <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :title="option"/>\
+      </div>\
       </div>',
     props: {
       fieldName: { required: true, type: String },
@@ -74,14 +77,14 @@
       return {};
     },
     methods: {
-      updateFilter: function (title, checked, index) {
+      updateFilter: function (title, checked) {
         if (checked) {
           this.$emit("addFilter", this.fieldName, title);
         } else {
           this.$emit(
             "removeFilter",
             this.fieldName,
-            this.filterData.values.indexOf(this.fieldName)
+            this.filterData.values.indexOf(title)
           );
         }
       },
@@ -90,18 +93,29 @@
 
   var cgpFilters = Vue.component("cgp-filters", {
     template:
-      '<div class="card">\
-      <h2>Filters</h2>\
+      '<div><div class="card" v-if="hidden == false">\
+      <div class="row"><div class="col"><h2>Filters</h2></div><button type="button" class="btn btn-light btn-sm rounded-circle"><div class="col text-right" @click="hidden = true">\
+      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>\
+      </svg>\
+      </div></button></div>\
       <div v-for="( value, keyname ) in query" v-bind:key="keyname">\
       <cgp-text-filter v-if="value.type==\'text\'" \
       v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
       <cgp-options-filters v-if="value.type==\'multipleselect\'"\
       v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
-      </div>\
-      </div>',
+      </div></div><div v-if="hidden == true" @click="hidden = false" class="card rounded-circle">\
+      <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>\
+      </svg>\
+      </div></div></div>',
     props: { query: { required: true, type: Object } },
     data: function () {
-      return {};
+      return {
+        hidden: false,
+      };
     },
     methods: {
       addFilter: function (filter, value) {
@@ -153,8 +167,12 @@
             { title: "Id", values: [this.item.properties.id] },
             { title: "Language", values: [this.item.properties.language] },
             {
-              title: "Published",
-              values: [this.item.properties.published],
+              title: "Topic Category",
+              values: [this.item.properties.topiccategory],
+            },
+            {
+              title: "Tags",
+              values: this.item.tags,
             },
             {
               title: "Duration",
@@ -170,6 +188,10 @@
             {
               title: "Use Limits",
               values: [this.item.properties.uselimits.en],
+            },
+            {
+              title: "Published",
+              values: [this.item.properties.published],
             },
             {
               title: "Maintenance",
@@ -246,23 +268,39 @@
     props: { resources: { required: true, type: Array } },
   });
 
-  var cgpResult = Vue.component("cgp-result-data-selector", {
+  var cgpResultExtendedView = Vue.component("cgp-result-extended-view", {
     template:
-      '<div class="card"><div class="btn-group" role="group" aria-label="Additional info">\
+      '<div><cgp-result-resources v-show="display == \'resources\'" :resources="item.properties.resources" /> \
+    <cgp-result-field-group-view v-show="display == \'metadata\' || display == \'contact\'" \
+    :item="item" :display="display" />\
+    </div>',
+    props: {
+      item: { required: true, type: Object },
+      display: { type: String },
+    },
+    data() {
+      return {};
+    },
+  });
+
+  var cgpResultDataSelector = Vue.component("cgp-result-data-selector", {
+    template:
+      '<div><div v-if="show" class="card"><div class="btn-group" role="group" aria-label="Additional info" style="width: 100%">\
     <button type="button" class="btn btn-primary" :class="{active: display == \'metadata\'}" \
     v-on:click="display = \'metadata\';">Metadata</button>\
     <button type="button" class="btn btn-primary" :class="{active: display == \'resources\'}" \
     v-on:click="display = \'resources\';">Resources</button>\
     <button type="button" class="btn btn-primary" :class="{active: display == \'contact\'}" \
     v-on:click="display = \'contact\';">Contact</button>\
-    </div><cgp-result-resources v-if="display == \'resources\'" :resources="item.properties.resources" /> \
-    <cgp-result-field-group-view v-if="display == \'metadata\' || display == \'contact\'" \
-    :item="item" :display="display" />\
+    </div><cgp-result-extended-view :display="display" :item="item" /> \
+    </div><div v-else class="text-center mt-4"><button type="button" class="btn btn-primary btn-block" \
+    v-on:click="show = true">Show More</button></div>\
     </div>',
     props: { item: { required: true, type: Object } },
     data() {
       return {
         display: "metadata",
+        show: false,
       };
     },
   });
@@ -270,18 +308,41 @@
   var cgpResult = Vue.component("cgp-result", {
     template:
       '<div class="card p-4">\
-      <div class="card-header mb-3"><h4 class="card-title">\
+      <div class="card-header mb-3 row"><div class="col"><h4 class="card-title">\
       <p>{{ item.properties.title.en }}</p>\
-      </h4></div>\
+      </h4></div><div class="col-1"><button @click="expand">\
+      <svg v-show="isExpanded" class="bi bi-arrows-angle-expand" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <path fill-rule="evenodd" d="M1.5 10.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M6.354 9.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0zm8.5-8.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M10.036 1.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 11-1 0V2h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>\
+      </svg>\
+      <svg v-show="!isExpanded" class="bi bi-arrows-angle-contract" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <path fill-rule="evenodd" d="M9.5 2.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.708l4.5-4.5a.5.5 0 01.708 0zm-7.5 7.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
+      <path fill-rule="evenodd" d="M2.036 9.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V10h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>\
+      </svg>\
+      </button></div></div>\
       <h5 class="pt-3">Description </h5>\
       {{ item.properties.description.en }}\
-      <h5 class="pt-3">Themes </h5>\
+      <h5 class="pt-3">Theme </h5>\
       {{ item.properties.topiccategory }}\
-      <h5 class="pt-3">Tags </h5>\
-      <p><span v-for="(tag, index) in item.tags" :key="index"><span v-if="index > 0">, </span>{{ tag }}</span></p>\
       <cgp-result-data-selector :item="item" />\
       </div>',
-    props: { item: { required: true, type: Object } },
+    props: {
+      item: { required: true, type: Object },
+      index: { required: true, type: Number },
+    },
+    data: function () {
+      return {
+        isExpanded: true,
+      };
+    },
+    methods: {
+      expand: function () {
+        this.$emit("expand", this.index);
+        this.isExpanded = !this.isExpanded;
+      },
+    },
   });
 
   var cgpResults = Vue.component("cgp-results", {
@@ -289,20 +350,30 @@
       '<div>\
       <div class="card" v-if="items.length == 0"><h3>Your results will be displayed here...</h3>\
       </div>\
-      <div v-else><cgp-result v-for="item in items" v-bind:key="item.id" :item="item"/></div>\
+      <div v-else><cgp-result v-for="(item, index) in items" v-bind:key="index" v-show="focusedIndex == -1 || focusedIndex == index"  v-on:expand="expand"  :item="item" :index="index" />\
+      </div>\
       </div>',
     props: { items: { required: true, type: Array } },
     data() {
-      return {};
+      return {
+        focusedIndex: -1,
+      };
+    },
+    methods: {
+      expand: function (index) {
+        if (this.focusedIndex == -1) this.focusedIndex = index;
+        else this.focusedIndex = -1;
+        this.$emit("expand");
+      },
     },
   });
 
   var vm = new Vue({
     el: document.querySelector("#cgp-search-page"),
     template:
-      '<div class="row"><div class="col-md-4">\
-      <cgp-filters v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
-      </div><div class="col-md-8"><cgp-results :items="result.Items"/></div>\
+      '<div class="row">\
+      <cgp-filters  v-show="showFilters" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
+      <div class="col"><cgp-results :items="result.Items" v-on:expand="showFilters = !showFilters"/></div>\
       </div>',
     mounted: function () {
       if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword"))
@@ -320,21 +391,37 @@
     },
     data: function () {
       return {
+        showFilters: true,
         query: {
-          keywords: {
-            title: "Keywords",
+          id: {
+            title: "Id",
             values: [],
             type: "text",
           },
-          themes: {
-            title: "Themes",
+          keywords: {
+            title: "Keywords",
             values: [],
             type: "text",
           },
           tags: {
             title: "Tags",
             values: [],
-            options: ["air", "water", "Lorem Ipsum"],
+            type: "text",
+          },
+          themes: {
+            title: "Themes",
+            values: [],
+            options: [
+              "Administration",
+              "Economy",
+              "Emergency",
+              "Environment",
+              "Imagery",
+              "Infrastructure",
+              "Legal",
+              "Science",
+              "Society",
+            ],
             type: "multipleselect",
           },
         },
@@ -523,11 +610,12 @@
       },
       fetchData: function () {
         let url = new URL(
-          "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo"
+          "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo"
         );
 
         let params = {
           select: ["properties", "tags"],
+          id: this.query.id.values,
           regex: this.query.keywords.values,
           themes: this.query.themes.values,
           tags: this.query.tags.values,
