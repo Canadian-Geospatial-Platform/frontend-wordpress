@@ -132,7 +132,7 @@
 
   var cgpResultField = Vue.component("cgp-result-field", {
     template:
-      '<div class="col-md-4">\
+      '<div>\
       <h5>{{ title }}</h5>\
       <div v-for="value in values" class="row"><div class="col">{{ value }}</div></div>\
       </div>',
@@ -310,7 +310,7 @@
       '<div class="card p-4">\
       <div class="card-header mb-3 row"><div class="col"><h4 class="card-title">\
       <p>{{ item.properties.title.en }}</p>\
-      </h4></div><div class="col-1"><button @click="expand">\
+      </h4></div><div class="col-1"><button  class="btn btn-sm" @click="expand">\
       <svg v-show="!expandedView" class="bi bi-arrows-angle-expand" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M1.5 10.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M6.354 9.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0zm8.5-8.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
@@ -377,8 +377,8 @@
     el: document.querySelector("#cgp-search-page"),
     template:
       '<div class="row">\
-      <cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
-      <div class="col"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
+      <div class="col-12 col-lg-5 col-xl-4"><cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/></div>\
+      <div class="col-12 col-lg-7 col-xl-8"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
       </div>',
     mounted: function () {
       if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")) {
