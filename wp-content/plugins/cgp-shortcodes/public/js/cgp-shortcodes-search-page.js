@@ -12,7 +12,7 @@
   var cgpTextFilter = Vue.component("cgp-text-filter", {
     template:
       '<div>\
-      <h4>{{ filterData.title }}</h4>\
+      <h5>{{ filterData.title }}</h5>\
       <input style="max-width:100%;" v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
       :placeholder="fieldName" class="m-2">\
       <div class="d-flex justify-content-start flex-wrap">\
@@ -63,7 +63,7 @@
   var cgpOptionsFilters = Vue.component("cgp-options-filters", {
     template:
       '<div>\
-      <h4>{{ filterData.title }}</h4>\
+      <h5>{{ filterData.title }}</h5>\
       <div class="btn-group-vertical btn-group-toggle" style="width: 100%;">\
       <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :title="option"/>\
       </div>\
@@ -93,23 +93,23 @@
   var cgpFilters = Vue.component("cgp-filters", {
     template:
       '<div><div class="card" v-if="hidden == false">\
-      <div class="row"><div class="col"><h2>Filters</h2></div><button type="button" class="btn btn-light btn-sm rounded-circle"><div class="col text-right" @click="hidden = true">\
-      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      <div class="row"><div class="col"><h3>Filters</h3></div><button type="button" class="btn btn-light btn-md btn-circle" @click="hidden = true">\
+      <svg class="bi bi-x" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>\
       </svg>\
-      </div></button></div>\
+      </button></div>\
       <div v-for="( value, keyname ) in query" v-bind:key="keyname">\
       <cgp-text-filter v-if="value.type==\'text\'" \
       v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
       <cgp-options-filters v-if="value.type==\'multipleselect\'"\
       v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :fieldName="keyname" :filterData="value"/>\
-      </div></div><div v-if="hidden == true" @click="hidden = false" class="card rounded-circle">\
-      <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+      </div></div><div v-if="hidden == true" class="card"><button  @click="hidden = false" class="btn btn-light btn-md btn-circle">\
+      <svg class="bi bi-search" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>\
       <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>\
       </svg>\
-      </div></div></div>',
+      </button></div></div></div>',
     props: { query: { required: true, type: Object } },
     data: function () {
       return {
