@@ -131,7 +131,7 @@
 
   var cgpResultField = Vue.component("cgp-result-field", {
     template:
-      '<div style="padding: 1.5rem">\
+      '<div class="col-md-4">\
       <h5>{{ title }}</h5>\
       <div v-for="value in values" class="row"><div class="col">{{ value }}</div></div>\
       </div>',
