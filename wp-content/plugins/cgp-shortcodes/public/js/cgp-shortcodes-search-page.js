@@ -55,7 +55,6 @@
     },
     methods: {
       stateChange: function () {
-        console.log(this.checked);
         this.$emit("stateChange", this.title, this.checked);
       },
     },
@@ -346,14 +345,17 @@
   var cgpResults = Vue.component("cgp-results", {
     template:
       '<div>\
-      <div class="card" v-if="items.length == 0"><h3>Your results will be displayed here...</h3>\
-      </div>\
-      <div v-else><cgp-result v-for="(item, index) in items" v-bind:key="index" \
+      <div class="card" v-if="items == null"><h3>Your results will be displayed here...</h3></div>\
+      <div class="card" v-if="items != null && items.length == 0"><h3>The search has returned no result...</h3></div>\
+      <div v-else><cgp-result v-if="items != null && items.length > 0" v-for="(item, index) in items" v-bind:key="index" \
       v-show="focusedIndex == -1 || focusedIndex == index"  v-on:expand="expand"  :item="item" :index="index" :expandedView="expandedView" />\
       </div>\
       </div>',
     props: {
-      items: { required: true, type: Array },
+      items: {
+        required: true,
+        validator: (prop) => prop === null || Array.isArray(prop),
+      },
       expandedView: { required: true, type: Boolean },
     },
     data() {
@@ -441,7 +443,7 @@
           },
         },
         result: {
-          Items: [],
+          Items: null,
         },
       };
     },
@@ -451,11 +453,9 @@
           this.query[filter].values.push(value);
           this.fetchData();
         }
-        console.log(this.query);
       },
       removeFilter: function (filter, index) {
         this.query[filter].values.splice(index, 1);
-        console.log(this.query);
         this.fetchData();
       },
       fetchData: function () {
@@ -470,26 +470,28 @@
           themes: this.query.themes.values,
           tags: this.query.tags.values,
         };
-	
-	if(params.id[0] || params.regex[0] || params.themes[0] || 
-          params.tags[0]) {
 
-        Object.keys(params).forEach((key) =>
-          url.searchParams.append(key, JSON.stringify(params[key]))
-        );
+        if (
+          params.id[0] ||
+          params.regex[0] ||
+          params.themes[0] ||
+          params.tags[0]
+        ) {
+          Object.keys(params).forEach((key) =>
+            url.searchParams.append(key, JSON.stringify(params[key]))
+          );
 
-        fetch(url)
-          .then((response) => {
-            response.json().then((data) => {
-              this.result = data;
-              console.log(data);
-            });
-          })
-          .catch((error) => console.log(`Failed because of: ${error}`));
-      } else {
-        this.result.Items = [];
-      }
-      }
+          fetch(url)
+            .then((response) => {
+              response.json().then((data) => {
+                this.result = data;
+              });
+            })
+            .catch((error) => console.log(`Failed because of: ${error}`));
+        } else {
+          this.result.Items = null;
+        }
+      },
     },
   });
 })();
