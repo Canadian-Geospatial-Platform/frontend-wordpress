@@ -470,6 +470,9 @@
           themes: this.query.themes.values,
           tags: this.query.tags.values,
         };
+	
+	if(params.id[0] || params.regex[0] || params.themes[0] || 
+          params.tags[0]) {
 
         Object.keys(params).forEach((key) =>
           url.searchParams.append(key, JSON.stringify(params[key]))
@@ -483,7 +486,10 @@
             });
           })
           .catch((error) => console.log(`Failed because of: ${error}`));
-      },
+      } else {
+        this.result.Items = [];
+      }
+      }
     },
   });
 })();
