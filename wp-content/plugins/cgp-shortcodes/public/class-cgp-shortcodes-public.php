@@ -150,14 +150,7 @@ HTML;
         }
         $ret .= 
         $ret .= <<<HTML
-		<div>
-				<div class="row">
-					<div class="col">
                         <div id="cgp-search-page"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 HTML;
         return $ret;
     }

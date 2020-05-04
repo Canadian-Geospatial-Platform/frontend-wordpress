@@ -376,10 +376,10 @@
   var vm = new Vue({
     el: document.querySelector("#cgp-search-page"),
     template:
-      '<div class="row">\
-      <div class="col-12 col-lg-5 col-xl-4"><cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/></div>\
-      <div class="col-12 col-lg-7 col-xl-8"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
-      </div>',
+      '<div class="container"><div class="row">\
+      <div class="col-12 col-lg-4"><cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/></div>\
+      <div class="col"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
+      </div></div>',
     mounted: function () {
       if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")) {
         this.addFilter(
