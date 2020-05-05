@@ -92,7 +92,7 @@
 
   var cgpFilters = Vue.component("cgp-filters", {
     template:
-      '<div :class="{ \'col-lg-4\': !hidden, \'col-md-2\': hidden }" class="col-12"><div class="card" v-if="hidden == false">\
+      '<div :class="{ \'col-lg-3\': !hidden, \'col-md-2\': hidden }" class="col-12"><div class="card" v-if="hidden == false">\
       <div class="row"><div class="col"><h3>Filters</h3></div><button type="button" class="btn btn-light btn-md btn-circle" @click="hidden = true">\
       <svg class="bi bi-x" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>\
@@ -143,7 +143,7 @@
 
   var cgpResultFieldGroup = Vue.component("cgp-result-field-group", {
     template:
-      '<div class="row">\
+      '<div class="row" style="font-size: 95%">\
       <cgp-result-field v-for="(field, index) in fields" :key="index" :title="field.title" :values="field.values" />\
       </div>',
     props: {
