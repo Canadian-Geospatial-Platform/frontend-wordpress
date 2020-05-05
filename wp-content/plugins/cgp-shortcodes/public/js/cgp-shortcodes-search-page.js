@@ -14,7 +14,7 @@
       '<div>\
       <h5>{{ filterData.title }}</h5>\
       <input style="max-width:100%;" v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
-      :placeholder="fieldName" class="m-2">\
+      :placeholder="fieldName" class="m-2 form-control form-control-md">\
       <div class="d-flex justify-content-start flex-wrap">\
       <cgp-pill class="p-1" v-for="(filter, index) in filterData.values" v-bind:key="index"  \
       v-on:removeFilter="removeFilter(fieldName, index)" :field-name="filter" /></div>\
