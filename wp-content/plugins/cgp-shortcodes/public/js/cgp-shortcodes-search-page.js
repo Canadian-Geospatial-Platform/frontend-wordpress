@@ -321,8 +321,13 @@
       <path fill-rule="evenodd" d="M2.036 9.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V10h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>\
       </svg>\
       </button></div></div>\
-      <h5 class="pt-3">Description </h5>\
-      {{ item.properties.description.en }}\
+      <h5 class="pt-3">Description\
+      <span style="font-size: 0.75rem">\
+      (<a href=\'#\' @click="expandDescription = !expandDescription">{{ expansionKeyword }}</a>)\
+      </span></h5>\
+      <div class="text-container" :class="{ \'truncate-text\' : !expandDescription }">\
+      <p>{{ item.properties.description.en }}</p>\
+      </div>\
       <h5 class="pt-3">Theme </h5>\
       {{ item.properties.topiccategory }}\
       <cgp-result-data-selector :item="item" />\
@@ -333,11 +338,22 @@
       expandedView: { required: true, type: Boolean },
     },
     data: function () {
-      return {};
+      return {
+        expandDescription: false,
+      };
     },
     methods: {
       expand: function () {
         this.$emit("expand", this.index);
+      },
+    },
+    computed: {
+      expansionKeyword: function () {
+        if (this.expandDescription) {
+          return "shorten";
+        } else {
+          return "expand";
+        }
       },
     },
   });
