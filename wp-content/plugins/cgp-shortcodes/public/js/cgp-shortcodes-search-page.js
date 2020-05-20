@@ -6,21 +6,21 @@
       {{ fieldName }}\
       <span aria-hidden="true"> &times;</span>\
       </button>',
-    props: { fieldName: String },
+    props: { fieldName: { required: true } },
   });
 
   var cgpTextFilter = Vue.component("cgp-text-filter", {
     template:
       '<div>\
       <h5>{{ filterData.title }}</h5>\
-      <input style="max-width:100%;" v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
+      <input v-model="inputValue" v-on:keyup.enter="addFilter(fieldName, inputValue)" \
       :placeholder="fieldName" class="m-2 form-control form-control-md">\
       <div class="d-flex justify-content-start flex-wrap">\
       <cgp-pill class="p-1" v-for="(filter, index) in filterData.values" v-bind:key="index"  \
       v-on:removeFilter="removeFilter(fieldName, index)" :field-name="filter" /></div>\
       </div>',
     props: {
-      fieldName: { required: true, type: String },
+      fieldName: { required: true },
       filterData: { required: true, type: Object },
     },
     data: function () {
@@ -69,7 +69,7 @@
       </div>\
       </div>',
     props: {
-      fieldName: { required: true, type: String },
+      fieldName: { required: true },
       filterData: { required: true, type: Object },
     },
     data: function () {
@@ -342,6 +342,134 @@
     },
   });
 
+  var cgpPagingPageButton = Vue.component("cgp-paging-page-button", {
+    template:
+      '<li :class="{active: active}" class="page-item" @click="setPage(value)"><a class="page-link" href="#">{{ value }}</a></li>',
+    props: {
+      active: {
+        default: false,
+      },
+      value: {
+        required: true,
+      },
+    },
+    methods: {
+      setPage: function (value) {
+        this.$emit("setPage", value);
+      },
+    },
+  });
+
+  var cgpPaging = Vue.component("cgp-paging", {
+    template:
+      '<div class="card">\
+      <div class="row">\
+      <cgp-paging-count class="order-1" :totalResultCount="totalResultCount"/>\
+      <div class="col-md-6 col-12 paging-big order-3 order-md-2">\
+      <nav aria-label="Page navigation">\
+      <ul class="pagination justify-content-center">\
+      <li class="page-item" @click="setPage(page-1)"><a class="page-link" href="#"><</a></li>\
+      <cgp-paging-page-button v-show="page - a > 0" v-for="a in arrLeft" :value="page - a" v-on:setPage="setPage"/>\
+      <cgp-paging-page-button active=true :value="page" v-on:setPage="setPage"/>\
+      <cgp-paging-page-button v-show="page + a <= maxPage" v-for="a in arrRight" :value="page + a" v-on:setPage="setPage"/>\
+      <li class="page-item" @click="setPage(page+1)"><a class="page-link" href="#">></a></li>\
+      </ul>\
+      </nav>\
+      </div>\
+      <div class="col paging-small order-3">\
+      <nav aria-label="Page navigation">\
+      <ul class="pagination justify-content-center">\
+      <li class="page-item" @click="setPage(page-1)"><a class="page-link" href="#"><</a></li>\
+      <cgp-paging-page-button :active="true" :value="\'Page \' + page" v-on:setPage="setPage"/>\
+      <li class="page-item" @click="setPage(page+1)"><a class="page-link" href="#">></a></li>\
+      </ul>\
+      </nav>\
+      </div>\
+      <cgp-paging-page-count class="order-2 order-md-3" :limit="limit" v-on:setLimit="setLimit"/>\
+      </div>\
+      </div>',
+    props: {
+      totalResultCount: {
+        required: true,
+        default: 0,
+      },
+      page: {
+        required: true,
+      },
+      limit: {
+        required: true,
+      },
+    },
+    data() {
+      return {
+        arrRight: [1, 2, 3],
+        arrLeft: [3, 2, 1],
+      };
+    },
+    methods: {
+      setPage: function (page) {
+        if (page > this.maxPage) return;
+        this.$emit("setPage", page);
+      },
+      setLimit: function (limit) {
+        this.$emit("setLimit", limit);
+      },
+    },
+    computed: {
+      maxPage: function () {
+        return Math.ceil(this.totalResultCount / this.limit);
+      },
+    },
+  });
+
+  var cgpPagingCount = Vue.component("cgp-paging-count", {
+    template:
+      '<div class="col">\
+      <h5>{{ totalResultCount || 0 }} Results</h5>\
+      </div>',
+    props: {
+      totalResultCount: {
+        required: true,
+        default: 0,
+      },
+    },
+    data() {
+      return {};
+    },
+  });
+
+  var cgpPagingPageCount = Vue.component("cgp-paging-page-count", {
+    template:
+      '<div class="col">\
+      <div class="form-group float-right">\
+      <select v-model="limitModel" class="form-control p-1 pr-4" id="pageCount" style="width: auto;">\
+        <option value="10">Show 10</option>\
+        <option value="20">Show 20</option>\
+        <option value="40">Show 40</option>\
+        <option value="80">Show 80</option>\
+      </select>\
+      </div>\
+      </div>',
+    props: {
+      limit: {
+        required: true,
+      },
+    },
+    data() {
+      return {};
+    },
+    computed: {
+      limitModel: {
+        get() {
+          return this.limit;
+        },
+        set: function (value) {
+          this.$emit("setLimit", value);
+        },
+      },
+    },
+  });
+
   var cgpResults = Vue.component("cgp-results", {
     template:
       '<div>\
@@ -378,9 +506,20 @@
   var vm = new Vue({
     el: document.querySelector("#cgp-search-page"),
     template:
-      '<div class="container"><div class="row">\
-      <cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" v-on:addFilter="addFilter" :query="query"/>\
-      <div class="col"><cgp-results :items="result.Items" :expandedView="expandedView" v-on:expand="expandedView = !expandedView"/></div>\
+      '<div class="container">\
+      <div class="row">\
+      <cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" \
+      v-on:addFilter="addFilter" :query="query"/>\
+      <div class="col">\
+      <cgp-paging v-show="!expandedView" :totalResultCount="result.Items && result.Items[0] && \
+      result.resultCount" :page="paging.page" \
+      :limit="paging.limit" v-on:setPage="setPage" v-on:setLimit="setLimit"/>\
+      <cgp-results :items="result.Items" :expandedView="expandedView" \
+      v-on:expand="expandedView = !expandedView" />\
+      <cgp-paging v-show="!expandedView" v-if="result.Items != null && result.Items.length > 0" \
+      :totalResultCount="result.Items && result.Items[0] && \
+      result.resultCount" :page="paging.page" \
+      :offset="paging.offset" :limit="paging.limit" v-on:setPage="setPage" v-on:setLimit="setLimit"/></div>\
       </div></div>',
     mounted: function () {
       if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")) {
@@ -444,10 +583,29 @@
         },
         result: {
           Items: null,
+          resultcount: 0,
+        },
+        paging: {
+          page: 1,
+          limit: 10,
         },
       };
     },
     methods: {
+      setPage: function (page) {
+        if (
+          !page ||
+          page * this.paging.limit > this.result.Items[0].resultCount
+        )
+          return;
+        this.paging.page = page;
+        this.fetchData();
+      },
+      setLimit: function (limit) {
+        this.paging.limit = limit;
+        this.paging.page = 1;
+        this.fetchData();
+      },
       addFilter: function (filter, value) {
         if (this.query[filter].values.indexOf(value) === -1) {
           this.query[filter].values.push(value);
@@ -458,9 +616,9 @@
         this.query[filter].values.splice(index, 1);
         this.fetchData();
       },
-      fetchData: function () {
+      fetchData: function (appendData) {
         let url = new URL(
-          "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo"
+          "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo"
         );
 
         let params = {
@@ -469,6 +627,10 @@
           regex: this.query.keywords.values,
           themes: this.query.themes.values,
           tags: this.query.tags.values,
+          minRN: (this.paging.page - 1) * this.paging.limit,
+          maxRN:
+            (this.paging.page - 1) * this.paging.limit +
+            parseInt(this.paging.limit),
         };
 
         if (
@@ -481,10 +643,14 @@
             url.searchParams.append(key, JSON.stringify(params[key]))
           );
 
+          // fetch the actual results
           fetch(url)
             .then((response) => {
               response.json().then((data) => {
-                this.result = data;
+                this.result.Items = data.Items;
+                if (data.Items[0].totalresultcount)
+                  this.result.resultCount = data.Items[0].totalresultcount;
+                else this.result.resultCount = 0;
               });
             })
             .catch((error) => console.log(`Failed because of: ${error}`));
