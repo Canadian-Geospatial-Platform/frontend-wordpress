@@ -383,7 +383,7 @@
       <cgp-paging-count class="order-1" :totalResultCount="totalResultCount"/>\
       <div class="col-md-6 col-12 paging-big order-3 order-md-2">\
       <nav aria-label="Page navigation">\
-      <ul class="pagination justify-content-center">\
+      <ul class="pagination justify-content-center" style="list-style-type: none;">\
       <li class="page-item" @click="setPage(page-1)"><a class="page-link" href="#"><</a></li>\
       <cgp-paging-page-button v-show="page - a > 0" v-for="a in arrLeft" :value="page - a" v-on:setPage="setPage"/>\
       <cgp-paging-page-button active=true :value="page" v-on:setPage="setPage"/>\
