@@ -329,7 +329,7 @@
       <p>{{ item.properties.description.en }}</p>\
       </div>\
       <h5 class="pt-3">Theme </h5>\
-      {{ item.properties.topiccategory }}\
+      {{ item.combinedtheme }}\
       <cgp-result-data-selector :item="item" />\
       </div>',
     props: {
