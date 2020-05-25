@@ -47,6 +47,7 @@
       </label>',
     props: {
       title: { required: true, type: String },
+      mountChecked: { default: false, type: Boolean },
     },
     data: function () {
       return {
@@ -58,6 +59,9 @@
         this.$emit("stateChange", this.title, this.checked);
       },
     },
+    mounted: function () {
+      if (this.mountChecked) this.checked = true;
+    },
   });
 
   var cgpOptionsFilters = Vue.component("cgp-options-filters", {
@@ -65,7 +69,7 @@
       '<div>\
       <h5>{{ filterData.title }}</h5>\
       <div class="btn-group-vertical btn-group-toggle" style="width: 100%;">\
-      <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :title="option"/>\
+      <cgp-options-filter v-for="option in filterData.options" v-bind:key="option" v-on:stateChange=updateFilter :mountChecked="filterData.values.indexOf(option) != -1" :title="option"/>\
       </div>\
       </div>',
     props: {
@@ -524,7 +528,7 @@
     template:
       '<div class="container">\
       <div class="row">\
-      <cgp-filters  v-show="!expandedView" v-on:removeFilter="removeFilter" \
+      <cgp-filters v-show="!expandedView" v-on:removeFilter="removeFilter" \
       v-on:addFilter="addFilter" :query="query"/>\
       <div class="col">\
       <cgp-paging v-show="!expandedView" :totalResultCount="result.Items && result.Items[0] && \
@@ -537,28 +541,35 @@
       result.resultCount" :page="paging.page" \
       :offset="paging.offset" :limit="paging.limit" v-on:setPage="setPage" v-on:setLimit="setLimit"/></div>\
       </div></div>',
-    mounted: function () {
-      if (sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")) {
-        this.addFilter(
-          "keywords",
-          sessionStorage.getItem("cgpShortcodesSearchTermsKeyword")
-        );
+    beforeMount: function () {
+      let storedValue;
+      let fetchDataFlag = false;
+      if (
+        (storedValue = sessionStorage.getItem(
+          "cgpShortcodesSearchTermsKeyword"
+        ))
+      ) {
+        this.query.keywords.values.push(storedValue);
         sessionStorage.removeItem("cgpShortcodesSearchTermsKeyword");
+        fetchDataFlag = true;
       }
-      if (sessionStorage.getItem("cgpShortcodesSearchTermsTheme")) {
-        this.addFilter(
-          "themes",
-          sessionStorage.getItem("cgpShortcodesSearchTermsTheme")
-        );
+      if (
+        (storedValue = sessionStorage.getItem("cgpShortcodesSearchTermsTheme"))
+      ) {
+        this.query.themes.values.push(storedValue);
         sessionStorage.removeItem("cgpShortcodesSearchTermsTheme");
+        fetchDataFlag = true;
       }
-      if (sessionStorage.getItem("cgpShortcodesSearchTermsId")) {
-        this.addFilter(
-          "id",
-          sessionStorage.getItem("cgpShortcodesSearchTermsId")
-        );
+      if (
+        (storedValue = sessionStorage.getItem("cgpShortcodesSearchTermsId"))
+      ) {
+        this.query.id.values.push(storedValue);
         this.expandedView = true;
         sessionStorage.removeItem("cgpShortcodesSearchTermsId");
+        fetchDataFlag = true;
+      }
+      if (fetchDataFlag) {
+        this.fetchData();
       }
     },
     data: function () {
