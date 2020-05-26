@@ -312,7 +312,7 @@
     template:
       '<div class="card p-4">\
       <div class="card-header mb-3 row"><div class="col"><h4 class="card-title">\
-      <p>{{ item.properties.title.en }}</p>\
+      <p>{{ item.rowNumber }}. {{ item.properties.title.en }}</p>\
       </h4></div><div class="col-1"><button  class="btn btn-sm" @click="expand">\
       <svg v-show="!expandedView" class="bi bi-arrows-angle-expand" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
       <path fill-rule="evenodd" d="M1.5 10.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>\
@@ -645,7 +645,7 @@
       },
       fetchData: function (appendData) {
         let url = new URL(
-          "https://tf7rzxdu96.execute-api.ca-central-1.amazonaws.com/dev/geo"
+          "https://zq7vthl3ye.execute-api.ca-central-1.amazonaws.com/sta/geo"
         );
 
         let params = {
@@ -654,7 +654,7 @@
           regex: this.query.keywords.values,
           themes: this.query.themes.values,
           tags: this.query.tags.values,
-          minRN: (this.paging.page - 1) * this.paging.limit,
+          minRN: (this.paging.page - 1) * this.paging.limit + 1,
           maxRN:
             (this.paging.page - 1) * this.paging.limit +
             parseInt(this.paging.limit),
