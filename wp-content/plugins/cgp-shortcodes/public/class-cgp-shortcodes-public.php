@@ -175,7 +175,7 @@ HTML;
         $ret .= "<script>var cgpShortcodesRedirectSearchPath = \"";
         $ret .= esc_url($atts['redirect_path']) . "\";";
         $ret .= "sessionStorage.setItem(\"cgpShortcodesSearchTermsTheme\",\"";
-        $ret .= $atts['theme'] . "\");</script>";
+        $ret .=  esc_js( $atts['theme'] )  . "\");</script>";
         return $ret;
     }
 }
