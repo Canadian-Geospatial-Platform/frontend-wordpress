@@ -635,11 +635,13 @@
       },
       addFilter: function (filter, value) {
         if (this.query[filter].values.indexOf(value) === -1) {
+          this.paging.page = 1;
           this.query[filter].values.push(value);
           this.fetchData();
         }
       },
       removeFilter: function (filter, index) {
+        this.paging.page = 1;
         this.query[filter].values.splice(index, 1);
         this.fetchData();
       },
